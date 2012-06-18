@@ -1,6 +1,6 @@
 <strong><?php
-    foreach ($beers as $beers) {
-        echo "<code>".$beers['username']." drank ".$beers['beer']."! (".$beers['when'].")</code>";
+   
+        echo $beers;
     }
 ?></strong>	
 </body>
