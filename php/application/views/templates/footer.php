@@ -1,6 +1,6 @@
 <strong><?php
    
-        echo $beers;
+        echo $beers.currentPage;
     
 ?></strong>	
 </body>

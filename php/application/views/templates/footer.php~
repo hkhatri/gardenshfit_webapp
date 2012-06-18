@@ -1,7 +1,7 @@
 <strong><?php
    
-        echo $beers;
-    }
+        echo $beers.toString();
+    
 ?></strong>	
 </body>
 </html>
