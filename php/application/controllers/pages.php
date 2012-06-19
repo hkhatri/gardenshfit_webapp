@@ -13,7 +13,7 @@ class Pages extends CI_Controller {
 	
 	$data['title'] = ucfirst($page); // Capitalize the first letter
 
-	$json = file_get_contents('http://api.geonames.org/postalCodeLookupJSON?formatted=true&postalcode=27606&country=US&username=gardenshift&style=full');
+	$json = file_get_contents('http://localhost:8080/Gardenshift/user_details/all');
 	$data['beers'] = json_decode($json);
       
 	

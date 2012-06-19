@@ -1,7 +1,7 @@
 <strong>
 <?php
     
-        echo "<code>".$beers->postalcodes.")</code>";
+        echo "<code>".$beers->users.")</code>";
     
 ?>
 </strong>	
