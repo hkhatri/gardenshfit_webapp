@@ -1,7 +1,7 @@
 <strong>
 <?php
     
-        echo "<code>".$beers->postalcodes->countryCode.")</code>";
+        echo "<code>".$beers->postalcodes.")</code>";
     
 ?>
 </strong>	
