@@ -1,7 +1,7 @@
 <strong>
 <?php
     
-        echo "<code>".$beers->users.")</code>";
+        echo "<code>".$beers->username.")</code>";
     
 ?>
 </strong>	
