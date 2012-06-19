@@ -1,7 +1,7 @@
 <strong>
 <?php
     
-        echo "<code>".$beers->username.")</code>";
+        echo "<code>".$beers->currentPage.")</code>";
     
 ?>
 </strong>	
