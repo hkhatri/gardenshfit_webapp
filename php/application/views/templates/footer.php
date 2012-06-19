@@ -2,7 +2,7 @@
 
 <?php
     foreach ($beers as $beers) {
-        echo "<code>".$beers['username'].")</code>";
+        echo "<code>".$beers->username."</code>";
     }
 ?>
 
