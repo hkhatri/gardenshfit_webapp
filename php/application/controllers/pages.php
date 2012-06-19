@@ -13,7 +13,7 @@ class Pages extends CI_Controller {
 	
 	$data['title'] = ucfirst($page); // Capitalize the first letter
 
-	$json = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/user_details/hkhatri');
+	$json = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/user_details/all');
 	$data['beers'] = json_decode($json);
       
 	
