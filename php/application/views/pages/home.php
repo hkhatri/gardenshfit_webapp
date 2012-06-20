@@ -55,7 +55,7 @@
 		 function init()
 {
 			$("#dialog").dialog({
-			autoOpen: true
+			autoOpen: false
 			});
 }
 		
