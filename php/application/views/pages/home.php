@@ -5,20 +5,9 @@
 
     	<title> Welcome to Gardenshift</title>
 	
-	<link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
+	
 	<script src="../../js/jquery-1.7.2.js"></script>
-	<script src="../../external/jquery.bgiframe-2.1.2.js"></script>
-	<script src="../../ui/jquery.ui.core.js"></script>
-	<script src="../../ui/jquery.ui.widget.js"></script>
-	<script src="../../ui/jquery.ui.mouse.js"></script>
-	<script src="../../ui/jquery.ui.draggable.js"></script>
-	<script src="../../ui/jquery.ui.position.js"></script>
-	<script src="../../ui/jquery.ui.resizable.js"></script>
-	<script src="../../ui/jquery.ui.dialog.js"></script>
-	<script src="../../ui/jquery.effects.core.js"></script>
-	<script src="../../ui/jquery.effects.blind.js"></script>
-	<script src="../../ui/jquery.effects.explode.js"></script>
-	<link rel="stylesheet" href="../../ui/demos.css">
+	
 	
 
     <style type="text/css">
@@ -62,20 +51,25 @@
 </head>
 
 <script>
-	// increase the default animation speed to exaggerate the effect
-	$.fx.speeds._default = 1000;
-	function opendialog() {
-		
+
 		$( "#dialog" ).dialog({
 			autoOpen: true,
 			show: "blind",
 			hide: "explode"
+		});	
+	
+	function opendialog() {		
+		
+		$( "#dialog" ).dialog({
+			autoOpen: true,
+			show: "blind",
+			hide: "explode",
+			modal: "true"
 		});		
 	}
 	</script>
 
 <body>
-<div class="hiddenInViewSource" style="padding:20px;">
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
@@ -105,8 +99,6 @@
 
 <div id="dialog">
     <h1>This IS A Cool PopUp</h1>
-
-</div>
 </div>
 
 </body>
