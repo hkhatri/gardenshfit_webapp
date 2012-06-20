@@ -86,7 +86,7 @@ $( "#dialog" ).dialog({
                 <img style="float:left;" alt="" src="../../images/menu_left.png"/> 
             </li>
 
-            <li><a href='#' onclick='open();alert('it works!');'>Login</a>
+            <li><a href='#' onclick='open()'>Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
