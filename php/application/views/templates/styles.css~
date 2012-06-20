@@ -70,9 +70,9 @@ body{
 
 /* Green Button */
 
-#navigationMenu .login {	background-position:0 0;}
-#navigationMenu .login:hover {	background-position:0 -39px;}
-#navigationMenu .login span{
+#navigationMenu .home {	background-position:0 0;}
+#navigationMenu .home:hover {	background-position:0 -39px;}
+#navigationMenu .home span{
 	background-color:#7da315;
 	color:#3d4f0c;
 	text-shadow:1px 1px 0 #99bf31;
@@ -80,9 +80,9 @@ body{
 
 /* Blue Button */
 
-#navigationMenu .signup { background-position:-38px 0;}
-#navigationMenu .signup:hover { background-position:-38px -39px;}
-#navigationMenu .signup span{
+#navigationMenu .about { background-position:-38px 0;}
+#navigationMenu .about:hover { background-position:-38px -39px;}
+#navigationMenu .about span{
 	background-color:#1e8bb4;
 	color:#223a44;
 	text-shadow:1px 1px 0 #44a8d0;
