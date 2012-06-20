@@ -60,7 +60,7 @@ $( "#loginDialog" ).dialog({
             resizable: true,
             autoResize: true,
 	    autoOpen: false,          
-            overlay: { backgroundColor: "#0FF", opacity: 0.8 },
+            overlay: { backgroundColor: "#00000", opacity: 1 },
             autoOpen: true,
             buttons: {
                     'Close': function() {
