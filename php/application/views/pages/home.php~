@@ -94,11 +94,11 @@
   <img class="logo1" src="../../images/logo.png" />
 
 <div id="dialog">
-     <form action="https://dev-gardenshift.rhcloud.com/Gardenshift/authenticate/" method="POST">
+    asasdsad <form action="https://dev-gardenshift.rhcloud.com/Gardenshift/authenticate/" method="POST">
   Username: <input type="text" name="username" /><br />
   Password: <input type="password" name="password" /><br />
   <input type="submit" value="login" />
-              </form>
+    </form>
 </div>
 
 </body>
