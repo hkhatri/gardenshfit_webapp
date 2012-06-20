@@ -69,16 +69,16 @@ $( "#dialog" ).dialog({
 
                 });
 
-var el = document.getElementById('foo');
-el.onclick = showFoo;
+var login = document.getElementById('foo');
+login.onclick = showLogin;
 
-$( "#dialog" ).dialog('close');
+$( "#dialog" ).dialog('close'); 
 
 }
 		
 
 
-function showFoo() {
+function showLogin() {
 $( "#dialog" ).dialog('open');               
          
 }
