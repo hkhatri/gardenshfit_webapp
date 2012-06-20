@@ -79,6 +79,7 @@
 	</script>
 
 <body>
+<button id="opener" value="open"> 
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
