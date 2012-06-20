@@ -61,7 +61,7 @@ $( "#cluster_info" ).dialog({
             autoResize: true,
             width: '650',
             overlay: { backgroundColor: "#000", opacity: 0.3 },
-            autoOpen: false,
+            autoOpen: true,
             buttons: {
                     'Close': function() {
                     $(this).dialog('close');

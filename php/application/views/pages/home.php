@@ -54,7 +54,7 @@
   
 		 function init()
 {
-$( "#cluster_info" ).dialog({               
+$( "#dialog" ).dialog({               
             height: 410,
             modal: true,
             resizable: true,
