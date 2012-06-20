@@ -68,10 +68,11 @@ $( "#dialog" ).dialog({
 
                 });
 
-}
-		
 var el = document.getElementById('foo');
 el.onclick = showFoo;
+
+}
+		
 
 
 function showFoo() {

@@ -79,11 +79,6 @@ function showFoo() {
   return false;
 }
 
-	function open()
-{
-	$("#dialog").dialog("open");
-}
-
   </script>
 
 <body onload="init()">
@@ -93,7 +88,7 @@ function showFoo() {
                 <img style="float:left;" alt="" src="../../images/menu_left.png"/> 
             </li>
 
-            <li><a href='#' onclick='open()' id="foo">Login</a>
+            <li><a href='#' id="foo">Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
