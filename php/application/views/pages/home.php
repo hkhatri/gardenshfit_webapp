@@ -50,7 +50,7 @@
                
                 
             </li>
-            <li><a href="#">Login</a>
+            <li><a href="#" onclick=alert("Hello") >Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
