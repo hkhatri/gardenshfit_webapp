@@ -75,7 +75,7 @@
                
                 
             </li>
-            <li><a href="#" onclick="open()" >Login</a>
+            <li><a onclick="open()" >Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
