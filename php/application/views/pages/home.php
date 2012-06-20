@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-    <title> Welcome to Gardenshift</title>
+
+    	<title> Welcome to Gardenshift</title>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
     <style type="text/css">
         body {  font-family:Arial, Helvetica, Sans-Serif; font-size:12px; margin:0px 20px;
 		background-image: url("../../images/simple.jpg");	  	
@@ -42,6 +47,14 @@
         #menu .middle { position:absolute; left:18px; height: 20px; width: 115px; top:0px;}
     </style>
 </head>
+
+<script>
+  $(document).ready(function() {
+    $("#dialog").dialog();
+  });
+  </script>
+
+
 <body>
     <div style="margin-left:40%;">
         <ul id="menu">
@@ -69,5 +82,13 @@
         </ul>
         <img style="float:left;" alt="" src="../../images/menu_right.png"/>
   <img class="logo1" src="../../images/logo.png" />
+
+
+<div id="dialog">
+    <h1>This IS A Cool PopUp</h1>
+
+</div>
+
+
 </body>
 </html>

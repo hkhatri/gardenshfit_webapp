@@ -42,6 +42,14 @@
         #menu .middle { position:absolute; left:18px; height: 20px; width: 115px; top:0px;}
     </style>
 </head>
+
+<script>
+  $(document).ready(function() {
+    $("#dialog").dialog();
+  });
+  </script>
+
+
 <body>
     <div style="margin-left:40%;">
         <ul id="menu">
@@ -50,7 +58,7 @@
                
                 
             </li>
-            <li><a href="#">Login</a>
+            <li><a href="#" onclick=alert("Hello") >Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
@@ -69,5 +77,13 @@
         </ul>
         <img style="float:left;" alt="" src="../../images/menu_right.png"/>
   <img class="logo1" src="../../images/logo.png" />
+
+
+<div id="dialog">
+    <h1>This IS A Cool PopUp</h1>
+
+</div>
+
+
 </body>
 </html>
