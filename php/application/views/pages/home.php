@@ -76,8 +76,8 @@ el.onclick = showFoo;
 
 
 function showFoo() {
-  alert('I am foo!');
-  return false;
+$( "#dialog" ).dialog('open');               
+         
 }
 
   </script>
