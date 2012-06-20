@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title></title>
-    <style>
+<meta charset="utf-8">
+    <title> Welcome to Gardenshift</title>
+    <style type="text/css">
         body {  font-family:Arial, Helvetica, Sans-Serif; font-size:12px; margin:0px 20px;
-		background-image: url("simple.jpg");
-	  	
-	 	background-repeat: no-repeat;
-		
-background-size: 100% 110%;
-            min-height: 700px;
-		}
+		background-image: url("simple.jpg");	  	
+	 	background-repeat: no-repeat;		
+		background-size: 100% 110%;
+            	min-height: 700px;
+	}
 
 	img.logo1 { position:absolute; left:25%; top:33%; width: 50%; height:25%;}
 	
