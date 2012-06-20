@@ -60,10 +60,7 @@
                         <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/>
                     </li>
                     <li><a href="#">About Us</a></li>                 
-                    <li class="last">
-                        <img class="corner_left" alt="" src="../../images/corner_left.png"/>
-                        <img class="corner_right" alt="" src="../../images/corner_right.png"/>			
-                    </li>
+           
                 </ul>
             </li>
         </ul>
