@@ -66,7 +66,7 @@
 	$.fx.speeds._default = 1000;
 	$(function() {
 		$( "#dialog" ).dialog({
-			autoOpen: false,
+			autoOpen: true,
 			show: "blind",
 			hide: "explode"
 		});
@@ -76,10 +76,10 @@
 			return false;
 		});
 	});
-</script>
-
+	</script>
 
 <body>
+<button id="opener" value="open"> 
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
