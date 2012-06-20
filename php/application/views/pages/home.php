@@ -64,13 +64,14 @@
 <script>
 	// increase the default animation speed to exaggerate the effect
 	$.fx.speeds._default = 1000;
-	$(function opendialog() {
+	function opendialog() {
+		
 		$( "#dialog" ).dialog({
 			autoOpen: true,
 			show: "blind",
 			hide: "explode"
 		});		
-	});
+	}
 	</script>
 
 <body>
@@ -81,7 +82,7 @@
                
                 
             </li>
-            <li><a href="#" onclick=opendialog() >Login</a>
+            <li><a href="#" onclick="opendialog()" >Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
