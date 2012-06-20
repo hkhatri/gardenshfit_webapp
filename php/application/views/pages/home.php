@@ -6,7 +6,7 @@
     	<title> Welcome to Gardenshift</title>
 	
 	<link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
-	<script src="../../jquery-1.7.2.js"></script>
+	<script src="../../js/jquery-1.7.2.js"></script>
 	<script src="../../external/jquery.bgiframe-2.1.2.js"></script>
 	<script src="../../ui/jquery.ui.core.js"></script>
 	<script src="../../ui/jquery.ui.widget.js"></script>
@@ -106,6 +106,16 @@
         </ul>
         <img style="float:left;" alt="" src="../../images/menu_right.png"/>
   <img class="logo1" src="../../images/logo.png" />
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable">
+   <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+      <span id="ui-dialog-title-dialog" class="ui-dialog-title">Dialog title</span>
+      <a class="ui-dialog-titlebar-close ui-corner-all" href="#"><span class="ui-icon ui-icon-closethick">close</span></a>
+   </div>
+   <div style="height: 200px; min-height: 109px; width: auto;" class="ui-dialog-content ui-widget-content" id="dialog">
+      <p>Dialog content goes here.</p>
+   </div>
+</div>
 
 
 <div id="dialog">
