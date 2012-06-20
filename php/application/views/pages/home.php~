@@ -52,10 +52,17 @@
 
 <script>
   $(document).ready(function() {
-    $("#dialog").dialog({
-	autoOpen: false
-	});
-  });
+
+		 $("#dialog").dialog({
+			autoOpen: false
+			});
+		  });
+
+	function open()
+{
+	$("#dialog").dialog("open");
+}
+
   </script>
 
 <body>
@@ -66,7 +73,7 @@
                
                 
             </li>
-            <li><a href="#" onclick="opendialog()" >Login</a>
+            <li><a href="#" onclick="open()" >Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
