@@ -1,10 +1,11 @@
 <strong>
-
+<ol>
 <?php
     foreach ($beers as $beers) {
-        echo "<code>".$beers->username."</code>";
+        echo "<li>".$beers->username."</li>";
     }
 ?>
+</ol>
 
 </strong>	
 </body>
