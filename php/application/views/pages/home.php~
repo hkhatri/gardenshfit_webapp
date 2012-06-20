@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
     <title> Welcome to Gardenshift</title>
-    <style>
+    <style type="text/css">
         body {  font-family:Arial, Helvetica, Sans-Serif; font-size:12px; margin:0px 20px;
-		background-image: url("simple.jpg");	  	
+		background-image: url("../../images/simple.jpg");	  	
 	 	background-repeat: no-repeat;		
 		background-size: 100% 110%;
             	min-height: 700px;
@@ -46,7 +46,7 @@
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
-                <img style="float:left;" alt="" src="menu_left.png"/>
+                <img style="float:left;" alt="" src="../../images/menu_left.png"/>
                
                 
             </li>
@@ -55,21 +55,21 @@
             <li><a href="#">New User</a>
                 <ul id="help">
                     <li>
-                        <img class="corner_inset_left" alt="" src="corner_inset_left.png"/>
+                        <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>
                         <a href="#">SignUp</a>
-                        <img class="corner_inset_right" alt="" src="corner_inset_right.png"/>
+                        <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/>
                     </li>
                     <li><a href="#">About Us</a></li>                 
                     <li class="last">
-                        <img class="corner_left" alt="" src="corner_left.png"/>
+                        <img class="corner_left" alt="" src="../../images/corner_left.png"/>
                         <img class="middle" alt="" src="dot.gif"/>
-                        <img class="corner_right" alt="" src="corner_right.png"/>
+                        <img class="corner_right" alt="" src="../../images/corner_right.png"/>
 			
                     </li>
                 </ul>
             </li>
         </ul>
-        <img style="float:left;" alt="" src="menu_right.png"/>
-  <img class="logo1" src="logo.png" />
+        <img style="float:left;" alt="" src="../../images/menu_right.png"/>
+  <img class="logo1" src="../../images/logo.png" />
 </body>
 </html>
