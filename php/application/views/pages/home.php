@@ -75,6 +75,7 @@
 	</script>
 
 <body>
+<div class="hiddenInViewSource" style="padding:20px;">
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
@@ -106,7 +107,7 @@
     <h1>This IS A Cool PopUp</h1>
 
 </div>
-
+</div>
 
 </body>
 </html>
