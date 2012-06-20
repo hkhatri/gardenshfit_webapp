@@ -4,9 +4,7 @@
 <meta charset="utf-8">
 
     	<title> Welcome to Gardenshift</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
+	
 	<link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
 	<script src="../../jquery-1.7.2.js"></script>
 	<script src="../../external/jquery.bgiframe-2.1.2.js"></script>
@@ -18,6 +16,7 @@
 	<script src="../../ui/jquery.ui.resizable.js"></script>
 	<script src="../../ui/jquery.ui.dialog.js"></script>
 	<link rel="stylesheet" href="../../ui/demos.css">
+	<script src="../../js/jquery-1.7.2.js"></script>
 
     <style type="text/css">
         body {  font-family:Arial, Helvetica, Sans-Serif; font-size:12px; margin:0px 20px;
