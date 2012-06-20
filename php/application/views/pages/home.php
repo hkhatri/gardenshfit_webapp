@@ -59,7 +59,7 @@ $( "#dialog" ).dialog({
             modal: true,
             resizable: true,
             autoResize: true,          
-            overlay: { backgroundColor: "#000", opacity: 0.3 },
+            overlay: { backgroundColor: "#0FF", opacity: 0.5 },
             autoOpen: true,
             buttons: {
                     'Close': function() {
