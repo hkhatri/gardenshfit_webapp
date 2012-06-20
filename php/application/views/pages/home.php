@@ -14,7 +14,7 @@
         body {  font-family:Arial, Helvetica, Sans-Serif; font-size:12px; margin:0px 20px;
 		background-image: url("../../images/simple.jpg");	  	
 	 	background-repeat: no-repeat;		
-		background-size: 100% 100%;
+		background-size: 100% 110%;
             	min-height: 700px;
 	}
 
@@ -52,7 +52,9 @@
 
 <script>
   $(document).ready(function() {
-    $("#dialog").dialog();
+    $("#dialog").dialog({
+	autoOpen: false
+	});
   });
   </script>
 
