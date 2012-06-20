@@ -74,7 +74,8 @@ $( "#newUserDialog" ).dialog({
             modal: true,
             resizable: true,
             autoResize: true,
-	    autoOpen: false,          
+	    autoOpen: false, 
+	    title: "New User",         
             overlay: { backgroundColor: "#0FF", opacity: 0.5 },
             autoOpen: true,
             buttons: {
@@ -88,7 +89,7 @@ var login = document.getElementById('login');
 login.onclick = showLogin;
 
 var newUser = document.getElementById('newUser');
-newUser.onclick = showLogin;
+newUser.onclick = showAddUser;
 
 $( "#loginDialog" ).dialog('close'); 
 $( "#newUserDialog" ).dialog('close'); 
@@ -99,6 +100,10 @@ $( "#newUserDialog" ).dialog('close');
 
 function showLogin() {
 $( "#loginDialog" ).dialog('open');                  
+}
+
+function showAddUser() {
+$( "#newUserDialog" ).dialog('open');                  
 }
 
   </script>

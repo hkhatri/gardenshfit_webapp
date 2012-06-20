@@ -87,8 +87,8 @@ $( "#newUserDialog" ).dialog({
 var login = document.getElementById('login');
 login.onclick = showLogin;
 
-var newUser = document.getElementById('foo');
-newUser.onclick = showLogin;
+var newUser = document.getElementById('newUser');
+newUser.onclick = showAddUser;
 
 $( "#loginDialog" ).dialog('close'); 
 $( "#newUserDialog" ).dialog('close'); 
@@ -99,6 +99,10 @@ $( "#newUserDialog" ).dialog('close');
 
 function showLogin() {
 $( "#loginDialog" ).dialog('open');                  
+}
+
+function showAddUser() {
+$( "#newUserDialog" ).dialog('open');                  
 }
 
   </script>
@@ -112,7 +116,7 @@ $( "#loginDialog" ).dialog('open');
 
             <li><a href='#' id="login">Login</a>
             </li>
-            <li><a href="#">New User</a>
+            <li><a href="#" id="newUser" >New User</a>
                 <ul id="help">
                     <li>
                         <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>
