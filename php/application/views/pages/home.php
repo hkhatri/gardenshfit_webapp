@@ -59,7 +59,8 @@ $( "#loginDialog" ).dialog({
             modal: true,
             resizable: true,
             autoResize: true,
-	    autoOpen: false,          
+	    autoOpen: false,
+	    title: "Create a new Account",          
             overlay: { backgroundColor: "#00000", opacity: 1 },
             autoOpen: true,
             buttons: {
@@ -75,7 +76,7 @@ $( "#newUserDialog" ).dialog({
             resizable: true,
             autoResize: true,
 	    autoOpen: false, 
-	    title: "New User",         
+	    title: "Create a new Account",         
             overlay: { backgroundColor: "#0FF", opacity: 0.5 },
             autoOpen: true,
             buttons: {
