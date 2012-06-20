@@ -57,7 +57,7 @@
                     <li>
                         <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>
                         <a href="#">SignUp</a>
-                        <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/>
+                        
                     </li>
                     <li><a href="#">About Us</a></li>                 
            
