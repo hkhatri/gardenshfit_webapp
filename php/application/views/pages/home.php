@@ -55,11 +55,10 @@
 		 function init()
 {
 $( "#dialog" ).dialog({               
-            height: 410,
+         
             modal: true,
             resizable: true,
-            autoResize: true,
-            width: '650',
+            autoResize: true,          
             overlay: { backgroundColor: "#000", opacity: 0.3 },
             autoOpen: true,
             buttons: {
@@ -71,10 +70,13 @@ $( "#dialog" ).dialog({
 
 }
 		
+var el = document.getElementById('foo');
+el.onclick = showFoo;
 
-	function open()
-{
-	$("#dialog").dialog("open");
+
+function showFoo() {
+  alert('I am foo!');
+  return false;
 }
 
   </script>
@@ -86,7 +88,7 @@ $( "#dialog" ).dialog({
                 <img style="float:left;" alt="" src="../../images/menu_left.png"/> 
             </li>
 
-            <li><a href='#' onclick='open()'>Login</a>
+            <li><a href='#' id="foo">Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
