@@ -53,7 +53,7 @@
 <script>
   
 		 $("#dialog").dialog({
-			autoOpen: false
+			autoOpen: true
 			});
 		
 

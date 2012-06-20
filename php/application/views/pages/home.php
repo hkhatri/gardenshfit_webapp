@@ -52,9 +52,12 @@
 
 <script>
   
-		 $("#dialog").dialog({
+		 function init()
+{
+			$("#dialog").dialog({
 			autoOpen: true
 			});
+}
 		
 
 	function open()
@@ -64,7 +67,7 @@
 
   </script>
 
-<body>
+<body onload="init()">
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
