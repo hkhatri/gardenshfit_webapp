@@ -69,17 +69,11 @@
 			autoOpen: true,
 			show: "blind",
 			hide: "explode"
-		});
-
-		$( "#opener" ).click(function() {
-			$( "#dialog" ).dialog( "open" );
-			return false;
-		});
+		});		
 	});
 	</script>
 
 <body>
-<button id="opener" value="open"> 
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
