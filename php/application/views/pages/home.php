@@ -6,11 +6,11 @@
     	<title> Welcome to Gardenshift</title>
 	
 	
-	<script src="../../js/jquery-1.7.2.js"></script>
-	
-	
-
-    <style type="text/css">
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+  <style type="text/css">
         body {  font-family:Arial, Helvetica, Sans-Serif; font-size:12px; margin:0px 20px;
 		background-image: url("../../images/simple.jpg");	  	
 	 	background-repeat: no-repeat;		
@@ -51,23 +51,10 @@
 </head>
 
 <script>
-
-		$( "#dialog" ).dialog({
-			autoOpen: true,
-			show: "blind",
-			hide: "explode"
-		});	
-	
-	function opendialog() {		
-		
-		$( "#dialog" ).dialog({
-			autoOpen: true,
-			show: "blind",
-			hide: "explode",
-			modal: "true"
-		});		
-	}
-	</script>
+  $(document).ready(function() {
+    $("#dialog").dialog();
+  });
+  </script>
 
 <body>
     <div style="margin-left:40%;">

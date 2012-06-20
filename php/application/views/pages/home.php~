@@ -6,8 +6,15 @@
     	<title> Welcome to Gardenshift</title>
 	
 	
-	<script src="../../js/jquery-1.7.2.js"></script>
-	
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+  <script>
+  $(document).ready(function() {
+    $("#dialog").dialog();
+  });
+  </script>
 	
 
     <style type="text/css">
@@ -63,13 +70,13 @@
 		$( "#dialog" ).dialog({
 			autoOpen: true,
 			show: "blind",
-			hide: "explode"
+			hide: "explode",
+			modal: "true"
 		});		
 	}
 	</script>
 
 <body>
-<div class="hiddenInViewSource" style="padding:20px;">
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
@@ -99,8 +106,6 @@
 
 <div id="dialog">
     <h1>This IS A Cool PopUp</h1>
-
-</div>
 </div>
 
 </body>
