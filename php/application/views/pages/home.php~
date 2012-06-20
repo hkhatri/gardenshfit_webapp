@@ -63,7 +63,7 @@ $( "#cluster_info" ).dialog({
             overlay: { backgroundColor: "#000", opacity: 0.3 },
             autoOpen: false,
             buttons: {
-                  'Close': function() {
+                    'Close': function() {
                     $(this).dialog('close');
                   }}
 
@@ -83,11 +83,10 @@ $( "#cluster_info" ).dialog({
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
-                <img style="float:left;" alt="" src="../../images/menu_left.png"/>
-               
-                
+                <img style="float:left;" alt="" src="../../images/menu_left.png"/> 
             </li>
-            <li><a href="#" onclick="open()" >Login</a>
+
+            <li><a onClick="open();" style="cursor: pointer; cursor: hand;">*click here*</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
