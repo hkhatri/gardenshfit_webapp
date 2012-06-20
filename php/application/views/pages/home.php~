@@ -74,7 +74,8 @@ $( "#newUserDialog" ).dialog({
             modal: true,
             resizable: true,
             autoResize: true,
-	    autoOpen: false,          
+	    autoOpen: false, 
+	    title: "New User",         
             overlay: { backgroundColor: "#0FF", opacity: 0.5 },
             autoOpen: true,
             buttons: {
