@@ -72,6 +72,8 @@ $( "#dialog" ).dialog({
 var el = document.getElementById('foo');
 el.onclick = showFoo;
 
+$( "#dialog" ).dialog('close');
+
 }
 		
 
