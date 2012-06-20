@@ -54,7 +54,7 @@
   
 		 function init()
 {
-$( "#dialog" ).dialog({               
+$( "#loginDialog" ).dialog({               
          
             modal: true,
             resizable: true,
@@ -69,18 +69,36 @@ $( "#dialog" ).dialog({
 
                 });
 
-var el = document.getElementById('foo');
-el.onclick = showFoo;
+$( "#newUserDialog" ).dialog({               
+         
+            modal: true,
+            resizable: true,
+            autoResize: true,
+	    autoOpen: false,          
+            overlay: { backgroundColor: "#0FF", opacity: 0.5 },
+            autoOpen: true,
+            buttons: {
+                    'Close': function() {
+                    $(this).dialog('close');
+                  }}
 
-$( "#dialog" ).dialog('close');
+                });
+
+var login = document.getElementById('login');
+login.onclick = showLogin;
+
+var newUser = document.getElementById('foo');
+newUser.onclick = showLogin;
+
+$( "#loginDialog" ).dialog('close'); 
+$( "#newUserDialog" ).dialog('close'); 
 
 }
 		
 
 
-function showFoo() {
-$( "#dialog" ).dialog('open');               
-         
+function showLogin() {
+$( "#loginDialog" ).dialog('open');                  
 }
 
   </script>
@@ -92,7 +110,7 @@ $( "#dialog" ).dialog('open');
                 <img style="float:left;" alt="" src="../../images/menu_left.png"/> 
             </li>
 
-            <li><a href='#' id="foo">Login</a>
+            <li><a href='#' id="login">Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
@@ -112,12 +130,22 @@ $( "#dialog" ).dialog('open');
         <img style="float:left;" alt="" src="../../images/menu_right.png"/>
   <img class="logo1" src="../../images/logo.png" />
 
-<div id="dialog">
+<div id="loginDialog">
   <form action="https://dev-gardenshift.rhcloud.com/Gardenshift/authenticate/" method="POST">
   Username: <input type="text" name="username" /><br />
   Password: <input type="password" name="password" /><br />
   <input type="submit" value="login" />
-              </form>
+  </form>
+</div>
+
+<div id="newUserDialog">
+  <form action="https://dev-gardenshift.rhcloud.com/Gardenshift/adduser/" method="POST">
+  Username: <input type="text" name="username" /><br />
+  Password: <input type="password" name="password" /><br />
+  Confirm Password: <input type="password" name="password" /><br />
+  Email: <input type="text" name="email" /><br />
+  <input type="submit" value="login" />
+  </form>
 </div>
 
 </body>
