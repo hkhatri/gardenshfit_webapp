@@ -86,7 +86,7 @@ $( "#cluster_info" ).dialog({
                 <img style="float:left;" alt="" src="../../images/menu_left.png"/> 
             </li>
 
-            <li><a onClick="open();" style="cursor: pointer; cursor: hand;">*click here*</a>
+            <li><a href='#' onclick='open();alert('it works!');'>Login</a>
             </li>
             <li><a href="#">New User</a>
                 <ul id="help">
