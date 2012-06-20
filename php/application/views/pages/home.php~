@@ -1,13 +1,13 @@
 <ul id="navigationMenu">
     <li>
 	    <a class="login" href="#">
-            <span>Home</span>
+            <span>Login</span>
         </a>
     </li>
 
     <li>
     	<a class="signup" href="#">
-            <span>About</span>
+            <span>Sign-up</span>
         </a>
     </li>
 </ul>
