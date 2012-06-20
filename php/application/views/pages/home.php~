@@ -54,9 +54,21 @@
   
 		 function init()
 {
-			$("#dialog").dialog({
-			autoOpen: false
-			});
+$( "#cluster_info" ).dialog({               
+            height: 410,
+            modal: true,
+            resizable: true,
+            autoResize: true,
+            width: '650',
+            overlay: { backgroundColor: "#000", opacity: 0.3 },
+            autoOpen: false,
+            buttons: {
+                  'Close': function() {
+                    $(this).dialog('close');
+                  }}
+
+                });
+
 }
 		
 
@@ -96,7 +108,11 @@
   <img class="logo1" src="../../images/logo.png" />
 
 <div id="dialog">
-    asasdsad 
+  <form action="https://dev-gardenshift.rhcloud.com/Gardenshift/authenticate/" method="POST">
+  Username: <input type="text" name="username" /><br />
+  Password: <input type="password" name="password" /><br />
+  <input type="submit" value="login" />
+              </form>
 </div>
 
 </body>
