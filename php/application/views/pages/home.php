@@ -9,82 +9,98 @@
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
-  <style type="text/css">
-        body {  font-family:Arial, Helvetica, Sans-Serif; font-size:12px; margin:0px 20px;
-		background-image: url("../../images/simple.jpg");	  	
-	 	background-repeat: no-repeat;		
-		background-size: 100% 110%;
-            	min-height: 700px;
-	}
-
-	img.logo1 { position:absolute; left:25%; top:33%; width: 50%; height:25%;}
-	
-        /* menu */
-        #menu{ margin:0px; padding:0px; list-style:none; color:#fff; line-height:45px; display:inline-block; float:left; z-index:1000; }
-        #menu a { color:#fff; text-decoration:none; }
-        #menu > li {background:#172322 none repeat scroll 0 0; cursor:pointer; float:left; position:relative;padding:0px 10px;}
-        #menu > li a:hover {color:#B0D730;}
-        #menu .logo {background:transparent none repeat scroll 0% 0%; padding:0px; background-color:Transparent;}
-        /* sub-menus*/
-        #menu ul { padding:0px; margin:0px; display:block; display:inline;}
-        #menu li ul { position:absolute; left:-10px; top:0px; margin-top:45px; width:150px; line-height:16px; background-color:#172322; color:#0395CC; /* for IE */ display:none; }
-        #menu li:hover ul { display:block;}
-        #menu li ul li{ display:block; margin:5px 20px; padding: 5px 0px;  border-top: dotted 1px #606060; list-style-type:none; }
-        #menu li ul li:first-child { border-top: none; }
-        #menu li ul li a { display:block; color:#0395CC; }
-        #menu li ul li a:hover { color:#7FCDFE; }
-        /* main submenu */
-        #menu #main { left:0px; top:-20px; padding-top:20px; background-color:#7cb7e3; color:#fff; z-index:999;}
-        /* search */
-        .searchContainer div { background-color:#fff; display:inline; padding:5px;}
-        .searchContainer input[type="text"] {border:none;}
-        .searchContainer img { vertical-align:middle;}
-        /* corners*/
-        #menu .corner_inset_left { position:absolute; top:0px; left:-12px;}
-        #menu .corner_inset_right { position:absolute; top:0px; left:150px;}
-        #menu .last { background:transparent none repeat scroll 0% 0%; margin:0px; padding:0px; border:none; position:relative; border:none; height:0px;}
-        #menu .corner_left { position:absolute; left:0px; top:0px;}
-        #menu .corner_right { position:absolute; left:132px; top:0px;}
-        #menu .middle { position:absolute; left:18px; height: 20px; width: 115px; top:0px;}
-    </style>
+  <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+  <link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+   
+    <script src="../../external/jquery.bgiframe-2.1.2.js"></script>
+    <script src="../../ui/jquery.ui.core.js"></script>
+    <script src="../../ui/jquery.ui.widget.js"></script>
+    <script src="../../ui/jquery.ui.mouse.js"></script>
+    <script src="../../ui/jquery.ui.draggable.js"></script>
+    <script src="../../ui/jquery.ui.position.js"></script>
+    <script src="../../ui/jquery.ui.resizable.js"></script>
+    <script src="../../ui/jquery.ui.dialog.js"></script>
+    <script src="../../ui/jquery.effects.core.js"></script>
+    <script src="../../ui/jquery.effects.blind.js"></script>
+    <script src="../../ui/jquery.effects.explode.js"></script>
+    
+    <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+ 
+    
+    
+   
 </head>
 
 <script>
-  
-		 function init()
+    
+   
+$("#myform").validate({
+  rules: {
+    username: {
+               required: true
+         }
+  },
+  messages: {
+          txtFirstName: {
+              required: "* Required"
+          }
+  }
+});
+
+function init()
 {
+
+$( "#loginDialog" ).dialog('close'); 
+$( "#newUserDialog" ).dialog('close'); 
+
+
 $( "#loginDialog" ).dialog({               
          
             modal: true,
-            resizable: true,
-            autoResize: true,
-	    autoOpen: false,
-	    title: "Create a new Account",          
-            overlay: { backgroundColor: "#00000", opacity: 1 },
+            resizable: true,         
+            autoOpen: false,
+            title: "Let's Trade",          
+            overlay: { backgroundColor: "black", opacity: 1 },
             autoOpen: true,
+            height: 'auto',
+            width: 'auto',
             buttons: {
-                    'Close': function() {
+                    'Cancel': function() {
                     $(this).dialog('close');
-                  }}
+                  },
+                                  
+                    'Login': function() {
+                    $("#loginForm").submit();
+                  }
+            }
 
-                });
+            });
 
 $( "#newUserDialog" ).dialog({               
          
             modal: true,
             resizable: true,
             autoResize: true,
-	    autoOpen: false, 
-	    title: "Create a new Account",         
+            autoOpen: false, 
+            title: "Create a new Account",
             overlay: { backgroundColor: "#0FF", opacity: 0.5 },
             autoOpen: true,
+            height: 'auto',
+            width: 'auto',
             buttons: {
-                    'Close': function() {
+                    'Cancel': function() {
                     $(this).dialog('close');
-                  }}
+                  },
+                                  
+                    'Create Account': function() {
+                    $("#addUserForm").submit();
+                  }
+       }});
+       
 
-                });
+
+$( "#loginDialog" ).dialog('close'); 
+$( "#newUserDialog" ).dialog('close'); 
 
 var login = document.getElementById('login');
 login.onclick = showLogin;
@@ -92,11 +108,9 @@ login.onclick = showLogin;
 var newUser = document.getElementById('newUser');
 newUser.onclick = showAddUser;
 
-$( "#loginDialog" ).dialog('close'); 
-$( "#newUserDialog" ).dialog('close'); 
+
 
 }
-		
 
 
 function showLogin() {
@@ -109,7 +123,8 @@ $( "#newUserDialog" ).dialog('open');
 
   </script>
 
-<body onload="init()">
+  <body onload="init()" >
+      
     <div style="margin-left:40%;">
         <ul id="menu">
             <li class="logo">
@@ -123,25 +138,60 @@ $( "#newUserDialog" ).dialog('open');
             </li>
         </ul>
         <img style="float:left;" alt="" src="../../images/menu_right.png"/>
+        
+        
   <img class="logo1" src="../../images/logo.png" />
 
 <div id="loginDialog">
-  <form action="https://dev-gardenshift.rhcloud.com/Gardenshift/authenticate/" method="POST">
-  Username: <input type="text" name="username" /><br />
-  Password: <input type="password" name="password" /><br />
-  <input type="submit" value="login" />
+	
+	<form id="loginForm" action="https://dev-gardenshift.rhcloud.com/Gardenshift/authenticate/" method="POST">
+ 	
+            <table>
+                        <tr>
+                            <td><label for="name" align="left">Username:</label> </td>                             
+                            <td><input type="text" name="username" placeholder="Enter your username" /></td>
+                        </tr> 
+                        
+                        <tr>
+                            <td><label for="password" align="left">Password:</label></td>
+                            <td><input type="password" name="password" placeholder="Enter your password" /></td>
+                        </tr>
+                        
+            </table> 
+		
+	
+	</form>
+</div>
+
+
+<div id="newUserDialog">
+    
+  <form id="addUserForm" action="https://dev-gardenshift.rhcloud.com/Gardenshift/adduser/" method="POST">
+      <table>
+                <tr>
+                    <td><label for="name" align="left">Username:</label> </td>                             
+                    <td><input type="text" name="username" placeholder="Enter your username" style="width: 160px" /></td>
+                </tr> 
+
+                <tr>
+                    <td><label for="password" align="left">Password:</label></td>
+                    <td><input type="password" name="password" placeholder="Enter your password" style="width: 160px"/></td>
+                </tr>
+                
+                <tr>
+                    <td><label for="name" align="left">Confirm Password:</label> </td>                             
+                    <td><input type="password" name="confirmPassword" placeholder="Re-enter you password" style="width: 160px"/></td>
+                </tr> 
+
+                <tr>
+                    <td><label for="password" align="left">Email</label></td>
+                    <td><input type="text" name="email" placeholder="Enter your email" style="width: 160px" /></td>
+                </tr>
+    </table>
   </form>
 </div>
 
-<div id="newUserDialog">
-  <form action="https://dev-gardenshift.rhcloud.com/Gardenshift/adduser/" method="POST">
-  Username: <input type="text" name="username" /><br />
-  Password: <input type="password" name="password" /><br />
-  Confirm Password: <input type="password" name="password" /><br />
-  Email: <input type="text" name="email" /><br />
-  <input type="submit" value="login" />
-  </form>
-</div>
+
 
 </body>
 </html>
