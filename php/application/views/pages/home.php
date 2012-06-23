@@ -11,6 +11,8 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
   <link href="../../css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" type="text/css" href="../../css/jquery.validate.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/style1.css" />
    
     <script src="../../external/jquery.bgiframe-2.1.2.js"></script>
     <script src="../../ui/jquery.ui.core.js"></script>
@@ -26,91 +28,33 @@
     
     <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
  
+    <script src="../../js/jquery.validate.js" type="text/javascript"></script>
+    <script src="../../js/formValidation.js" type="text/javascript"></script>
+    <script src="../../js/initialization.js" type="text/javascript"></script>
     
     
    
-</head>
+<</head>
 
 <script>
     
-   
-$("#myform").validate({
-  rules: {
-    username: {
-               required: true
-         }
-  },
-  messages: {
-          txtFirstName: {
-              required: "* Required"
-          }
-  }
-});
-
-function init()
-{
-
-$( "#loginDialog" ).dialog('close'); 
-$( "#newUserDialog" ).dialog('close'); 
-
-
-$( "#loginDialog" ).dialog({               
-         
-            modal: true,
-            resizable: true,         
-            autoOpen: false,
-            title: "Let's Trade",          
-            overlay: { backgroundColor: "black", opacity: 1 },
-            autoOpen: true,
-            height: 'auto',
-            width: 'auto',
-            buttons: {
-                    'Cancel': function() {
-                    $(this).dialog('close');
-                  },
-                                  
-                    'Login': function() {
-                    $("#loginForm").submit();
-                  }
-            }
-
-            });
-
-$( "#newUserDialog" ).dialog({               
-         
-            modal: true,
-            resizable: true,
-            autoResize: true,
-            autoOpen: false, 
-            title: "Create a new Account",
-            overlay: { backgroundColor: "#0FF", opacity: 0.5 },
-            autoOpen: true,
-            height: 'auto',
-            width: 'auto',
-            buttons: {
-                    'Cancel': function() {
-                    $(this).dialog('close');
-                  },
-                                  
-                    'Create Account': function() {
-                    $("#addUserForm").submit();
-                  }
-       }});
-       
-
-
-$( "#loginDialog" ).dialog('close'); 
-$( "#newUserDialog" ).dialog('close'); 
-
-var login = document.getElementById('login');
-login.onclick = showLogin;
-
-var newUser = document.getElementById('newUser');
-newUser.onclick = showAddUser;
-
-
-
+function check_username(){
+ 
+	var username = $("#username").val();
+	if(username.length > 2){
+		$('#Loading').show();
+		$.post("https://dev-gardenshift.rhcloud.com/Gardenshift/authenticate/", {
+			username: $('#username').val(),
+		}, function(response){
+			
+			alert(response);
+		});
+		return false;
+	}
 }
+    
+
+
 
 
 function showLogin() {
@@ -121,11 +65,11 @@ function showAddUser() {
 $( "#newUserDialog" ).dialog('open');                  
 }
 
-  </script>
+</script>
 
   <body onload="init()" >
       
-    <div style="margin-left:40%;">
+    <div style="margin-left:40%; position: absolute; top: 0">
         <ul id="menu">
             <li class="logo">
                 <img style="float:left;" alt="" src="../../images/menu_left.png"/> 
@@ -139,7 +83,7 @@ $( "#newUserDialog" ).dialog('open');
         </ul>
         <img style="float:left;" alt="" src="../../images/menu_right.png"/>
         
-        
+    </div>  
   <img class="logo1" src="../../images/logo.png" />
 
 <div id="loginDialog">
@@ -170,28 +114,26 @@ $( "#newUserDialog" ).dialog('open');
       <table>
                 <tr>
                     <td><label for="name" align="left">Username:</label> </td>                             
-                    <td><input type="text" name="username" placeholder="Enter your username" style="width: 160px" /></td>
+                    <td><input type="text" name="username" placeholder="Enter your username" style="width: 160px" id="username" onblur="return check_username();" /></td>
                 </tr> 
 
                 <tr>
                     <td><label for="password" align="left">Password:</label></td>
-                    <td><input type="password" name="password" placeholder="Enter your password" style="width: 160px"/></td>
+                    <td><input type="password" name="password" placeholder="Enter your password" style="width: 160px" id="password"/></td>
                 </tr>
                 
                 <tr>
                     <td><label for="name" align="left">Confirm Password:</label> </td>                             
-                    <td><input type="password" name="confirmPassword" placeholder="Re-enter you password" style="width: 160px"/></td>
+                    <td><input type="password" name="confirmPassword" placeholder="Re-enter you password" style="width: 160px" id="confirmPassword"/></td>
                 </tr> 
 
                 <tr>
                     <td><label for="password" align="left">Email</label></td>
-                    <td><input type="text" name="email" placeholder="Enter your email" style="width: 160px" /></td>
+                    <td><input type="text" name="email" placeholder="Enter your email" style="width: 160px" id="email"/></td>
                 </tr>
     </table>
   </form>
 </div>
-
-
 
 </body>
 </html>
