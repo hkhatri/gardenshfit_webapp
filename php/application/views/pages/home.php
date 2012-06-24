@@ -55,7 +55,7 @@ function checkUsername(name)
    
         $.ajax({
             type:"POST",
-            url:"https://dev-gardenshift.rhcloud.com/index.php/pages/test",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/test",
             data:{ "username" : name},
             success: function(response)
             {
@@ -118,12 +118,12 @@ function checkUsername(name)
 
 <div id="newUserDialog">
     
-  <form id="addUserForm" action="hhttps://dev-gardenshift.rhcloud.com/Gardenshift/authenticate" method="POST">
+  <form id="addUserForm" action="http://localhost:8888/index.php/pages/authenticate" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Username:</label> </td>                             
                     <td><input type="text" name="username" placeholder="Enter your username" style="width: 160px" id="username_add" onblur="checkUsername(this.value)" /></td>
-                    <td id="errormsg" style=" display: inline-block;font-size: 12px;color: #D00; padding-left: 10px; font-style: italic; align: left" >a</td>
+                    <td id="errormsg" style=" display: inline-block;font-size: 12px;color: #D00; padding-left: 10px; font-style: italic; align: left" ></td>
                 </tr>
 
                 <tr>
