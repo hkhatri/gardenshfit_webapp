@@ -118,7 +118,7 @@ function checkUsername(name)
 
 <div id="newUserDialog">
     
-  <form id="addUserForm" action="http://localhost:8888/index.php/pages/authenticate" method="POST">
+  <form id="addUserForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/authenticate" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Username:</label> </td>                             
