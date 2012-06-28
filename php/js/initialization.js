@@ -1,6 +1,12 @@
 function init()
 {
     
+    
+$.ajaxSetup ({  
+    cache : false,
+    async:false
+});
+    
 
 $( "#loginDialog" ).dialog('close'); 
 $( "#newUserDialog" ).dialog('close'); 
@@ -21,8 +27,10 @@ $( "#loginDialog" ).dialog({
                     $(this).dialog('close');
                   },
                                   
-                    'Login': function() {
-                    $("#loginForm").submit();
+                    'Login': function() {                                      
+                    
+                    $("#loginForm").submit()
+                    
                   }
             }
 
@@ -45,6 +53,7 @@ $( "#newUserDialog" ).dialog({
                   },
                                   
                     'Create Account': function() {
+                   if($("#errormsg").html() == "Username available" )
                     $("#addUserForm").submit();
                   }
        }});

@@ -36,8 +36,7 @@
    
 </head>
 
-<script>
-    
+<script>    
  
 function showLogin() {
 $( "#loginDialog" ).dialog('open');                  
@@ -55,20 +54,31 @@ function checkUsername(name)
    
         $.ajax({
             type:"POST",
-            url:"http://test-gardenshift.rhcloud.com/index.php/pages/test",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/adduser",
             data:{ "username" : name},
             success: function(response)
             {
-                if(response == 0)                
-                    $("#errormsg").html("Username already taken");
-                else $("#errormsg").html("Username available");
+                if(name.length > 5)
+                  {
+                        if(response == 0)
+                            {                              
+                            $("#errormsg").css("color","red");
+                            $("#errormsg").html("Username already taken");                                                    
+                            }
+                        else
+                            {
+                            $("#errormsg").html("Username available");
+                            $("#errormsg").css("color","green");
+                            }
                   
-                
+                  }
+                  else $("#errormsg").html("");
             }
         });
     
   
 }
+
 
 </script>
 
@@ -96,17 +106,17 @@ function checkUsername(name)
 
 <div id="loginDialog">
 	
-	<form id="loginForm" action="https://dev-gardenshift.rhcloud.com/Gardenshift/authenticate/" method="POST">
+	<form id="loginForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/authenticate" method="POST">
  	
             <table>
                         <tr>
                             <td><label for="name" align="left">Username:</label> </td>                             
-                            <td><input type="text" name="username" placeholder="Enter your username" /></td>
+                            <td><input type="text" name="username" id="username" placeholder="Enter your username" /></td>
                         </tr> 
                         
                         <tr>
                             <td><label for="password" align="left">Password:</label></td>
-                            <td><input type="password" name="password" placeholder="Enter your password" /></td>
+                            <td><input type="password" name="password" id ="password" placeholder="Enter your password" /></td>
                         </tr>
                         
             </table> 
@@ -118,7 +128,7 @@ function checkUsername(name)
 
 <div id="newUserDialog">
     
-  <form id="addUserForm" action="http://localhost:8888/index.php/pages/authenticate" method="POST">
+  <form id="addUserForm" action="https://dev-gardenshift.rhcloud.com/Gardenshift/adduser/" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Username:</label> </td>                             
@@ -128,12 +138,12 @@ function checkUsername(name)
 
                 <tr>
                     <td><label for="password" align="left">Password:</label></td>
-                    <td><input type="password" name="password" placeholder="Enter your password" style="width: 160px" id="password"/></td>
+                    <td><input type="password" name="password" placeholder="Enter your password" style="width: 160px" id="password_add"/></td>
                 </tr>
                 
                 <tr>
                     <td><label for="name" align="left">Confirm Password:</label> </td>                             
-                    <td><input type="password" name="confirmPassword" placeholder="Re-enter you password" style="width: 160px" id="confirmPassword"/></td>
+                    <td><input type="password" name="confirmPassword" placeholder="Re-enter you password" style="width: 160px" id="confirmPassword_add"/></td>
                 </tr> 
 
                 <tr>
@@ -143,28 +153,6 @@ function checkUsername(name)
     </table>
   </form>
 </div>
-  
- <?php  
-
-function displayUsers($name)
-{
-    
-$json1 = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/user_details/'.$name);
-$users = json_decode($json1);
-
-$persons = array();
-
-    for ($i=0; $i<count($users); $i++)      
-        array_push($persons, $users[$i]->username);     
-    
-if(count($users) == 0)
-    echo "Username avaialable";
-    
-}
-
-
-
-?>
   
   
 </body>
