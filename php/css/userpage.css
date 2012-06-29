@@ -1,0 +1,185 @@
+
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+
+
+h1, h2, h3 {
+	margin: 0;
+	font-weight: normal;
+	color: #AD1112;
+}
+
+h1 {
+	font-size: 197%;
+}
+
+h2 {
+	font-size: 167%;
+}
+
+h3 {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+p, ol, ul {
+	line-height: 180%;
+}
+
+p {
+}
+
+ol {
+}
+
+ul {
+}
+
+blockquote {
+	margin: 0;
+	padding-left: 20px;
+	font-style: italic;
+}
+
+blockquote * {
+	line-height: normal;
+}
+
+a {
+	color: #AD1112;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin: 0 15px 0 0;
+}
+
+img.right {
+	float: right;
+	margin: 0 0 0 15px;
+}
+
+hr {
+	display: none;
+}
+
+/* Header */
+
+#header {
+	width: 700px;
+	height: 220px;
+	margin: 0 auto;
+	background: url(images/img02.jpg) no-repeat right top;
+}
+
+
+/* Page */
+
+#page {
+	width: 700px;
+	margin: 0 auto;
+}
+
+/* Content */
+
+#content {
+	float: right;
+	width: 430px;
+	padding: 20px;
+	background: #FFFFFF url(images/img07.gif) no-repeat left bottom;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: left;
+	width: 220px;
+	padding-top: 10px;
+}
+
+#sidebar a {
+	color: #3699E4;
+}
+
+#sidebar ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+	font-size: 92%;
+}
+
+#sidebar ul li {
+	padding: 5px 14px;
+	background: url(images/img13.gif) no-repeat 0px 12px;
+	border-top: 1px solid #0B0B0B;
+}
+
+#sidebar ul li.first {
+	border: none;
+}
+
+#sidebar ul li h2 {
+	margin: 0;
+	font-size: 100%;
+}
+
+#sidebar ul li h3 {
+	margin: 0;
+	font-size: 92%;
+}
+
+#sidebar ul li p {
+	margin: 0;
+}
+
+.boxed {
+	margin-bottom: 10px;
+	background: #000000 url('../images/content_bg.jpg') no-repeat left bottom;
+}
+
+.boxed .title {
+	height: 30px;
+	margin: 0;
+	padding: 10px 0 0 10px;
+	background-image: url('../images/gg.jpg');
+	font-size: 16px;
+	font-weight: bold;
+	color: #E0E0E0;
+}
+
+.boxed .content {
+	padding: 15px;
+	background: repeat-x;
+}
+
+
+/* Footer */
+
+#footer {
+	height: 100px;
+}
+
+#footer p {
+	margin: 0;
+	line-height: normal;
+	font-size: 85%;
+	color: #000000;
+}
+
+#footer a {
+	color: #000000;
+}
+
+

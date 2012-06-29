@@ -129,4 +129,18 @@ public function get_crops(){
        
 }
 
+
+public function get_mapdata(){
+    
+        
+    $zipcode = $_POST['crop_zipcode'];
+    $distance = $_POST['crop_distance'];
+    $crop = $_POST['crop_name'];
+    
+    $crops = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/search/'.$zipcode.'/'.$distance.'/'.$crop);
+     
+    echo $crops;
+       
+}
+
 }

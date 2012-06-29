@@ -49,6 +49,27 @@ jQuery(function(){
                     expression: "if (VAL.match(/^[0-9]*$/) && VAL.length == 5) return true; else return false;",
                     message: "Please enter a valid Zipcode"
                 });
+                
+                
+                // For Updating the Map Data
+                
+                jQuery("#crop_zipcode").validate({
+                    expression: "if (VAL.match(/^[0-9]*$/) && VAL.length == 5) return true; else return false;",
+                    message: "Please enter a valid Zipcode"
+                });
+                
+                
+                jQuery("#crop_name").validate({
+                    expression: "if (VAL.match(/^[A-Za-z ]*$/) && VAL) return true; else return false;",
+                    message: "Please enter a valid Name"
+                
+                });
+                
+                jQuery("#crop_distance").validate({
+                    expression: "if (VAL < 11 && VAL) return true; else return false;",
+                    message: "Please enter a smaller radius"
+                
+                });
             })
                  
           
