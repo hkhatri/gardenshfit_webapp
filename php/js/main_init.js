@@ -16,6 +16,9 @@ function main_init()
     
     var nearCrops = document.getElementById('nearByCrops');
     nearCrops.onclick = nearByCrops_f;
+    
+    var mycrops = document.getElementById('mycrops');
+    mycrops.onclick = myCrops_f;
 
     function logout_f()
     {

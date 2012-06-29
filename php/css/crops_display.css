@@ -1,0 +1,35 @@
+/* 
+    Document   : crops_display
+    Created on : Jun 29, 2012, 10:56:41 AM
+    Author     : vmalladi
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#AddCropDiv{
+    background-color: #eeeeff;
+    border-color: 2c4001;
+
+}
+li {
+    list-style-type:none;
+}
+#tablediv{
+    padding: 4px;
+    margin: 0px;
+    margin-right: 400px;
+    margin-left: 400px;
+    padding-top: 40px;
+}
+#addcropbuttondiv{
+    margin: 0px;
+    margin-left: 400px;
+    margin-top:20px;
+}
+#main{
+    height:100%;
+}

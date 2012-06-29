@@ -1,0 +1,21 @@
+/* 
+    Document   : all_crops
+    Created on : Jun 29, 2012, 10:59:18 AM
+    Author     : vmalladi
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+#tablediv{
+    padding: 4px;
+    margin: 0px;
+    margin-right: 400px;
+    margin-left: 400px;
+    padding-top: 40px;
+}
+
+
+

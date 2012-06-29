@@ -157,6 +157,10 @@
         $( "#mapData" ).dialog('open');
     }
     
+    function myCrops_f()
+    {
+        window.location = "http://localhost:8888/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
+    }
     
    
     function update_maps()
@@ -387,11 +391,13 @@
 	</div>
     
 	<div id="sidebar" style="position: absolute; top: 9%; left: 25%; width: 100; height: 500px;">
+            
 		<div id="profilePicture" class="boxed">
 			<h2 class="title">Welcome, <?php echo $this->session->userdata('username'); ?></h2>
                         <image src="../../css/images/img04.jpg" style="widht: 300px; height:100px" >
 			
 		</div>
+            
 		<div id="news" class="boxed">
 			<h2 id="myCrops" class="title">Past Crops</h2>
 			<div class="content">
