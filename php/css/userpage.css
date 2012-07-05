@@ -30,14 +30,6 @@ p, ol, ul {
 	line-height: 180%;
 }
 
-p {
-}
-
-ol {
-}
-
-ul {
-}
 
 blockquote {
 	margin: 0;
@@ -180,6 +172,49 @@ hr {
 
 #footer a {
 	color: #000000;
+}
+
+
+#statusDiv {
+	float: left;
+	width: 750px;
+	padding-top: 10px;
+        
+}
+
+#statusDiv a {
+	color: #3699E4;
+}
+
+#statusDiv ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+	font-size: 92%;
+}
+
+#statusDiv ul li {
+	padding: 5px 14px;
+	background: url(images/img13.gif) no-repeat 0px 12px;
+	border-top: 1px solid #0B0B0B;
+}
+
+#statusDiv ul li.first {
+	border: none;
+}
+
+#statusDiv ul li h2 {
+	margin: 0;
+	font-size: 100%;
+}
+
+#statusDiv ul li h3 {
+	margin: 0;
+	font-size: 92%;
+}
+
+#statusDiv ul li p {
+	margin: 0;
 }
 
 

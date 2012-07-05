@@ -143,4 +143,32 @@ public function get_mapdata(){
        
 }
 
+public function get_feedback(){
+    
+        
+    $this->load->library('session');
+    
+    $username =  $this->session->userdata('username');
+    
+    $feedback = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/user_available/'.$username);
+     
+    echo $feedback;
+       
+}
+
+public function get_recent_crops(){
+    
+        
+    $this->load->library('session');
+    
+    $username =  $this->session->userdata('username');
+    
+    $crops = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/user_available/'.$username);
+     
+    echo $crops;
+       
+}
+
+
+
 }

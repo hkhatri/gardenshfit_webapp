@@ -59,7 +59,7 @@
                     var obj = jQuery.parseJSON(response);
                     
                    
-                    var msg = "<table cellpadding='0' style='width: 100px;' cellspacing='0' border='0' id='example' width='50%'>";
+                    var msg = "<table cellpadding='0' style='width: 100px;' cellspacing='0' border='0' id='userCropsTable' width='50%'>";
                             msg += "<thead><tr>";
                             msg += "<th>User</th>";
                             msg += "<th>Crop</th>";
@@ -98,7 +98,7 @@
                    
                      document.getElementById('crops').innerHTML = msg;
                      
-                     $("#example").dataTable( {
+                     $("#userCropsTable").dataTable( {
                                     "sScrollY": "200px",
                                     "bPaginate": false,
                                     "bScrollCollapse": true,
@@ -115,11 +115,293 @@
   
     
     }
+    
+    
+    function showAllFeedback()
+    {
+        // Populate feedback table for all the available crops that a user can trade with
+           $.ajax({
+                type:"POST",
+                url:"http://localhost:8888/index.php/pages/get_feedback",
+                success: function(response)
+                {
+                     
+
+                    var obj = jQuery.parseJSON(response);
+                    
+                   
+                    var msg = "<table cellpadding='0' style='width: 100px;' cellspacing='0' border='0' id='feedbackTable' width='50%'>";
+                            msg += "<thead><tr>";
+                            msg += "<th>User</th>";                    
+                            msg += "<th>Comments</th></thead><tbody>";
+                            
+                            
+                    for(i=0; i< obj.feedback.length; i++)
+                        {
+                            
+                            if(!isNaN(obj.feedback.length))
+                                {
+                                            msg += "<tr>";
+                                            msg += "<td>" + obj.feedback[i].from + "</td>";
+                                            msg += "<td>" + obj.feedback[i].text + "</td>";
+                                            msg += "</tr>";                                          
+                                     
+                                }
+                                
+                                
+                        }
+                        
+                        
+                     msg += "</tbody></table>";
+                   
+                     document.getElementById('feedbackDiv').innerHTML = msg;
+                     
+                     $("#feedbackTable").dataTable( {
+                                    "sScrollY": "200px",
+                                    "bPaginate": false,
+                                    "bScrollCollapse": true,
+                                    "bJQueryUI": true,
+                                    "sPaginationType": "full_numbers",
+                                    "bAutoWidth" : true
+                            });
+                     
+                     }
+                
+ 
+            });
+  
+  
+    
+    }
+    
+    
+    function showRecentFeedback()
+    {
+        // Populate feedback div for all the available crops that a user can trade with
+           $.ajax({
+                type:"POST",
+                url:"http://localhost:8888/index.php/pages/get_feedback",
+                success: function(response)
+                {
+                     
+
+                    var obj = jQuery.parseJSON(response);
+  
+                    var msg = "<ul>";
+ 
+                            
+                    for(i=0; i< obj.feedback.length; i++)
+                        {
+                            
+                            if(!isNaN(obj.feedback.length))
+                                {
+                                            msg += "<li>";
+                                            msg += "<h3>" + obj.feedback[i].from + "</h3>";
+                                            msg += "<p><a href='#' id='logout'>" + obj.feedback[i].text + "</a></p>";
+                                            msg += "</li>";                                          
+                                                
+                                }
+                                
+                            if(i == 2 )
+                                break;
+                                    
+                                
+                                
+                        }
+                        
+                        
+                     msg += "</ul>";
+                   
+                     document.getElementById('feedbackDiv').innerHTML = msg;
+                     
+                    
+                     
+                     }
+                
+ 
+            });
+  
+  
+    
+    }
+   
+   // Show past and Recent Crops
+   
+   function showAllCrops()
+    {
+        // Populate feedback table for all the available crops that a user can trade with
+           $.ajax({
+                type:"POST",
+                url:"http://localhost:8888/index.php/pages/get_recent_crops",
+                success: function(response)
+                {
+                     
+
+                    var obj = jQuery.parseJSON(response);
+                    
+                   
+                    var msg = "<table cellpadding='0' style='width: 100px;' cellspacing='0' border='0' id='userCropsTable' width='50%'>";
+                            msg += "<thead><tr>";
+                           
+                            msg += "<th>Crop</th>";
+                            msg += "<th>Quantity</th>";
+                            msg += "<th>Harvestation Date</th>";
+                            
+                            msg += "<th>Comments</th></thead><tbody>";
+                            
+                            
+                     
+                            if(!isNaN(obj.user_crops.length))
+                                {
+                                    for(j=0; j< obj.user_crops.length; j++)
+                                        {
+                                            msg += "<tr>";
+                                          
+                                            msg += "<td>" + obj.user_crops[j].crop_name + "</td>";
+                                            msg += "<td>" + obj.user_crops[j].crop_expected_quantity + "</td>";
+                                            msg += "<td>" + obj.user_crops[j].crop_harvest_date + "</td>";
+                                           
+                                            msg += "<td>" + obj.user_crops[j].comments + "</td>";
+                                            msg += "</tr>";                                          
+                                        }
+                                    
+                                }
+                       
+                        
+                     msg += "</tbody></table>";
+                   
+                     document.getElementById('CropsDiv').innerHTML = msg;
+                     
+                     $("#userCropsTable").dataTable( {
+                                    "sScrollY": "200px",
+                                    "bPaginate": false,
+                                    "bScrollCollapse": true,
+                                    "bJQueryUI": true,
+                                    "sPaginationType": "full_numbers",
+                                    "bAutoWidth" : true
+                            });
+                     
+                     }
+                
+ 
+            });
+  
+  
+    
+    }
+    
+    
+    function showRecentCrops()
+    {
+        // Populate feedback div for all the available crops that a user can trade with
+           $.ajax({
+                type:"POST",
+                url:"http://localhost:8888/index.php/pages/get_recent_crops",
+                success: function(response)
+                {
+                     
+
+                    var obj = jQuery.parseJSON(response);
+  
+                    var msg = "<ul>";
+ 
+                            
+                    for(i=0; i< obj.user_crops.length; i++)
+                        {
+                            
+                            if(!isNaN(obj.feedback.length))
+                                {
+                                            msg += "<li>";
+                                            msg += "<h3>" + obj.user_crops[i].crop_name + "</h3>";
+                                            msg += "<p><a href='#' id='logout'>" + obj.user_crops[i].crop_harvest_date + "</a></p>";
+                                            msg += "</li>";                                          
+                                                
+                                }
+                                
+                            if(i == 2 )
+                                break;
+                                    
+                                
+                                
+                        }
+                        
+                        
+                     msg += "</ul>";
+                   
+                     document.getElementById('CropsDiv').innerHTML = msg;
+                     
+                    
+                     
+                     }
+                
+ 
+            });
+  
+  
+    
+    }
+    
+    
+    function showRecentStatus()
+    {
+        // Populate feedback div for all the available crops that a user can trade with
+           $.ajax({
+                type:"POST",
+                url:"http://localhost:8888/index.php/pages/get_feedback",
+                success: function(response)
+                {
+                     
+
+                    var obj = jQuery.parseJSON(response);
+  
+                    var msg = "<ul>";
+                    
+                   
+ 
+                            
+                    for(i=0; i< obj.status.length; i++)
+                        {
+                            
+                            if(!isNaN(obj.status.length))
+                                {
+                                            msg += "<li>";
+                                            msg += "<h3>" + obj.status[i].text + "</h3>";
+                                            msg += "<p><a href='#' id='logout'>" + obj.status[i].date + "</a></p>";
+                                            msg += "</li>";                                          
+                                                
+                                }
+                                
+                            if(i == 10 )
+                                break;       
+                                
+                        }
+                        
+                        
+                     msg += "</ul>";
+                   
+                     document.getElementById('statusDiv').innerHTML = msg;
+                     
+                    
+                     
+                     }
+                
+ 
+            });
+  
+  
+    
+    }
+   
    
      $(document).ready( function() {
          
          
         //   showAvailableCrops();
+      //  showFeedback();
+      showRecentFeedback();
+     // showAllCrops();
+     showRecentCrops();
+     showRecentStatus();
            
      });
                      
@@ -168,10 +450,7 @@
         
             
         var data = $("#mapdataForm").serialize();
-       
             
-        var l1 = 37.7699298;
-        var l2 = -122.4469157;
 
         var map;
         var geocoder = new google.maps.Geocoder();
@@ -271,6 +550,10 @@
     }
     
     
+    
+    
+    
+    
   
 
 </script>
@@ -280,7 +563,7 @@
     
     
     
-    <div id="map_canvas" style="position: absolute; top: 45%; left: 35%; width:30%; height:30%"></div>
+    <div id="map_canvas" style="position: absolute; top: 45%; left: 35%; width:30%; height:30%; z-index:3"></div>
      
 
     <div id="crops" style="position: absolute; top: 15%; left: 15%; width: 70%; height: 500px"></div>
@@ -304,6 +587,7 @@
                         
                     </li>
                     
+                    
                     <li><a href="#" id="mycrops">My Crops</a></li>
                     <li><a href="#" id="nearByCrops">Crops Around Me</a></li>
                     <li><a href="#" id="settings">Settings</a></li>
@@ -318,6 +602,11 @@
         </li>
        
         <li><a href='#' id="notifications" style="width: 160px">Notifications</a></li>
+        
+        <li>  <div>
+                <input type="text" id="searchField" />
+                <img src="../../images/magnifier.png" alt="Search" onclick=alert($("#searchField").val()) /></div>
+</li> 
         
     </ul>
     
@@ -376,16 +665,24 @@
   </form>
 </div>
 
+
+
+
 <!--Start of user multi column home page-->
 
 
 <div id="page" >
 	<div id="content" style=" position: absolute; top: 10%; left: 40%; width: 40%; height: 800px; z-index:0; background-image: url('../../images/content_bg.jpg'); background-size: 100%; background-repeat: repeat">
 		
-                <div>
+                <div id="status_bts">
 		
                        <input type="text" name="status" id="status" style= "width: 550px; height: 40px;" placeholder="What's in your farm?"/> 
                        <button name="status_bt" id="status_bt" value="POST" style= "height: 40px;" > Share </button> 
+		</div>
+            
+                <div id="statusDiv">
+		
+                      
 		</div>
 		
 	</div>
@@ -400,18 +697,8 @@
             
 		<div id="news" class="boxed">
 			<h2 id="myCrops" class="title">Past Crops</h2>
-			<div class="content">
-				<ul>
-					<li class="first">
-						<h3>04 July 2007</h3>
-						<p><a href="#">Corn</a></p>
-					</li>
-					<li>
-						<h3>29 June 2007</h3>
-						<p><a href="#">Tomatoes</a></p>
-					</li>
-					
-				</ul>
+			<div class="content" id="CropsDiv">
+				
 			</div>
 		</div>
             
@@ -424,6 +711,14 @@
 					<li><a href="#">Garlic</a></li>
 				</ul>
 			</div>
+		</div>
+            
+            
+                <div id="feedback" class="boxed">
+			<h2 class="title">Feedback</h2>
+			<div class="content" id="feedbackDiv">
+                                                
+                        </div>
 		</div>
             
 		<div id="footer">
