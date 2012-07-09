@@ -117,6 +117,20 @@
     }
     
     
+    function showAllFeedbacks_f()
+    {
+               
+        showAllFeedback();
+    }
+     
+    
+    function showAllfGuestFeedback_f()
+    {
+        
+        $("#feedbackPopUp").dialog('open');
+    }
+    
+    
     function showAllFeedback()
     {
         // Populate feedback table for all the available crops that a user can trade with
@@ -130,7 +144,7 @@
                     var obj = jQuery.parseJSON(response);
                     
                    
-                    var msg = "<table cellpadding='0' style='width: 100px;' cellspacing='0' border='0' id='feedbackTable' width='50%'>";
+                    var msg = "<table cellpadding='0' cellspacing='0' border='0' id='feedbackTable'>";
                             msg += "<thead><tr>";
                             msg += "<th>User</th>";                    
                             msg += "<th>Comments</th></thead><tbody>";
@@ -154,10 +168,10 @@
                         
                      msg += "</tbody></table>";
                    
-                     document.getElementById('feedbackDiv').innerHTML = msg;
+                     document.getElementById('feedbackPopUp').innerHTML = msg;
                      
                      $("#feedbackTable").dataTable( {
-                                    "sScrollY": "200px",
+                                  
                                     "bPaginate": false,
                                     "bScrollCollapse": true,
                                     "bJQueryUI": true,
@@ -169,8 +183,10 @@
                 
  
             });
-  
-  
+            
+               $( "#feedbackPopUp" ).dialog('open');
+             
+               
     
     }
     
@@ -190,7 +206,7 @@
                     var msg = "<ul>";
  
                             
-                    for(i=0; i< obj.feedback.length; i++)
+                    for(i=obj.feedback.length -1; i>=0; i--)
                         {
                             
                             if(!isNaN(obj.feedback.length))
@@ -202,7 +218,7 @@
                                                 
                                 }
                                 
-                            if(i == 2 )
+                            if(obj.feedback.length - i == 3 )
                                 break;
                                     
                                 
@@ -213,6 +229,8 @@
                      msg += "</ul>";
                    
                      document.getElementById('feedbackDiv').innerHTML = msg;
+                     
+                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn'>(" + obj.feedback.length +")</a>";
                      
                     
                      
@@ -306,7 +324,7 @@
                     var msg = "<ul>";
  
                             
-                    for(i=0; i< obj.user_crops.length; i++)
+                    for(i= obj.user_crops.length - 1; i>=0 ; i--)
                         {
                             
                             if(!isNaN(obj.feedback.length))
@@ -318,7 +336,7 @@
                                                 
                                 }
                                 
-                            if(i == 2 )
+                            if(obj.user_crops.length - i == 3 )
                                 break;
                                     
                                 
@@ -344,7 +362,8 @@
     
     function showRecentStatus()
     {
-        // Populate feedback div for all the available crops that a user can trade with
+        // Populate stauts div for all the available status
+           
            $.ajax({
                 type:"POST",
                 url:"http://localhost:8888/index.php/pages/get_feedback",
@@ -359,21 +378,19 @@
                    
  
                             
-                    for(i=0; i< obj.status.length; i++)
+                    for(i= obj.status.length -1 ; i>=0 ; i--)
                         {
                             
                             if(!isNaN(obj.status.length))
                                 {
                                             msg += "<li>";
                                             msg += "<h3>" + obj.status[i].text + "</h3>";
-                                            msg += "<p><a href='#' id='logout'>" + obj.status[i].date + "</a></p>";
+                                            msg += "<p><a href='#' id='logout'>" + obj.status[i].date + "</a>";
+                                            msg += "<img src='../../images/delete.png' width= 15px height=15px align='right' onclick='deleteStatus(this.id)' id='" + obj.status[i].date + "' /> </p>";
                                             msg += "</li>";                                          
                                                 
                                 }
-                                
-                            if(i == 10 )
-                                break;       
-                                
+                          
                         }
                         
                         
@@ -391,6 +408,486 @@
   
     
     }
+    
+    function showRecentFriends()
+    {
+        // Populate stauts div for all the available status
+        
+        var total_friends = 0;
+        document.getElementById('friendsText').innerHTML = "Friends (0)";
+               
+           
+           $.ajax({
+                type:"POST",
+                url:"http://localhost:8888/index.php/pages/get_feedback",
+                success: function(response)
+                {
+                     
+
+                    var obj = jQuery.parseJSON(response);
+  
+                    var msg = "<ul>";
+                   
+                    
+                   
+ 
+                            
+                    for(i= obj.friends.length -1 ; i>=0 ; i--)
+                        {
+                            
+                            if(!isNaN(obj.friends.length))
+                                {
+                                            if(obj.friends[i].status == "accepted")
+                                                {
+                                                        msg += "<li>";
+                                                        msg += "<h3>" + obj.friends[i].friends_username + "</h3>";
+                                                        msg += "</li>";
+                                                        total_friends++;
+                                                }
+                                            
+                                                
+                                }
+                          
+                        }
+                        
+                        
+                     msg += "</ul>";
+                    
+                   
+                     document.getElementById('friendsDiv').innerHTML = msg;
+                     
+                     document.getElementById('friendsText').innerHTML = "Friends (" + total_friends + ")";
+                   
+                     
+                    
+                     
+                     }
+                
+ 
+            });
+  
+  
+    
+    }
+    
+    function deleteStatus(statusDate)
+    {
+          
+            
+        var key = statusDate;
+        $.ajax({
+            type:"POST",
+            url:"http://localhost:8888/index.php/pages/delete_status",
+            data:{ "key" : key},
+            success: function(response)
+            {    
+                 showRecentStatus();
+                 $('#status_txtbox').val("");
+            }
+        });
+    }
+    
+    function updateStatus()
+    {
+        update = $('#status_txtbox').val();
+        
+        $.ajax({
+            type:"POST",
+            url:"http://localhost:8888/index.php/pages/post_status",
+            data:{ "status" : update},
+            success: function(response)
+            {
+                 showRecentStatus();
+                 $('#status_txtbox').val("");
+            }
+        });
+    }
+    
+    
+    function addFriends(name)
+    {
+          
+            
+        var key = name;
+        $.ajax({
+            type:"POST",
+            url:"http://localhost:8888/index.php/pages/add_friends",
+            data:{ "key" : key},
+            success: function(response)
+            {    
+               
+                 $('#status_txtbox').val("");
+                 $('#' + name).hide();
+            }
+        });
+    }
+    
+    function acceptFriends(name)
+    {
+          
+       
+        var key = name;
+        $.ajax({
+            type:"POST",
+            url:"http://localhost:8888/index.php/pages/accept_friends",
+            data:{ "key" : key},
+            success: function(response)
+            {    
+                $('#status_txtbox').val("");
+                 $('#' + name).hide();
+                showRecentFriends();
+                showPendingFriends();
+                
+            }
+        });
+    }
+    
+    
+    function showPendingFriends()
+    {
+        // Populate pending frieds div for all the available friend request
+           
+           $("#pendingReq").hide();
+            
+            
+           $.ajax({
+                type:"POST",
+                url:"http://localhost:8888/index.php/pages/get_feedback",
+                success: function(response)
+                {
+                     
+
+                    var obj = jQuery.parseJSON(response);
+  
+                    var msg = "<ul>";
+                   
+                    
+                   
+ 
+                            
+                    for(i= obj.friends.length -1 ; i>=0 ; i--)
+                        {
+                            
+                            if(!isNaN(obj.friends.length))
+                                {
+                                            if(obj.friends[i].status == "pending")
+                                                {
+                                                        msg += "<li>";
+                                                        msg += "<h3>" + obj.friends[i].friends_username;
+                                                        msg += "<button name='addfriends_bt' id='" + obj.friends[i].friends_username +"' style= 'height: 40px;' onclick=acceptFriends(this.id) > Add </button></h3>"; 
+                                                        msg += "</li>";    
+                                                        
+                                                         $("#pendingReq").show();
+                                                }
+                                            
+                                                
+                                }
+                          
+                        }
+                        
+                        
+                     msg += "</ul>";
+                    
+                   
+                     document.getElementById('pendingFriends').innerHTML = msg;
+                     
+                    
+                     
+                     }
+                
+ 
+            });
+  
+  
+    
+    }
+    
+    
+    
+    
+    function viewProfile()
+    {
+        
+      var total_friends = 0;  
+    
+      var name = $("#searchField").val();
+      
+      var addfrndbutton = true; // Stores boolean value to determine if the friend is already in the list or not
+    
+                     
+                    
+    
+     if(name != "<?php echo $this->session->userdata('username'); ?>")
+    
+            {
+                $("#status_txtbox").hide();
+                $("#status_bt").hide();   
+                
+            }
+     else
+            {
+                $("#status_txtbox").show();
+                $("#status_bt").show();  
+                $("#pendingReq").show();
+            }
+
+
+    $.ajax({
+            type:"POST",
+            url:"http://localhost:8888/index.php/pages/visit_user",
+            data: { "name" : name},
+            success: function(response)        
+            {
+                document.getElementById('statusDiv').innerHTML = "No Updates";
+                document.getElementById('CropsDiv').innerHTML = "No Recent Crops";
+                document.getElementById('feedbackDiv').innerHTML = "No Feedback Received";
+                document.getElementById('friendsDiv').innerHTML = "No friends yet";
+                document.getElementById('friendsText').innerHTML = "Friends (0)";
+                document.getElementById('feedbackText').innerHTML = "Feedbacks (0)";
+                  
+                   
+                
+                     
+                 var obj = jQuery.parseJSON(response);
+                 
+              
+                    // Update Recent Crops
+                    
+                    var msg = "<ul>";
+ 
+                            
+                    for(i= obj.user_crops.length - 1; i>=0 ; i--)
+                        {
+                            
+                            if(!isNaN(obj.feedback.length))
+                                {
+                                            msg += "<li>";
+                                            msg += "<h3>" + obj.user_crops[i].crop_name + "</h3>";
+                                            msg += "<p><a href='#' id='logout'>" + obj.user_crops[i].crop_harvest_date + "</a></p>";
+                                            msg += "</li>";                                          
+                                                
+                                }
+                                
+                            if(obj.user_crops.length - i == 3 )
+                                break;
+                                    
+                                
+                                
+                        }
+                        
+                        
+                     msg += "</ul>";
+                   
+                     document.getElementById('CropsDiv').innerHTML = msg;
+                     
+                     
+                     // Update Recent Status
+                     
+                     var msg = "<ul>";
+                    
+                   
+ 
+                            
+                    for(i= obj.status.length -1 ; i>=0 ; i--)
+                        {
+                            
+                            if(!isNaN(obj.status.length))
+                                {
+                                            msg += "<li>";
+                                            msg += "<h3>" + obj.status[i].text + "</h3>";
+                                            msg += "<p><a href='#' id='logout'>" + obj.status[i].date + "</a>";
+                                            
+                                    if(name == "<?php echo $this->session->userdata('username'); ?>")    
+                                            msg += "<img src='../../images/delete.png' width= 15px height=15px align='right' onclick='deleteStatus(this.id)' id='" + obj.status[i].date + "' />";
+                                            msg += "</p></li>";                                          
+                                                
+                                }
+                          
+                        }
+                        
+                        
+                     msg += "</ul>";
+                   
+                     document.getElementById('statusDiv').innerHTML = msg;
+                     
+                     
+                     // Update Recent feedback
+                     
+                     var msg = "<ul>";
+ 
+                            
+                    for(i=obj.feedback.length -1; i>=0; i--)
+                        {
+                            
+                            if(!isNaN(obj.feedback.length))
+                                {
+                                            msg += "<li>";
+                                            msg += "<h3>" + obj.feedback[i].from + "</h3>";
+                                            msg += "<p><a href='#' id='logout'>" + obj.feedback[i].text + "</a></p>";
+                                            msg += "</li>";                                          
+                                                
+                                }
+                                
+                            if(obj.feedback.length - i == 3 )
+                                break;
+                                    
+                                
+                                
+                        }
+                        
+                        
+                     msg += "</ul>";
+                   
+                     document.getElementById('feedbackDiv').innerHTML = msg;
+                     
+                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a>";
+                 
+             
+                      var feedbackGst = document.getElementById('feedbackTxtBtn_guest');
+                      feedbackGst.onclick = showAllfGuestFeedback_f;
+                      
+                      var msg = "<table cellpadding='0' cellspacing='0' border='0' id='feedbackTable_Guest'>";
+                            msg += "<thead><tr>";
+                            msg += "<th>User</th>";                    
+                            msg += "<th>Comments</th></thead><tbody>";
+                            
+                            
+                    for(i=0; i< obj.feedback.length; i++)
+                        {
+                            
+                            if(!isNaN(obj.feedback.length))
+                                {
+                                            msg += "<tr>";
+                                            msg += "<td>" + obj.feedback[i].from + "</td>";
+                                            msg += "<td>" + obj.feedback[i].text + "</td>";
+                                            msg += "</tr>";                                          
+                                     
+                                }
+                                
+                                
+                        }
+                        
+                        
+                     msg += "</tbody></table>";
+                   
+                     document.getElementById('feedbackPopUp').innerHTML = msg;
+                     
+                     $("#feedbackTable_Guest").dataTable( {
+                                  
+                                    "bPaginate": false,
+                                    "bScrollCollapse": true,
+                                    "bJQueryUI": true,
+                                    "sPaginationType": "full_numbers",
+                                    "bAutoWidth" : true
+                            });
+                     
+            
+            
+         
+      
+                   
+                   // Update friend list
+                   
+                    var msg = "<ul>";
+                  
+                   
+ 
+                            
+                    for(i= obj.friends.length -1 ; i>=0 ; i--)
+                        {
+                            
+                            if(!isNaN(obj.friends.length))
+                                {
+                                            if(obj.friends[i].status == "accepted")
+                                                {
+                                                        msg += "<li>";
+                                                        msg += "<h3>" + obj.friends[i].friends_username + "</h3>";
+                                                        msg += "</li>"; 
+                                                        
+                                                        total_friends++;
+                                                        
+                                                        if(obj.friends[i].friends_username == "<?php echo $this->session->userdata('username'); ?>")
+                                                            addfrndbutton = false;
+                                                }
+                                            
+                                                
+                                }
+                          
+                        }
+                        
+                    
+                     msg += "</ul>";
+                     
+                   
+                     if(addfrndbutton)
+                     document.getElementById('userGreetings').innerHTML = name + "'s Profile" + "<button name='addfriends_bt' id='" + name +"' style= 'height: 40px;' onclick=addFriends(this.id); > Add </button>";
+                     else
+                     document.getElementById('userGreetings').innerHTML = name + "'s Profile (friends)";
+     
+     
+                     if("<?php echo $this->session->userdata('username'); ?>" == name)
+                     document.getElementById('userGreetings').innerHTML = "Welcome, " + name;
+                          
+                   
+                     document.getElementById('friendsDiv').innerHTML = msg;
+                     
+                     document.getElementById('friendsText').innerHTML = "Friends (" + total_friends + ")";
+                   
+                     $("#pendingReq").hide();
+                     
+                    
+                     
+                     
+                    
+                     
+                     
+ 
+            }
+        });
+    }
+    
+    
+    	
+        
+        
+        
+        function setTags()
+    {
+        
+        var availableTags = [];
+        
+        $.ajax({
+            type:"POST",
+            url:"http://localhost:8888/index.php/pages/get_all_username",
+            success: function(response)
+            {
+                     
+                 var obj = jQuery.parseJSON(response);
+                
+                 for( i = 0; i< obj.length; i++)
+                     {
+                        
+                         availableTags.push(obj[i].username);
+
+                     }
+                     
+                       $( "#searchField" ).autocomplete({
+			source: availableTags
+		});
+              
+
+            }
+        });
+        
+         
+       
+        
+        
+    }
+    
+    
+    
+    
    
    
      $(document).ready( function() {
@@ -402,7 +899,10 @@
      // showAllCrops();
      showRecentCrops();
      showRecentStatus();
-           
+     setTags();
+     showRecentFriends();
+     showPendingFriends();
+    
      });
                      
     
@@ -550,6 +1050,12 @@
     }
     
     
+
+    
+    
+    
+    
+    
     
     
     
@@ -567,13 +1073,15 @@
      
 
     <div id="crops" style="position: absolute; top: 15%; left: 15%; width: 70%; height: 500px"></div>
+    
+    <div id="feedbackPopUp"></div>
 
     
 <!--    Menu-->
     <div style="margin-left:35%; position: absolute; top: 0; z-index:1">
     
     <ul id="menu">
-        <li class="logo"><img style="float:left;" alt="" src="../../images/menu_left.png"/> </li>
+        <li class="logo"><img style="float:left;"  src="../../images/menu_left.png" onclick= main_init() /> </li>
         
         <li><a href='#' id="messages" style="width: 160px">Messages</a></li>
         
@@ -605,7 +1113,7 @@
         
         <li>  <div>
                 <input type="text" id="searchField" />
-                <img src="../../images/magnifier.png" alt="Search" onclick=alert($("#searchField").val()) /></div>
+                <img src="../../images/magnifier.png" alt="Search" onclick="viewProfile()" /></div>
 </li> 
         
     </ul>
@@ -672,12 +1180,12 @@
 
 
 <div id="page" >
-	<div id="content" style=" position: absolute; top: 10%; left: 40%; width: 40%; height: 800px; z-index:0; background-image: url('../../images/content_bg.jpg'); background-size: 100%; background-repeat: repeat">
+	<div id="content" style=" position: absolute; top: 10%; left: 40%; width: 40%; z-index:0; background-image: url('../../images/content_bg.jpg'); background-size: 100%; background-repeat: repeat">
 		
                 <div id="status_bts">
 		
-                       <input type="text" name="status" id="status" style= "width: 550px; height: 40px;" placeholder="What's in your farm?"/> 
-                       <button name="status_bt" id="status_bt" value="POST" style= "height: 40px;" > Share </button> 
+                       <input type="text" name="status" id="status_txtbox" style= "width: 550px; height: 40px;" placeholder="What's in your farm?"/> 
+                       <button name="status_bt" id="status_bt" value="POST" style= "height: 40px;" onclick=updateStatus();> Share </button> 
 		</div>
             
                 <div id="statusDiv">
@@ -690,35 +1198,40 @@
 	<div id="sidebar" style="position: absolute; top: 9%; left: 25%; width: 100; height: 500px;">
             
 		<div id="profilePicture" class="boxed">
-			<h2 class="title">Welcome, <?php echo $this->session->userdata('username'); ?></h2>
-                        <image src="../../css/images/img04.jpg" style="widht: 300px; height:100px" >
+			<h2 class="title" id="userGreetings">Welcome, <?php echo $this->session->userdata('username'); ?> </h2>
+                        <image src="../../css/images/img04.jpg" width= 220px height=125px >
 			
 		</div>
             
-		<div id="news" class="boxed">
+		<div class="boxed">
 			<h2 id="myCrops" class="title">Past Crops</h2>
 			<div class="content" id="CropsDiv">
 				
 			</div>
 		</div>
             
-		<div id="extra" class="boxed">
-			<h2 class="title">Looking for</h2>
-			<div class="content">
-				<ul class="list">
-					<li class="first"><a href="#">Potatoes</a></li>
-					<li><a href="#">Onions</a></li>
-					<li><a href="#">Garlic</a></li>
-				</ul>
+		<div class="boxed">
+			<h2 class="title" id="friendsText"></h2>
+			<div  class="content" id="friendsDiv">
+				
 			</div>
 		</div>
             
             
-                <div id="feedback" class="boxed">
-			<h2 class="title">Feedback</h2>
+                <div class="boxed">
+			<h2 class="title" id="feedbackText"></h2>
 			<div class="content" id="feedbackDiv">
                                                 
                         </div>
+                       
+		</div>
+            
+                <div class="boxed" id ="pendingReq">
+			<h2 class="title" >Pending Request</h2>
+			<div class="content" id="pendingFriends">
+                                                
+                        </div>
+                       
 		</div>
             
 		<div id="footer">
@@ -728,6 +1241,8 @@
 		</div>
 	</div>
 </div>
+
+
 
 </body>
 </html>

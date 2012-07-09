@@ -19,6 +19,11 @@ function main_init()
     
     var mycrops = document.getElementById('mycrops');
     mycrops.onclick = myCrops_f;
+    
+    var fdbackbtn = document.getElementById('feedbackTxtBtn');
+    fdbackbtn.onclick = showAllFeedbacks_f;
+    
+    
 
     function logout_f()
     {
@@ -34,7 +39,7 @@ function main_init()
             autoOpen: false, 
             title: "Settings",
             overlay: {backgroundColor: "#0FF", opacity: 0.5},
-            autoOpen: true,
+           
             height: 'auto',
             width: 'auto',
             buttons: {
@@ -57,7 +62,7 @@ function main_init()
             autoOpen: false, 
             title: "Settings",
             overlay: {backgroundColor: "#0FF", opacity: 0.5},
-            autoOpen: true,
+           
             height: 'auto',
             width: 'auto',
             buttons: {
@@ -72,7 +77,30 @@ function main_init()
             }}
 );
     
+    
+    $( "#feedbackPopUp" ).dialog({               
+         
+         
+            resizable: true,
+            autoResize: true,
+            
+            title: "Feedbacks",
+            overlay: {backgroundColor: "#0FF", opacity: 0.5},
+            autoOpen: false,
+            height: 'auto',
+            width: 'auto',
+            buttons: {
+                    'Ok': function() {
+                        $(this).dialog('close');
+                    }
+               
+                
+                  }
+            }
+);
+    
     $( "#userSettingsDialog" ).dialog('close');
     $( "#mapData" ).dialog('close');
+    $( "#feedbackPopUp" ).dialog('close');
       
 }

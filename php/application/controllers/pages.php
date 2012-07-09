@@ -169,6 +169,120 @@ public function get_recent_crops(){
        
 }
 
+public function post_status(){
+    
+        
+    // Need to add functionality in web service to change password
+    $this->load->library('session');
+    
+    $username =  $this->session->userdata('username');
+    $status = $_POST['status'];
+ 
+    $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/status/';
+    // The submitted form data, encoded as query-string-style
+    // name-value pairs
 
+    $body = 'username='.$username.'&status_txt='.$status;
+    
+    $c = curl_init ($url);
+    curl_setopt ($c, CURLOPT_POST, true);
+    curl_setopt ($c, CURLOPT_POSTFIELDS, $body);
+    curl_setopt ($c, CURLOPT_RETURNTRANSFER, true);
+
+    $page = curl_exec ($c);
+    curl_close ($c);
+
+       
+}
+
+public function visit_user(){
+    
+    $guest = $_POST['name'];
+    
+    $this->load->library('session');
+    
+    $this->session->set_userdata('guest', $guest);
+    
+    $guest_details = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/user_available/'.$guest);
+
+    echo $guest_details;
+      
+}
+
+public function delete_status(){
+    
+   
+    $date = $_POST['key'];
+    
+    $this->load->library('session');
+    
+    $username =  $this->session->userdata('username');
+    
+    $result = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/delete_status/'.$username.'/'.  rawurlencode($date));
+        
+}
+
+public function get_all_username(){
+    
+        
+    $users = file_get_contents('http://dev-gardenshift.rhcloud.com/Gardenshift/user_details/all');
+     
+    echo $users;
+       
+}
+
+
+public function add_friends(){
+    
+        
+    // Need to add functionality in web service to change password
+    $this->load->library('session');
+    
+    $username =  $this->session->userdata('username');
+    $key = $_POST['key'];
+ 
+    $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/add_friends/';
+
+    // The submitted form data, encoded as query-string-style
+    // name-value pairs
+
+    $body = 'username='.$username.'&friend_name='.$key;
+    
+    $c = curl_init ($url);
+    curl_setopt ($c, CURLOPT_POST, true);
+    curl_setopt ($c, CURLOPT_POSTFIELDS, $body);
+    curl_setopt ($c, CURLOPT_RETURNTRANSFER, true);
+
+    $page = curl_exec ($c);
+    curl_close ($c);
+
+    
+}
+
+public function accept_friends(){
+    
+        
+    // Need to add functionality in web service to change password
+    $this->load->library('session');
+    
+    $username =  $this->session->userdata('username');
+    $key = $_POST['key'];
+ 
+    $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/accept_friends/';
+
+    // The submitted form data, encoded as query-string-style
+    // name-value pairs
+
+    $body = 'username='.$username.'&friend_name='.$key;
+    
+    $c = curl_init ($url);
+    curl_setopt ($c, CURLOPT_POST, true);
+    curl_setopt ($c, CURLOPT_POSTFIELDS, $body);
+    curl_setopt ($c, CURLOPT_RETURNTRANSFER, true);
+
+    $page = curl_exec ($c);
+    curl_close ($c);
+    
+}
 
 }

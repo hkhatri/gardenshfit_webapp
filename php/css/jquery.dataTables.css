@@ -32,14 +32,14 @@ table.dataTable td.dataTables_empty {
 }
 
 table.dataTable tr.odd { background-color: greenyellow }
-table.dataTable tr.even { background-color: white; }
+table.dataTable tr.even { background-color: green; }
 
 table.dataTable tr.odd td.sorting_1 { background-color: greenyellow; }
 table.dataTable tr.odd td.sorting_2 { background-color: greenyellow; }
 table.dataTable tr.odd td.sorting_3 { background-color: greenyellow; }
-table.dataTable tr.even td.sorting_1 { background-color: white; }
-table.dataTable tr.even td.sorting_2 { background-color: white; }
-table.dataTable tr.even td.sorting_3 { background-color: white; }
+table.dataTable tr.even td.sorting_1 { background-color: green; }
+table.dataTable tr.even td.sorting_2 { background-color: green; }
+table.dataTable tr.even td.sorting_3 { background-color: green; }
 
 
 /*
