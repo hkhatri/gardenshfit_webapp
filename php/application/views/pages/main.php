@@ -21,6 +21,11 @@
 <script src="../../js/jquery.validate.js" type="text/javascript"></script>
 <script src="../../js/formValidation.js" type="text/javascript"></script>
 <script src="../../js/main_init.js" type="text/javascript"></script>
+<script src="../../js/feedback.js" type="text/javascript"></script>
+<script src="../../js/cropsProfilePage.js" type="text/javascript"></script>
+<script src="../../js/status.js" type="text/javascript"></script>
+<script src="../../js/friends.js" type="text/javascript"></script>
+<script src="../../js/googleMaps.js" type="text/javascript"></script>
 
 <style type="text/css">
       html { height: 100% }
@@ -39,573 +44,14 @@
 
 
 
+
+
  
 </head>
 
 <script>  
     
-    
-    
-    function showAvailableCrops()
-    {
-        // Populate crops table for all the available crops that a user can trade with
-           $.ajax({
-                type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_crops",
-                success: function(response)
-                {
-                     
-
-                    var obj = jQuery.parseJSON(response);
-                    
-                   
-                    var msg = "<table cellpadding='0' style='width: 100px;' cellspacing='0' border='0' id='userCropsTable' width='50%'>";
-                            msg += "<thead><tr>";
-                            msg += "<th>User</th>";
-                            msg += "<th>Crop</th>";
-                            msg += "<th>Quantity</th>";
-                            msg += "<th>Harvestation Date</th>";
-                            msg += "<th>Email</th>";
-                            msg += "<th>Zipcode</th>";
-                            msg += "<th>Comments</th></thead><tbody>";
-                            
-                            
-                    for(i=0; i< obj.length; i++)
-                        {
-                            
-                            if(!isNaN(obj[i].user_crops.length))
-                                {
-                                    for(j=0; j< obj[i].user_crops.length; j++)
-                                        {
-                                            msg += "<tr>";
-                                            msg += "<td>" + obj[i].name + "</td>";
-                                            msg += "<td>" + obj[i].user_crops[j].crop_name + "</td>";
-                                            msg += "<td>" + obj[i].user_crops[j].crop_expected_quantity + "</td>";
-                                            msg += "<td>" + obj[i].user_crops[j].crop_harvest_date + "</td>";
-                                            msg += "<td>" + obj[i].email + "</td>";
-                                            msg += "<td>" + obj[i].zipcode + "</td>";
-                                            msg += "<td>" + obj[i].user_crops[j].comments + "</td>";
-                                            msg += "</tr>";                                          
-                                        }
-                                    
-                                }
-                                
-                                
-                        }
-                        
-                        
-                     msg += "</tbody></table>";
-                   
-                     document.getElementById('crops').innerHTML = msg;
-                     
-                     $("#userCropsTable").dataTable( {
-                                    "sScrollY": "200px",
-                                    "bPaginate": false,
-                                    "bScrollCollapse": true,
-                                    "bJQueryUI": true,
-                                    "sPaginationType": "full_numbers",
-                                    "bAutoWidth" : true
-                            });
-                     
-                     }
-                
- 
-            });
-  
-  
-    
-    }
-    
-    
-    function showAllFeedbacks_f()
-    {
-               
-        showAllFeedback();
-    }
-     
-    
-    function showAllfGuestFeedback_f()
-    {
-        
-        $("#feedbackPopUp").dialog('open');
-    }
-    
-    
-    function showAllFeedback()
-    {
-        // Populate feedback table for all the available crops that a user can trade with
-           $.ajax({
-                type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
-                success: function(response)
-                {
-                     
-
-                    var obj = jQuery.parseJSON(response);
-                    
-                   
-                    var msg = "<table cellpadding='0' cellspacing='0' border='0' id='feedbackTable'>";
-                            msg += "<thead><tr>";
-                            msg += "<th>User</th>";                    
-                            msg += "<th>Comments</th></thead><tbody>";
-                            
-                            
-                    for(i=0; i< obj.feedback.length; i++)
-                        {
-                            
-                            if(!isNaN(obj.feedback.length))
-                                {
-                                            msg += "<tr>";
-                                            msg += "<td>" + obj.feedback[i].from + "</td>";
-                                            msg += "<td>" + obj.feedback[i].text + "</td>";
-                                            msg += "</tr>";                                          
-                                     
-                                }
-                                
-                                
-                        }
-                        
-                        
-                     msg += "</tbody></table>";
-                   
-                     document.getElementById('feedbackPopUp').innerHTML = msg;
-                     
-                     $("#feedbackTable").dataTable( {
-                                  
-                                    "bPaginate": false,
-                                    "bScrollCollapse": true,
-                                    "bJQueryUI": true,
-                                    "sPaginationType": "full_numbers",
-                                    "bAutoWidth" : true
-                            });
-                     
-                     }
-                
- 
-            });
-            
-               $( "#feedbackPopUp" ).dialog('open');
-             
-               
-    
-    }
-    
-    
-    function showRecentFeedback()
-    {
-        // Populate feedback div for all the available crops that a user can trade with
-           $.ajax({
-                type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
-                success: function(response)
-                {
-                     
-
-                    var obj = jQuery.parseJSON(response);
-  
-                    var msg = "<ul>";
- 
-                            
-                    for(i=obj.feedback.length -1; i>=0; i--)
-                        {
-                            
-                            if(!isNaN(obj.feedback.length))
-                                {
-                                            msg += "<li>";
-                                            msg += "<h3>" + obj.feedback[i].from + "</h3>";
-                                            msg += "<p><a href='#' id='logout'>" + obj.feedback[i].text + "</a></p>";
-                                            msg += "</li>";                                          
-                                                
-                                }
-                                
-                            if(obj.feedback.length - i == 3 )
-                                break;
-                                    
-                                
-                                
-                        }
-                        
-                        
-                     msg += "</ul>";
-                   
-                     document.getElementById('feedbackDiv').innerHTML = msg;
-                     
-                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn'>(" + obj.feedback.length +")</a>";
-                     
-                    
-                     
-                     }
-                
- 
-            });
-  
-  
-    
-    }
-   
-   // Show past and Recent Crops
-   
-   function showAllCrops()
-    {
-        // Populate feedback table for all the available crops that a user can trade with
-           $.ajax({
-                type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_recent_crops",
-                success: function(response)
-                {
-                     
-
-                    var obj = jQuery.parseJSON(response);
-                    
-                   
-                    var msg = "<table cellpadding='0' style='width: 100px;' cellspacing='0' border='0' id='userCropsTable' width='50%'>";
-                            msg += "<thead><tr>";
-                           
-                            msg += "<th>Crop</th>";
-                            msg += "<th>Quantity</th>";
-                            msg += "<th>Harvestation Date</th>";
-                            
-                            msg += "<th>Comments</th></thead><tbody>";
-                            
-                            
-                     
-                            if(!isNaN(obj.user_crops.length))
-                                {
-                                    for(j=0; j< obj.user_crops.length; j++)
-                                        {
-                                            msg += "<tr>";
-                                          
-                                            msg += "<td>" + obj.user_crops[j].crop_name + "</td>";
-                                            msg += "<td>" + obj.user_crops[j].crop_expected_quantity + "</td>";
-                                            msg += "<td>" + obj.user_crops[j].crop_harvest_date + "</td>";
-                                           
-                                            msg += "<td>" + obj.user_crops[j].comments + "</td>";
-                                            msg += "</tr>";                                          
-                                        }
-                                    
-                                }
-                       
-                        
-                     msg += "</tbody></table>";
-                   
-                     document.getElementById('CropsDiv').innerHTML = msg;
-                     
-                     $("#userCropsTable").dataTable( {
-                                    "sScrollY": "200px",
-                                    "bPaginate": false,
-                                    "bScrollCollapse": true,
-                                    "bJQueryUI": true,
-                                    "sPaginationType": "full_numbers",
-                                    "bAutoWidth" : true
-                            });
-                     
-                     }
-                
- 
-            });
-  
-  
-    
-    }
-    
-    
-    function showRecentCrops()
-    {
-        // Populate feedback div for all the available crops that a user can trade with
-           $.ajax({
-                type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_recent_crops",
-                success: function(response)
-                {
-                     
-
-                    var obj = jQuery.parseJSON(response);
-  
-                    var msg = "<ul>";
- 
-                            
-                    for(i= obj.user_crops.length - 1; i>=0 ; i--)
-                        {
-                            
-                            if(!isNaN(obj.feedback.length))
-                                {
-                                            msg += "<li>";
-                                            msg += "<h3>" + obj.user_crops[i].crop_name + "</h3>";
-                                            msg += "<p><a href='#' id='logout'>" + obj.user_crops[i].crop_harvest_date + "</a></p>";
-                                            msg += "</li>";                                          
-                                                
-                                }
-                                
-                            if(obj.user_crops.length - i == 3 )
-                                break;
-                                    
-                                
-                                
-                        }
-                        
-                        
-                     msg += "</ul>";
-                   
-                     document.getElementById('CropsDiv').innerHTML = msg;
-                     
-                    
-                     
-                     }
-                
- 
-            });
-  
-  
-    
-    }
-    
-    
-    function showRecentStatus()
-    {
-        // Populate stauts div for all the available status
-           
-           $.ajax({
-                type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
-                success: function(response)
-                {
-                     
-
-                    var obj = jQuery.parseJSON(response);
-  
-                    var msg = "<ul>";
-                    
-                   
- 
-                            
-                    for(i= obj.status.length -1 ; i>=0 ; i--)
-                        {
-                            
-                            if(!isNaN(obj.status.length))
-                                {
-                                            msg += "<li>";
-                                            msg += "<h3>" + obj.status[i].text + "</h3>";
-                                            msg += "<p><a href='#' id='logout'>" + obj.status[i].date + "</a>";
-                                            msg += "<img src='../../images/delete.png' width= 15px height=15px align='right' onclick='deleteStatus(this.id)' id='" + obj.status[i].date + "' /> </p>";
-                                            msg += "</li>";                                          
-                                                
-                                }
-                          
-                        }
-                        
-                        
-                     msg += "</ul>";
-                   
-                     document.getElementById('statusDiv').innerHTML = msg;
-                     
-                    
-                     
-                     }
-                
- 
-            });
-  
-  
-    
-    }
-    
-    function showRecentFriends()
-    {
-        // Populate stauts div for all the available status
-        
-        var total_friends = 0;
-        document.getElementById('friendsText').innerHTML = "Friends (0)";
-               
-           
-           $.ajax({
-                type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
-                success: function(response)
-                {
-                     
-
-                    var obj = jQuery.parseJSON(response);
-  
-                    var msg = "<ul>";
-                   
-                    
-                   
- 
-                            
-                    for(i= obj.friends.length -1 ; i>=0 ; i--)
-                        {
-                            
-                            if(!isNaN(obj.friends.length))
-                                {
-                                            if(obj.friends[i].status == "accepted")
-                                                {
-                                                        msg += "<li>";
-                                                        msg += "<h3>" + obj.friends[i].friends_username + "</h3>";
-                                                        msg += "</li>";
-                                                        total_friends++;
-                                                }
-                                            
-                                                
-                                }
-                          
-                        }
-                        
-                        
-                     msg += "</ul>";
-                    
-                   
-                     document.getElementById('friendsDiv').innerHTML = msg;
-                     
-                     document.getElementById('friendsText').innerHTML = "Friends (" + total_friends + ")";
-                   
-                     
-                    
-                     
-                     }
-                
- 
-            });
-  
-  
-    
-    }
-    
-    function deleteStatus(statusDate)
-    {
-          
-            
-        var key = statusDate;
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:8888/index.php/pages/delete_status",
-            data:{ "key" : key},
-            success: function(response)
-            {    
-                 showRecentStatus();
-                 $('#status_txtbox').val("");
-            }
-        });
-    }
-    
-    function updateStatus()
-    {
-        update = $('#status_txtbox').val();
-        
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:8888/index.php/pages/post_status",
-            data:{ "status" : update},
-            success: function(response)
-            {
-                 showRecentStatus();
-                 $('#status_txtbox').val("");
-            }
-        });
-    }
-    
-    
-    function addFriends(name)
-    {
-          
-            
-        var key = name;
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:8888/index.php/pages/add_friends",
-            data:{ "key" : key},
-            success: function(response)
-            {    
-               
-                 $('#status_txtbox').val("");
-                 $('#' + name).hide();
-            }
-        });
-    }
-    
-    function acceptFriends(name)
-    {
-          
-       
-        var key = name;
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:8888/index.php/pages/accept_friends",
-            data:{ "key" : key},
-            success: function(response)
-            {    
-                $('#status_txtbox').val("");
-                 $('#' + name).hide();
-                showRecentFriends();
-                showPendingFriends();
-                
-            }
-        });
-    }
-    
-    
-    function showPendingFriends()
-    {
-        // Populate pending frieds div for all the available friend request
-           
-           $("#pendingReq").hide();
-            
-            
-           $.ajax({
-                type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
-                success: function(response)
-                {
-                     
-
-                    var obj = jQuery.parseJSON(response);
-  
-                    var msg = "<ul>";
-                   
-                    
-                   
- 
-                            
-                    for(i= obj.friends.length -1 ; i>=0 ; i--)
-                        {
-                            
-                            if(!isNaN(obj.friends.length))
-                                {
-                                            if(obj.friends[i].status == "pending")
-                                                {
-                                                        msg += "<li>";
-                                                        msg += "<h3>" + obj.friends[i].friends_username;
-                                                        msg += "<button name='addfriends_bt' id='" + obj.friends[i].friends_username +"' style= 'height: 40px;' onclick=acceptFriends(this.id) > Add </button></h3>"; 
-                                                        msg += "</li>";    
-                                                        
-                                                         $("#pendingReq").show();
-                                                }
-                                            
-                                                
-                                }
-                          
-                        }
-                        
-                        
-                     msg += "</ul>";
-                    
-                   
-                     document.getElementById('pendingFriends').innerHTML = msg;
-                     
-                    
-                     
-                     }
-                
- 
-            });
-  
-  
-    
-    }
-    
-    
-    
-    
-    function viewProfile()
+ function viewProfile()
     {
         
       var total_friends = 0;  
@@ -743,6 +189,8 @@
                      document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a>";
                  
              
+                      // Create a dataTable of all the feedbacks
+                      
                       var feedbackGst = document.getElementById('feedbackTxtBtn_guest');
                       feedbackGst.onclick = showAllfGuestFeedback_f;
                       
@@ -806,11 +254,22 @@
                                                         
                                                         total_friends++;
                                                         
-                                                        if(obj.friends[i].friends_username == "<?php echo $this->session->userdata('username'); ?>")
-                                                            addfrndbutton = false;
+                                                         if(obj.friends[i].friends_username == "<?php echo $this->session->userdata('username'); ?>" || obj.friends[i].friends_username == name)
+                                                            {
+                                                                addfrndbutton = false;   
+                                                                document.getElementById('userGreetings').innerHTML = name + "'s Profile (friends)";
+                                                            }
                                                 }
                                             
-                                                
+                                            
+                                           if(obj.friends[i].status == "pending")
+                                               {
+                                                    if(obj.friends[i].friends_username == "<?php echo $this->session->userdata('username'); ?>")
+                                                            {
+                                                                addfrndbutton = false; 
+                                                                document.getElementById('userGreetings').innerHTML = name + "'s Profile (Pending)";
+                                                            }
+                                               }
                                 }
                           
                         }
@@ -818,11 +277,11 @@
                     
                      msg += "</ul>";
                      
-                   
+                    
                      if(addfrndbutton)
                      document.getElementById('userGreetings').innerHTML = name + "'s Profile" + "<button name='addfriends_bt' id='" + name +"' style= 'height: 40px;' onclick=addFriends(this.id); > Add </button>";
-                     else
-                     document.getElementById('userGreetings').innerHTML = name + "'s Profile (friends)";
+                    
+                     
      
      
                      if("<?php echo $this->session->userdata('username'); ?>" == name)
@@ -845,6 +304,13 @@
             }
         });
     }
+    
+       
+    
+    
+    
+    
+    
     
     
     	
@@ -945,110 +411,6 @@
     }
     
    
-    function update_maps()
-    {
-        
-            
-        var data = $("#mapdataForm").serialize();
-            
-
-        var map;
-        var geocoder = new google.maps.Geocoder();
-
-        var markersArray = [];
-
-        var haightAshbury = new google.maps.LatLng(35.7699298, -78.4469157);
-
-        var mapOptions = {
-            zoom: 8,
-            center: haightAshbury,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map =  new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-
-        google.maps.event.addListener(map, 'click', function(event) {
-
-        });
-            
-            
-            
-        var markersArray = [];
-
-        $.ajax({
-        type:"POST",
-        url:"http://localhost:8888/index.php/pages/get_mapdata",
-        data: data,
-        success: function(response)
-            {
-                         
-                 var obj = jQuery.parseJSON(response);
-                 
-                  
-                for(i=0; i< obj.length; i++)
-                                        {
-
-                                            if(!isNaN(obj[i].zipcode))
-                                                {
-                                                  
-                                                  codeAddress(obj[i]);  
-
-                                                }
-
-
-                                        }                
-                 
-                 showOverlays();
-                 
-
-            }
-        });
-        
-    
-        function addMarker(lat, log) {
-                marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, log),
-                map: map
-                });
-                markersArray.push(marker);
-        }
-
-
-        function showOverlays() {
-        if (markersArray) {
-            for (i in markersArray) {
-            markersArray[i].setMap(map);
-            }
-        }
-        }
-        
-        
-        function codeAddress(obj) {
-            
-            var address = obj.zipcode;
-            
-            geocoder.geocode( { 'address': address}, function(results, status) {
-                
-            
-            if (status == google.maps.GeocoderStatus.OK) {
-                
-               
-                var marker = new google.maps.Marker({
-                    map: map, 
-                    position: results[0].geometry.location,
-                    title: obj.name
-
-                    
-                });
-            } else {
-                alert("Geocode was not successful for the following reason: " + status);
-            }
-            });
-        }
-           
-            
-            
-    }
-    
     
 
     
