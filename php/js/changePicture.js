@@ -2,7 +2,7 @@ function showProfilePicture()
 {
     $.ajax({
                 type:"POST",
-                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_feedback",
+                url:"http://localhost:8888/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -33,7 +33,7 @@ function changePicture()
      
         $.ajax({
             type:"POST",
-            url:"http://test-gardenshift.rhcloud.com/index.php/pages/change_picture",
+            url:"http://localhost:8888/index.php/pages/change_picture",
             data:{ "key" : key},
             success: function(response)
             {        

@@ -24,7 +24,7 @@ function main_init()
 
     function logout_f()
     {
-        window.location = "http://test-gardenshift.rhcloud.com/index.php/pages/logout";
+        window.location = "http://localhost:8888/index.php/pages/logout";
     }
 
 

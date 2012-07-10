@@ -81,7 +81,7 @@
 
     $.ajax({
             type:"POST",
-            url:"http://test-gardenshift.rhcloud.com/index.php/pages/visit_user",
+            url:"http://localhost:8888/index.php/pages/visit_user",
             data: { "name" : name},
             success: function(response)        
             {
@@ -337,7 +337,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_all_username",
+            url:"http://localhost:8888/index.php/pages/get_all_username",
             success: function(response)
             {
                      
@@ -367,7 +367,26 @@
     
     
     
-   
+   function reloadHomePage()
+   {
+         //   showAvailableCrops();
+      //  showFeedback();
+      showRecentFeedback();
+     // showAllCrops();
+     showRecentCrops();
+     showRecentStatus();
+     setTags();
+     showRecentFriends();
+     showPendingFriends();
+     showProfilePicture();
+     
+     $("#pictureURL").hide();
+     
+         document.getElementById('userGreetings').innerHTML = "Welcome, " + "<?php echo $this->session->userdata('username'); ?>" ;
+         $("#status_txtbox").show();
+         $("#status_bt").show();  
+        
+   }
    
      $(document).ready( function() {
          
@@ -395,7 +414,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_userdata",
+            url:"http://localhost:8888/index.php/pages/get_userdata",
             success: function(response)
             {
                      
@@ -423,7 +442,7 @@
     
     function myCrops_f()
     {
-        window.location = "http://test-gardenshift.rhcloud.com/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
+        window.location = "http://localhost:8888/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
     }
     
    
@@ -478,7 +497,7 @@
     <div style="margin-left:35%; position: absolute; top: 0; z-index:1">
     
     <ul id="menu">
-        <li class="logo"><img style="float:left;"  src="../../images/menu_left.png" onclick= main_init() /> </li>
+        <li class="logo"><img style="float:left;"  src="../../images/menu_left.png" onclick="reloadHomePage()" /> </li>
         
         <li><a href='#' id="messages" style="width: 160px">Messages</a></li>
         
@@ -521,7 +540,7 @@
     
 <div id="userSettingsDialog">
     
-  <form id="userSettingsForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/post_userdata" method="POST">
+  <form id="userSettingsForm" action="http://localhost:8888/index.php/pages/post_userdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Name</label> </td>                             
@@ -549,7 +568,7 @@
     
 <div id="mapData">
     
-  <form id="mapdataForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/get_mapdata" method="POST">
+  <form id="mapdataForm" action="http://localhost:8888/index.php/pages/get_mapdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Crop Name</label> </td>                             
