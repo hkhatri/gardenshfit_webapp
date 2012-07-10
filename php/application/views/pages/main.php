@@ -382,6 +382,8 @@
      showRecentFriends();
      showPendingFriends();
      showProfilePicture();
+     
+     $("#pictureURL").hide();
     
      });
                      

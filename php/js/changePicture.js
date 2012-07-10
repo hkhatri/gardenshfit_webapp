@@ -28,9 +28,9 @@ function showProfilePicture()
 
 function changePicture()
 {
-    alert("called");
+   
       var key = $("#pictureURLtxt").val();
-      alert(key);
+     
         $.ajax({
             type:"POST",
             url:"http://test-gardenshift.rhcloud.com/index.php/pages/change_picture",
