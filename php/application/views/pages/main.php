@@ -26,6 +26,7 @@
 <script src="../../js/status.js" type="text/javascript"></script>
 <script src="../../js/friends.js" type="text/javascript"></script>
 <script src="../../js/googleMaps.js" type="text/javascript"></script>
+<script src="../../js/changePicture.js" type="text/javascript"></script>
 
 <style type="text/css">
       html { height: 100% }
@@ -80,7 +81,7 @@
 
     $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/visit_user",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/visit_user",
             data: { "name" : name},
             success: function(response)        
             {
@@ -296,7 +297,19 @@
                      
                     
                      
+                     // Update profile picture to reflect that of user
                      
+                    var urladdress = obj.picture;
+                                    
+                    var msg = "<image src=" + urladdress + " width= 220px; height=150px />";
+                    
+                    if("<?php echo $this->session->userdata('username'); ?>" == name)
+                    msg+= "<button id='changePicture_btn' style='position:absolute; left:160px; top:50px' onclick='showChangeProfileDialog()'> Change </button>";
+                    
+                    $("#changePicture_btn").hide();
+                  
+                   
+                    document.getElementById('profilePictureDiv').innerHTML = msg;
                     
                      
                      
@@ -324,7 +337,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/get_all_username",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_all_username",
             success: function(response)
             {
                      
@@ -368,6 +381,7 @@
      setTags();
      showRecentFriends();
      showPendingFriends();
+     showProfilePicture();
     
      });
                      
@@ -379,7 +393,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/get_userdata",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_userdata",
             success: function(response)
             {
                      
@@ -407,11 +421,20 @@
     
     function myCrops_f()
     {
-        window.location = "http://localhost:8888/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
+        window.location = "http://test-gardenshift.rhcloud.com/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
     }
     
    
+    function showChangeButton()
+    {
+    $("#changePicture_btn").show();
+    }
     
+    
+    function showChangeProfileDialog()
+    {
+        $("#pictureURL").dialog('open');
+    }
 
     
     
@@ -437,6 +460,16 @@
     <div id="crops" style="position: absolute; top: 15%; left: 15%; width: 70%; height: 500px"></div>
     
     <div id="feedbackPopUp"></div>
+    
+    <div id="pictureURL">
+            <table>
+                        <tr>
+                            <td><label for="URL" align="left">URL:</label> </td>                             
+                            <td><input type="text" name="username" id="pictureURLtxt" placeholder="Enter URL" /></td>
+                        </tr> 
+    
+            </table> 
+    </div>
 
     
 <!--    Menu-->
@@ -486,7 +519,7 @@
     
 <div id="userSettingsDialog">
     
-  <form id="userSettingsForm" action="http://localhost:8888/index.php/pages/post_userdata" method="POST">
+  <form id="userSettingsForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/post_userdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Name</label> </td>                             
@@ -514,7 +547,7 @@
     
 <div id="mapData">
     
-  <form id="mapdataForm" action="http://localhost:8888/index.php/pages/get_mapdata" method="POST">
+  <form id="mapdataForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/get_mapdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Crop Name</label> </td>                             
@@ -557,12 +590,17 @@
 		
 	</div>
     
-	<div id="sidebar" style="position: absolute; top: 9%; left: 25%; width: 100; height: 500px;">
+	<div id="sidebar" style="position: absolute; top: 9%; left: 25%; width: 300; height: 500px;">
             
-		<div id="profilePicture" class="boxed">
+		<div id="profilePicture" class="boxed" onmouseover="showChangeButton()" onmouseout=" $('#changePicture_btn').hide();"  >
+                    
 			<h2 class="title" id="userGreetings">Welcome, <?php echo $this->session->userdata('username'); ?> </h2>
-                        <image src="../../css/images/img04.jpg" width= 220px height=125px >
-			
+                        
+                        <div id="profilePictureDiv">
+                            
+                          
+                            
+                        </div>
 		</div>
             
 		<div class="boxed">

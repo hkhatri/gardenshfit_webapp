@@ -8,7 +8,7 @@ function showRecentFriends()
            
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
+                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -68,7 +68,7 @@ function showRecentFriends()
         var key = name;
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/add_friends",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/add_friends",
             data:{ "key" : key},
             success: function(response)
             {    
@@ -86,7 +86,7 @@ function showRecentFriends()
         var key = name;
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/accept_friends",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/accept_friends",
             data:{ "key" : key},
             success: function(response)
             {    
@@ -109,7 +109,7 @@ function showRecentFriends()
             
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
+                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      

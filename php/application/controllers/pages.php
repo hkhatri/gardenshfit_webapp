@@ -283,6 +283,37 @@ public function accept_friends(){
     $page = curl_exec ($c);
     curl_close ($c);
     
+    
+}
+
+
+public function change_picture(){
+    
+        
+    // Need to add functionality in web service to change password
+    $this->load->library('session');
+    
+    $username =  $this->session->userdata('username');
+    $key = $_POST['key'];
+ 
+    $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/change_picture/';
+
+    // The submitted form data, encoded as query-string-style
+    // name-value pairs
+
+    $body = 'username='.$username.'&url='.rawurlencode($key);
+    
+    $c = curl_init ($url);
+    curl_setopt ($c, CURLOPT_POST, true);
+    curl_setopt ($c, CURLOPT_POSTFIELDS, $body);
+    curl_setopt ($c, CURLOPT_RETURNTRANSFER, true);
+
+    $page = curl_exec ($c);
+    curl_close ($c);
+    
+    echo $page;
+
+    
 }
 
 }

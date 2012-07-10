@@ -24,7 +24,7 @@ function main_init()
 
     function logout_f()
     {
-        window.location = "http://localhost:8888/index.php/pages/logout";
+        window.location = "http://test-gardenshift.rhcloud.com/index.php/pages/logout";
     }
 
 
@@ -36,7 +36,6 @@ function main_init()
             autoOpen: false, 
             title: "Settings",
             overlay: {backgroundColor: "#0FF", opacity: 0.5},
-            autoOpen: true,
             height: 'auto',
             width: 'auto',
             buttons: {
@@ -59,7 +58,6 @@ function main_init()
             autoOpen: false, 
             title: "Settings",
             overlay: {backgroundColor: "#0FF", opacity: 0.5},
-            autoOpen: true,
             height: 'auto',
             width: 'auto',
             buttons: {
@@ -88,6 +86,30 @@ function main_init()
             width: 'auto',
             buttons: {
                     'Ok': function() {
+                        $(this).dialog('close');
+                    }
+               
+                
+                  }
+            }
+);
+    
+    $( "#pictureURL" ).dialog({               
+         
+         
+            resizable: true,
+            autoResize: true,       
+            title: "Change Profile Picture",
+            overlay: {backgroundColor: "#0FF", opacity: 0.5},
+            autoOpen: false,
+            height: 'auto',
+            width: 'auto',
+            buttons: {
+                    'Close': function() {
+                        $(this).dialog('close');
+                    },
+                    'Update': function() {
+                        changePicture();
                         $(this).dialog('close');
                     }
                

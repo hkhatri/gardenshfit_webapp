@@ -17,7 +17,7 @@ function showAllFeedbacks_f()
         // Populate feedback table for all the available crops that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
+                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -77,7 +77,7 @@ function showAllFeedbacks_f()
         // Populate feedback div for all the available crops that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
+                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
