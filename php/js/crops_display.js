@@ -16,25 +16,8 @@ $(document).ready(function() {
        
         
         "bInfo": false,
-        "bAutoWidth": false,
-        "aoColumns" : [
-        {
-            sWidth: '50px'
-        },
-        {
-            sWidth: '50px'
-        },
-        {
-            sWidth: '50px'
-        },
-           
-        {
-            sWidth: '50px'
-        },
-        {
-            sWidth: '50px'
-        }
-        ]     
+        "bAutoWidth": true
+       
     });
     var nEditing = null;
     $('#table_id a.edit').live('click', function (e) {
