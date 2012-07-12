@@ -115,7 +115,7 @@ hr {
 #sidebar ul li {
 	padding: 5px 14px;
 	background: url(images/img13.gif) no-repeat 0px 12px;
-	border-top: 1px solid #0B0B0B;
+/*        border-top: 1px solid #0B0B0B;*/
 }
 
 #sidebar ul li.first {
@@ -196,7 +196,7 @@ hr {
 #statusDiv ul li {
 	padding: 5px 14px;
 	background: url(images/img13.gif) no-repeat 0px 12px;
-	border-top: 1px solid #0B0B0B;
+/*	border-top: 1px solid #0B0B0B;*/
 }
 
 #statusDiv ul li.first {
