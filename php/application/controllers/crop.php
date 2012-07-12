@@ -14,7 +14,7 @@ class Crop extends CI_Controller {
 	{       
            
             
-            $ch = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/user_details/".$frmusername);
+            $ch = curl_init("https://test-gardenshift.rhcloud.com/Gardenshift/user_details/".$frmusername);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             $json_res = curl_exec($ch);
@@ -24,7 +24,7 @@ class Crop extends CI_Controller {
             $usercrops = $json_array->{'user_crops'};
             // print_r ($usercrops);
              $count = count($usercrops);
-              $json_res1 = file_get_contents("https://dev-gardenshift.rhcloud.com/Gardenshift/crop_details/all");
+              $json_res1 = file_get_contents("https://test-gardenshift.rhcloud.com/Gardenshift/crop_details/all");
           
             $json_array = json_decode($json_res1);
             $cropcnt = count($json_array);
@@ -44,7 +44,7 @@ class Crop extends CI_Controller {
 	}
         public function allcrops(){
             
-            $ch = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/crop_details/all");
+            $ch = curl_init("https://test-gardenshift.rhcloud.com/Gardenshift/crop_details/all");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             $json_res = curl_exec($ch);
@@ -65,7 +65,7 @@ class Crop extends CI_Controller {
           // $crop_name = "spinach1";
          //   $crop_description = "dsadas";
             
-            $ch = curl_init('https://dev-gardenshift.rhcloud.com/Gardenshift/create_crop');
+            $ch = curl_init('https://test-gardenshift.rhcloud.com/Gardenshift/create_crop');
 
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, "name=$crop_name&description=$crop_description");

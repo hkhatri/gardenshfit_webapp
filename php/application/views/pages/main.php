@@ -77,7 +77,7 @@
 
     $.ajax({
             type:"POST",
-            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/visit_user",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/visit_user",
             data: { "name" : name},
             success: function(response)        
             {
@@ -380,7 +380,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_all_username",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_all_username",
             success: function(response)
             {
                      
@@ -458,7 +458,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_userdata",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_userdata",
             success: function(response)
             {
                      
@@ -487,7 +487,7 @@
     
     function myCrops_f()
     {
-        window.location = "http://dev-gardenshift.rhcloud.com/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
+        window.location = "http://test-gardenshift.rhcloud.com/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
     }
     
    
@@ -594,7 +594,7 @@
     
 <div id="userSettingsDialog">
     
-  <form id="userSettingsForm" action="http://dev-gardenshift.rhcloud.com/index.php/pages/post_userdata" method="POST">
+  <form id="userSettingsForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/post_userdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Name</label> </td>                             
@@ -622,7 +622,7 @@
     
 <div id="mapData">
     
-  <form id="mapdataForm" action="http://dev-gardenshift.rhcloud.com/index.php/pages/get_mapdata" method="POST">
+  <form id="mapdataForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/get_mapdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Crop Name</label> </td>                             

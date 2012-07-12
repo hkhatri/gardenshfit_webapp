@@ -5,7 +5,7 @@ function deleteStatus(statusDate)
         var key = statusDate;
         $.ajax({
             type:"POST",
-            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/delete_status",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/delete_status",
             data:{ "key" : key},
             success: function(response)
             {    
@@ -21,7 +21,7 @@ function deleteStatus(statusDate)
         
         $.ajax({
             type:"POST",
-            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/post_status",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/post_status",
             data:{ "status" : update},
             success: function(response)
             {
@@ -37,7 +37,7 @@ function deleteStatus(statusDate)
            
            $.ajax({
                 type:"POST",
-                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_feedback",
+                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
