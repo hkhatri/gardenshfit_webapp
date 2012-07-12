@@ -91,7 +91,7 @@ $(document).ready(function() {
                 if ( bValid ) {
                     //  alert(1);
                                       
-                    var url1="http://test-gardenshift.rhcloud.com/Gardenshift/create_usercrop/"+usern+"/"+ name+"/"+quantity+"/"+hdate +"/na";
+                    var url1="http://dev-gardenshift.rhcloud.com/Gardenshift/create_usercrop/"+usern+"/"+ name+"/"+quantity+"/"+hdate +"/na";
                     addRow(url1);
                     setTimeout(function(){
                         popup_window.close();
@@ -201,7 +201,7 @@ function saveRow ( oTable, nRow )
         oTable.fnDraw();
    
         var xmlHttp = null;
-        var updateQuery = "https://test-gardenshift.rhcloud.com/Gardenshift/update_usercrop/"+usern+"/"+name+"/"+quantity+"/"+date+"/na ";
+        var updateQuery = "https://dev-gardenshift.rhcloud.com/Gardenshift/update_usercrop/"+usern+"/"+name+"/"+quantity+"/"+date+"/na ";
         //alert(updateQuery);
         xmlHttp = new XMLHttpRequest();
         xmlHttp.open( "GET", updateQuery, false );
@@ -220,7 +220,7 @@ function deleteRow (name,oTable,nRow )
     {
         oTable.fnDeleteRow( nRow );
         var xmlHttp = null;
-        var updateQuery = "https://test-gardenshift.rhcloud.com/Gardenshift/delete_usercrop/"+usern+"/"+name;
+        var updateQuery = "https://dev-gardenshift.rhcloud.com/Gardenshift/delete_usercrop/"+usern+"/"+name;
     
         xmlHttp = new XMLHttpRequest();
         xmlHttp.open( "GET", updateQuery, false );
