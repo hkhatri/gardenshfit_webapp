@@ -188,7 +188,11 @@
                      else
                      document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a>";
                          
-             
+               if(isNaN(obj.feedback.length) )
+                                {
+                                   document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(0)</a>";
+                                }
+                      
                       // Create a dataTable of all the feedbacks
                       
                       var feedbackGst = document.getElementById('feedbackTxtBtn_guest');

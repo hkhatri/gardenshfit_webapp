@@ -102,7 +102,7 @@ function showAllFeedbacks_f()
                             if(obj.feedback.length - i == 3 )
                                 break;
                                     
-                                
+                           
                                 
                         }
                         
@@ -112,6 +112,12 @@ function showAllFeedbacks_f()
                      document.getElementById('feedbackDiv').innerHTML = msg;
                      
                      document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn'>(" + obj.feedback.length +")</a> " ;
+                     
+                      if(isNaN(obj.feedback.length) )
+                                {
+                                    document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn'>(0)</a> " ;
+  
+                                }
                      
                     
                      var fdbackbtn = document.getElementById('feedbackTxtBtn');
