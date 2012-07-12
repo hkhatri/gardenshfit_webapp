@@ -645,6 +645,7 @@ function update() {
                     
                     <li><a href="#" id="mycrops">My Crops</a></li>
                     <li><a href="#" id="allUserCropsShow">Available Crops</a></li>
+                    <li><a href="#" id="allcrops">All crops</a></li>
                     <li><a href="#" id="nearByCrops">Crops Around Me</a></li>
                     <li><a href="#" id="settings">Settings</a></li>
                     <li><a href="#" id="logout">Logout</a></li>

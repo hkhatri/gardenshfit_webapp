@@ -23,6 +23,9 @@ function main_init()
     var allCropsShow = document.getElementById('allUserCropsShow');
     allCropsShow.onclick = showAvailableCrops;
     
+    var cropsFromDatabase = document.getElementById('allcrops');
+    cropsFromDatabase.onclick = allcrops_f;
+    
     
 
     function logout_f()
