@@ -691,7 +691,13 @@ function update() {
                            
                          echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
+                         
+                          else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
+                             echo '<script type="text/javascript"> showAllFeedback(); <script>'; 
+                         }
+                         
                          else echo '#">';
+                       
                        
                        echo $notarray_read[count($notarray_read)-$i-1]; 
                        echo'</a>';
@@ -729,7 +735,13 @@ function update() {
                            
                          echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
+                         
+                          else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
+                             echo '<script type="text/javascript"> showAllFeedback(); <script>'; 
+                         }
+                         
                          else echo '#">';
+                       
                        
                        echo $notarray[$bulletincount-$i-1]; 
                        echo'</a>';
@@ -744,7 +756,13 @@ function update() {
                            
                          echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
+                         
+                          else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
+                             echo '<script type="text/javascript"> showAllFeedback(); <script>'; 
+                         }
+                         
                          else echo '#">';
+                       
                        
                        echo $notarray_read[count($notarray_read)-$i-1]; 
                        echo'</a>';
