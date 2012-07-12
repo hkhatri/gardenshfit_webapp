@@ -118,7 +118,7 @@ hr {
 	border-top: 1px solid #0B0B0B;
 }
 
-#sidebar  > li:first-child {
+#sidebar ul li:first-child {
 	border: none;
 }
 
