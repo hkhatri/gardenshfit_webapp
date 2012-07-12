@@ -57,12 +57,16 @@ public function authenticate()
         
         
         
-        if($page == "true")
-        {         
+         if($page == "true")
+        {
            
            $this->session->set_userdata('username', $username);
            //$_SESSION['username'] = $username;
-           $this->load->view('pages/main.php');                 
+           
+            //$msgcount=count($usermessages);
+           $this->mainPageLoader(); 
+      
+          
         }
         else echo 'Invalid username or password';
             
@@ -343,6 +347,72 @@ public function add_feedback(){
     
     echo $page;
 
+    
+}
+
+public function mainPageLoader(){
+    
+            $this->load->library('session');
+            $username = $this->session->userdata('username');
+            if($this->session->userdata('username')!='')
+            {
+            
+            $ch = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/get_notification_unread/".$username);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            $json_res = curl_exec($ch);
+            curl_close($ch);
+           
+            $json_array = json_decode($json_res);
+            if(count($json_array) !=0)
+            $unreadmsgs = $json_array->{'notifications_unread'};
+             $data['msgcount'] = count($unreadmsgs);
+            //$msgcount=count($usermessages);
+            
+                      
+            $ch1 = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/get_bulletin/".$username);
+            curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch1, CURLOPT_HEADER, 0);
+            $json_res = curl_exec($ch1);
+            curl_close($ch1);
+           // echo $json_res;
+            $json_array = json_decode($json_res);
+           // print_r($json_array);
+            if(count($json_array) !=0)
+            $bulletin = $json_array->{'bulletin'};
+            $data['bulletincount'] = count($bulletin);
+            //print_r($bulletin);
+            global $array1;
+            for($i=0;$i<count($bulletin);$i++)
+            {
+               
+                $array1[$i] = $bulletin[$i]->{'text'};
+                
+            }
+                        $ch2 = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/get_bulletin_archive/".$username);
+            curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch2, CURLOPT_HEADER, 0);
+            $json_res = curl_exec($ch2);
+            curl_close($ch2);
+           // echo $json_res;
+            $json_array = json_decode($json_res);
+           // print_r($json_array);
+            if(count($json_array) !=0)
+            $bulletin1 = $json_array->{'bulletin_archive'};
+           
+            //print_r($bulletin);
+            global $array2;
+            for($i=0;$i<count($bulletin1)&&$i<=10;$i++)
+            {
+               
+                $array2[$i] = $bulletin1[$i]->{'text'};
+                
+            }
+            $data['notarray_read'] = $array2;
+            $data['notarray'] = $array1;
+           $this->load->view('pages/main.php',$data);  
+            }
+ else {header('Location: http://test-gardenshift.rhcloud.com/');}
     
 }
 

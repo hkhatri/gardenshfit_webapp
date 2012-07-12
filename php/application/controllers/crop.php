@@ -11,9 +11,12 @@ class Crop extends CI_Controller {
 		
 	}
         public function mycrops($frmusername='')
-	{       
+	{      
+             session_start();
+             $this->load->library('session');
            
-            
+            if($frmusername==$this->session->userdata('username'))
+            {
             $ch = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/user_details/".$frmusername);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -39,26 +42,54 @@ class Crop extends CI_Controller {
              $data['username'] = $frmusername;
             
             $this->load->view('pages/crops_display', $data);
+            }
+            else {
+            header('Location: http://localhost/gs/php');
+
+                
+            }
             
 		
 	}
         public function allcrops(){
             
+            session_start();
+             $this->load->library('session');
+           
+            if($this->session->userdata('username')!='')
+            {
+            
             $ch = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/crop_details/all");
+            
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
             curl_setopt($ch, CURLOPT_HEADER, 0);
             $json_res = curl_exec($ch);
+         
             curl_close($ch);
+            
+         
+          
             $json_array_allcrops = json_decode($json_res);
             
             // print_r ($usercrops);
-                        
+              
+            
             $data['allcrops'] = $json_array_allcrops;
                         
             $this->load->view('pages/all_crops', $data);
+            }
+            else{
+                 header('Location: http://localhost/gs/php');
+            }
+                
             
         }
         public function addnewcrop(){
+             session_start();
+             $this->load->library('session');
+           if($this->session->userdata('username')!='')
+            {
             
             $crop_name = $_POST['name'];
             $crop_description = $_POST['description'];
@@ -75,6 +106,10 @@ class Crop extends CI_Controller {
             echo $result;
             curl_close($ch);
             $this->load->view('pages/all_crops', $result);
+            }
+             else {
+                 header('Location: http://localhost/gs/php');
+            }
             
         } 
   
