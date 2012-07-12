@@ -31,15 +31,11 @@
 <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0; background-image: url("../../images/plain.png"); background-size: 100% 100%; background-repeat: repeat; }
-      #map_canvas { height: 100% }
 </style>
 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA8k4FFdveeM0HszPabxQCNOfGmZGTUqDQ&sensor=false"></script>
 
-    
-<style type="text/css" title="currentStyle">
-        @import "../../css/demo_page.css";
-        @import "../../css/jquery.dataTables.css";
+<link rel="stylesheet" type="text/css" href="../../css/jquery.dataTables.css" />   
 </style>
 <script type="text/javascript" language="javascript" src="../../js/jquery.dataTables.js"></script>
 
@@ -81,7 +77,7 @@
 
     $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/visit_user",
+            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/visit_user",
             data: { "name" : name},
             success: function(response)        
             {
@@ -187,8 +183,11 @@
                    
                      document.getElementById('feedbackDiv').innerHTML = msg;
                      
+                     if("<?php echo $this->session->userdata('username'); ?>" != name)
+                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a> <button id='addFeedback_btn' value='" + obj.username + "' onclick='showFeedbackDialog()' > Add </button> ";
+                     else
                      document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a>";
-                 
+                         
              
                       // Create a dataTable of all the feedbacks
                       
@@ -230,11 +229,7 @@
                                     "bAutoWidth" : true
                             });
                      
-            
-            
-         
-      
-                   
+                  
                    // Update friend list
                    
                     var msg = "<ul>";
@@ -249,17 +244,20 @@
                                 {
                                             if(obj.friends[i].status == "accepted")
                                                 {
-                                                        msg += "<li>";
-                                                        msg += "<h3>" + obj.friends[i].friends_username + "</h3>";
-                                                        msg += "</li>"; 
-                                                        
                                                         total_friends++;
                                                         
+                                                        if(total_friends < 4)
+                                                                {                                                      
+                                                                    msg += "<li>";
+                                                                    msg += "<h3>" + obj.friends[i].friends_username + "</h3>";
+                                                                    msg += "</li>"; 
+                                                                }
+                                                                                                                                                               
                                                          if(obj.friends[i].friends_username == "<?php echo $this->session->userdata('username'); ?>" || obj.friends[i].friends_username == name)
                                                             {
                                                                 addfrndbutton = false;   
                                                                 document.getElementById('userGreetings').innerHTML = name + "'s Profile (friends)";
-                                                            }
+                                                            }                                                       
                                                 }
                                             
                                             
@@ -278,6 +276,8 @@
                     
                      msg += "</ul>";
                      
+                     document.getElementById('friendsText').innerHTML = "Friends <a href='#' id='friendsTxtBtn_guest'>(" + total_friends + ")</a> ";
+                 
                     
                      if(addfrndbutton)
                      document.getElementById('userGreetings').innerHTML = name + "'s Profile" + "<button name='addfriends_bt' id='" + name +"' style= 'height: 40px;' onclick=addFriends(this.id); > Add </button>";
@@ -291,7 +291,6 @@
                    
                      document.getElementById('friendsDiv').innerHTML = msg;
                      
-                     document.getElementById('friendsText').innerHTML = "Friends (" + total_friends + ")";
                    
                      $("#pendingReq").hide();
                      
@@ -310,6 +309,50 @@
                   
                    
                     document.getElementById('profilePictureDiv').innerHTML = msg;
+                    
+                    
+                    
+                       
+                   // Create a dataTable of all the friends
+                      
+                      var frdGst = document.getElementById('friendsTxtBtn_guest');
+                      frdGst.onclick = showAllfGuestfriends_f;
+                      
+                     var msg = "<table cellpadding='0' cellspacing='0' border='0' id='friendsTable'>";
+                            msg += "<thead><tr>";
+                            msg += "<th>User</th>";                    
+                            msg += "</thead><tbody>";
+                            
+                            
+                    for(i=0; i< obj.friends.length; i++)
+                        {
+                            
+                            if(!isNaN(obj.friends.length))
+                                {
+                                            msg += "<tr>";
+                                            msg += "<td>" + obj.friends[i].friends_username + "</td>";
+                                            msg += "</tr>";                                                                         
+                                }
+                                
+                                
+                        }
+                        
+                        
+                     msg += "</tbody></table>";
+                   
+                     document.getElementById('friendsPopUp').innerHTML = msg;
+                     
+                     $("#friendsTable").dataTable( {
+                                  
+                                    "bPaginate": false,
+                                    "bScrollCollapse": true,
+                                    "bJQueryUI": true,
+                                    "sPaginationType": "full_numbers",
+                                    "bAutoWidth" : true
+                            });
+                     
+                     
+ 
                     
                      
                      
@@ -337,7 +380,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/get_all_username",
+            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_all_username",
             success: function(response)
             {
                      
@@ -385,13 +428,14 @@
          document.getElementById('userGreetings').innerHTML = "Welcome, " + "<?php echo $this->session->userdata('username'); ?>" ;
          $("#status_txtbox").show();
          $("#status_bt").show();  
+          $("#changePicture_btn").hide();
         
    }
    
      $(document).ready( function() {
          
          
-        //   showAvailableCrops();
+           showAvailableCrops();
       //  showFeedback();
       showRecentFeedback();
      // showAllCrops();
@@ -414,7 +458,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/get_userdata",
+            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_userdata",
             success: function(response)
             {
                      
@@ -438,11 +482,12 @@
     function nearByCrops_f()
     {
         $( "#mapData" ).dialog('open');
+      
     }
     
     function myCrops_f()
     {
-        window.location = "http://localhost:8888/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
+        window.location = "http://dev-gardenshift.rhcloud.com/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
     }
     
    
@@ -475,12 +520,14 @@
     
     
     
-    <div id="map_canvas" style="position: absolute; top: 45%; left: 35%; width:30%; height:30%; z-index:3"></div>
+    <div id="map_canvas" width="100%"></div>
      
 
-    <div id="crops" style="position: absolute; top: 15%; left: 15%; width: 70%; height: 500px"></div>
+    <div id="showCropsAll"></div>
     
     <div id="feedbackPopUp"></div>
+    
+    <div id="friendsPopUp"></div>
     
     <div id="pictureURL">
             <table>
@@ -490,6 +537,12 @@
                         </tr> 
     
             </table> 
+    </div>
+    
+    <div id="addFeedbackPopUp">
+        Please enter your feedback carefully. Once it's added it cannot be deleted. <br>
+        <input type="text" name="username" id="addFeedbacktxt" placeholder="Enter your Feedback" />
+            
     </div>
 
     
@@ -513,6 +566,7 @@
                     
                     
                     <li><a href="#" id="mycrops">My Crops</a></li>
+                    <li><a href="#" id="allUserCropsShow">Available Crops</a></li>
                     <li><a href="#" id="nearByCrops">Crops Around Me</a></li>
                     <li><a href="#" id="settings">Settings</a></li>
                     <li><a href="#" id="logout">Logout</a></li>
@@ -540,7 +594,7 @@
     
 <div id="userSettingsDialog">
     
-  <form id="userSettingsForm" action="http://localhost:8888/index.php/pages/post_userdata" method="POST">
+  <form id="userSettingsForm" action="http://dev-gardenshift.rhcloud.com/index.php/pages/post_userdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Name</label> </td>                             
@@ -568,7 +622,7 @@
     
 <div id="mapData">
     
-  <form id="mapdataForm" action="http://localhost:8888/index.php/pages/get_mapdata" method="POST">
+  <form id="mapdataForm" action="http://dev-gardenshift.rhcloud.com/index.php/pages/get_mapdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Crop Name</label> </td>                             

@@ -20,11 +20,14 @@ function main_init()
     var mycrops = document.getElementById('mycrops');
     mycrops.onclick = myCrops_f;
     
+    var allCropsShow = document.getElementById('allUserCropsShow');
+    allCropsShow.onclick = showAvailableCrops;
+    
     
 
     function logout_f()
     {
-        window.location = "http://localhost:8888/index.php/pages/logout";
+        window.location = "http://dev-gardenshift.rhcloud.com/index.php/pages/logout";
     }
 
 
@@ -94,6 +97,27 @@ function main_init()
             }
 );
     
+    $( "#friendsPopUp" ).dialog({               
+         
+         
+            resizable: true,
+            autoResize: true,
+            
+            title: "Friends",
+            overlay: {backgroundColor: "#0FF", opacity: 0.5},
+            autoOpen: false,
+            height: 'auto',
+            width: 'auto',
+            buttons: {
+                    'Ok': function() {
+                        $(this).dialog('close');
+                    }
+               
+                
+                  }
+            }
+);
+    
     $( "#pictureURL" ).dialog({               
          
          
@@ -117,6 +141,73 @@ function main_init()
                   }
             }
 );
+    
+    $( "#addFeedbackPopUp" ).dialog({               
+         
+         
+            resizable: true,
+            autoResize: true,       
+            title: "Add Feedback",
+            overlay: {backgroundColor: "#0FF", opacity: 0.5},
+            autoOpen: false,
+            height: 'auto',
+            width: 'auto',
+            buttons: {
+                    'Close': function() {
+                        $(this).dialog('close');
+                    },
+                    'Add': function() {
+                        addFeedback();
+                        $(this).dialog('close');
+                    }
+               
+                
+                  }
+            }
+);
+    
+    $( "#map_canvas" ).dialog({               
+         
+         
+            resizable: false,
+            autoResize: true,       
+            title: "Available Crops",
+            overlay: {backgroundColor: "#0FF", opacity: 0.5},
+            autoOpen: false,
+            height: '600',
+            width: '600',
+            buttons: {
+                    'Close': function() {
+                        $(this).dialog('close');
+                       
+                    }
+                               
+                  }
+            }
+);
+  
+$( "#showCropsAll" ).dialog({               
+         
+         
+           
+            resizable: false,
+            autoResize: false,
+            autoOpen: false, 
+            title: "Settings",
+            overlay: {backgroundColor: "#0FF", opacity: 0.5},
+            height: 'auto',
+            width: '1000px',
+            buttons: {
+                    'Close': function() {
+                        $(this).dialog('close');
+                        document.getElementById('showCropsAll').innerHTML = "";
+                       
+                    }
+                               
+                  }
+            }
+);  
+    
     
     $( "#userSettingsDialog" ).dialog('close');
     $( "#mapData" ).dialog('close');

@@ -316,4 +316,34 @@ public function change_picture(){
     
 }
 
+public function add_feedback(){
+    
+        
+    // Need to add functionality in web service to change password
+    $this->load->library('session');
+    
+    $username =  $this->session->userdata('username');
+    $to = $_POST['to'];
+    $msg = $_POST['msg'];
+ 
+    $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/add_feedback/';
+
+    // The submitted form data, encoded as query-string-style
+    // name-value pairs
+
+    $body = 'from='.$username.'&to='.$to.'&status_txt='.$msg;
+    
+    $c = curl_init ($url);
+    curl_setopt ($c, CURLOPT_POST, true);
+    curl_setopt ($c, CURLOPT_POSTFIELDS, $body);
+    curl_setopt ($c, CURLOPT_RETURNTRANSFER, true);
+
+    $page = curl_exec ($c);
+    curl_close ($c);
+    
+    echo $page;
+
+    
+}
+
 }

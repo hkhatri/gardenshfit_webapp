@@ -1,20 +1,18 @@
 function update_maps()
     {
-        
-            
+           
         var data = $("#mapdataForm").serialize();
-            
-
+        
         var map;
         var geocoder = new google.maps.Geocoder();
 
         var markersArray = [];
 
-        var haightAshbury = new google.maps.LatLng(35.7699298, -78.4469157);
+        var raleigh = new google.maps.LatLng(35.7699298, -78.4469157);
 
         var mapOptions = {
             zoom: 8,
-            center: haightAshbury,
+            center: raleigh,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map =  new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
@@ -29,7 +27,7 @@ function update_maps()
 
         $.ajax({
         type:"POST",
-        url:"http://localhost:8888/index.php/pages/get_mapdata",
+        url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_mapdata",
         data: data,
         success: function(response)
             {
@@ -98,6 +96,8 @@ function update_maps()
             });
         }
            
+             $("#map_canvas").dialog('open');
+             $("#mapdataForm")[0].reset();
             
             
     }

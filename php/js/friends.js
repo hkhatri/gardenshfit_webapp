@@ -1,14 +1,15 @@
 function showRecentFriends()
     {
-        // Populate stauts div for all the available status
+        // Populate friends div for all accepted friends
         
         var total_friends = 0;
+        
         document.getElementById('friendsText').innerHTML = "Friends (0)";
                
            
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -45,9 +46,11 @@ function showRecentFriends()
                    
                      document.getElementById('friendsDiv').innerHTML = msg;
                      
-                     document.getElementById('friendsText').innerHTML = "Friends (" + total_friends + ")";
-                   
+                     document.getElementById('friendsText').innerHTML = "Friends <a href='#' id='friendsTxtBtn'>(" + total_friends + ")</a> ";
                      
+                     var friendbtn = document.getElementById('friendsTxtBtn');
+                     
+                     friendbtn.onclick = showAllfriends_f;
                     
                      
                      }
@@ -68,7 +71,7 @@ function showRecentFriends()
         var key = name;
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/add_friends",
+            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/add_friends",
             data:{ "key" : key},
             success: function(response)
             {    
@@ -86,7 +89,7 @@ function showRecentFriends()
         var key = name;
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/accept_friends",
+            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/accept_friends",
             data:{ "key" : key},
             success: function(response)
             {    
@@ -109,7 +112,7 @@ function showRecentFriends()
             
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -158,6 +161,72 @@ function showRecentFriends()
   
     
     }
+    
+    
+    function showAllfriends_f()
+    {
+        // Populate feedback table for all the available feedbacks that a user can trade with
+        $.ajax({
+                type:"POST",
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_feedback",
+                success: function(response)
+                {
+                     
+
+                    var obj = jQuery.parseJSON(response);
+                    
+                   
+                    var msg = "<table cellpadding='0' cellspacing='0' border='0' id='friendsTable'>";
+                            msg += "<thead><tr>";
+                            msg += "<th>User</th>";                    
+                            msg += "</thead><tbody>";
+                            
+                            
+                    for(i=0; i< obj.friends.length; i++)
+                        {
+                            
+                            if(!isNaN(obj.friends.length))
+                                {
+                                            msg += "<tr>";
+                                            msg += "<td>" + obj.friends[i].friends_username + "</td>";
+                                            msg += "</tr>";                                                                         
+                                }
+                                
+                                
+                        }
+                        
+                        
+                     msg += "</tbody></table>";
+                   
+                     document.getElementById('friendsPopUp').innerHTML = msg;
+                     
+                     $("#friendsTable").dataTable( {
+                                  
+                                    "bPaginate": false,
+                                    "bScrollCollapse": true,
+                                    "bJQueryUI": true,
+                                    "sPaginationType": "full_numbers",
+                                    "bAutoWidth" : true
+                            });
+                     
+                     }
+                
+ 
+            });
+            
+               $( "#friendsPopUp" ).dialog('open');
+             
+               
+                
+  }
+  
+  
+   function showAllfGuestfriends_f()
+    {
+        
+        $("#friendsPopUp").dialog('open');
+    }
+    
     
     
     

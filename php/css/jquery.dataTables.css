@@ -12,6 +12,7 @@ table.dataTable thead th {
 	padding: 3px 18px 3px 10px;
 	border-bottom: 1px solid black;
 	font-weight: bold;
+        font-color: green;
 	cursor: pointer;
 	*cursor: hand;
 }
@@ -32,14 +33,14 @@ table.dataTable td.dataTables_empty {
 }
 
 table.dataTable tr.odd { background-color: greenyellow }
-table.dataTable tr.even { background-color: green; }
+table.dataTable tr.even { background-color: whitesmoke; }
 
 table.dataTable tr.odd td.sorting_1 { background-color: greenyellow; }
 table.dataTable tr.odd td.sorting_2 { background-color: greenyellow; }
 table.dataTable tr.odd td.sorting_3 { background-color: greenyellow; }
-table.dataTable tr.even td.sorting_1 { background-color: green; }
-table.dataTable tr.even td.sorting_2 { background-color: green; }
-table.dataTable tr.even td.sorting_3 { background-color: green; }
+table.dataTable tr.even td.sorting_1 { background-color: whitesmoke; }
+table.dataTable tr.even td.sorting_2 { background-color: whitesmoke; }
+table.dataTable tr.even td.sorting_3 { background-color: whitesmoke; }
 
 
 /*
@@ -185,9 +186,17 @@ table.dataTable tr.even td.sorting_3 { background-color: green; }
 	padding: 14px 0 2px 0;
 	border: 1px solid #ddd;
 	text-align: center;
-	color: #999;
+	color: green;
 	font-size: 14px;
 	background-color: white;
+}
+
+table {
+	font: 80%/1.45em "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #333;
+	
 }
 
 

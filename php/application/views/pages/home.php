@@ -106,7 +106,7 @@ function checkUsername(name)
 
 <div id="loginDialog">
 	
-	<form id="loginForm" action="http://localhost:8888/index.php/pages/authenticate" method="POST">
+	<form id="loginForm" action="http://dev-gardenshift.rhcloud.com/index.php/pages/authenticate" method="POST">
  	
             <table>
                         <tr>

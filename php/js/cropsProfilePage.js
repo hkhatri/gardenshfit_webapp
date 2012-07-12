@@ -1,18 +1,21 @@
 function showAvailableCrops()
     {
         // Populate crops table for all the available crops that a user can trade with
+           
+          
+           
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_crops",
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_crops",
                 success: function(response)
                 {
                      
-
+                    
                     var obj = jQuery.parseJSON(response);
                     
                    
-                    var msg = "<table cellpadding='0' style='width: 100px;' cellspacing='0' border='0' id='userCropsTable' width='50%'>";
-                            msg += "<thead><tr>";
+                    var msg = "<table cellpadding='0' cellspacing='0' border='0' id='userCropsTable' width='100%'>";
+                            msg += "<thead width='100%'><tr>";
                             msg += "<th>User</th>";
                             msg += "<th>Crop</th>";
                             msg += "<th>Quantity</th>";
@@ -24,11 +27,12 @@ function showAvailableCrops()
                             
                     for(i=0; i< obj.length; i++)
                         {
-                            
+                           
                             if(!isNaN(obj[i].user_crops.length))
                                 {
                                     for(j=0; j< obj[i].user_crops.length; j++)
                                         {
+                                            
                                             msg += "<tr>";
                                             msg += "<td>" + obj[i].name + "</td>";
                                             msg += "<td>" + obj[i].user_crops[j].crop_name + "</td>";
@@ -37,20 +41,23 @@ function showAvailableCrops()
                                             msg += "<td>" + obj[i].email + "</td>";
                                             msg += "<td>" + obj[i].zipcode + "</td>";
                                             msg += "<td>" + obj[i].user_crops[j].comments + "</td>";
-                                            msg += "</tr>";                                          
+                                            msg += "</tr>"; 
+                                            
+                                            
                                         }
                                     
                                 }
                                 
-                                
+                              
                         }
                         
                         
                      msg += "</tbody></table>";
-                   
-                     document.getElementById('crops').innerHTML = msg;
                      
-                     $("#userCropsTable").dataTable( {
+                    document.getElementById('showCropsAll').innerHTML = msg;
+                     
+                         
+                    $("#userCropsTable").dataTable( {
                                     "sScrollY": "200px",
                                     "bPaginate": false,
                                     "bScrollCollapse": true,
@@ -58,13 +65,24 @@ function showAvailableCrops()
                                     "sPaginationType": "full_numbers",
                                     "bAutoWidth" : true
                             });
+                            
+                   
+                   
+                     
+                 
+                            
+                         
+                            
                      
                      }
                 
  
             });
+            
+            
+      
   
-  
+             $( "#showCropsAll" ).dialog('open');
     
     }
     
@@ -77,7 +95,7 @@ function showAvailableCrops()
         // Populate feedback table for all the available crops that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_recent_crops",
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_recent_crops",
                 success: function(response)
                 {
                      
@@ -141,7 +159,7 @@ function showAvailableCrops()
         // Populate feedback div for all the available crops that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_recent_crops",
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_recent_crops",
                 success: function(response)
                 {
                      

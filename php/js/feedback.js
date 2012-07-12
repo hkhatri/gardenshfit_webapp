@@ -14,10 +14,10 @@ function showAllFeedbacks_f()
     
     function showAllFeedback()
     {
-        // Populate feedback table for all the available crops that a user can trade with
+        // Populate feedback table for all the available feedbacks that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -77,7 +77,7 @@ function showAllFeedbacks_f()
         // Populate feedback div for all the available crops that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://localhost:8888/index.php/pages/get_feedback",
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -111,7 +111,7 @@ function showAllFeedbacks_f()
                    
                      document.getElementById('feedbackDiv').innerHTML = msg;
                      
-                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn'>(" + obj.feedback.length +")</a>";
+                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn'>(" + obj.feedback.length +")</a> " ;
                      
                     
                      var fdbackbtn = document.getElementById('feedbackTxtBtn');
@@ -124,4 +124,54 @@ function showAllFeedbacks_f()
   
     
     }
+    
+    
+    function showFeedbackDialog()
+    {     
+        $( "#addFeedbackPopUp" ).dialog('open');
+    }
+    
+    
+    
+    
+    function getGuestString(name)
+    {
+        var key = name;
+        $.ajax({
+                type:"POST",
+                async: false,
+                url:"http://dev-gardenshift.rhcloud.com/index.php/pages/visit_user",
+                data: {"name" : key},
+                success: function(response)        
+                {
+                    
+                }
+        });
+
+
+
+    }
+    
+    function addFeedback()
+    {
+        var msg = $("#addFeedbacktxt").val();
+        var to = $("#addFeedback_btn").val();
+        
+  
+        $.ajax({
+            type:"POST",
+            url:"http://dev-gardenshift.rhcloud.com/index.php/pages/add_feedback",
+            data:{"to" : to, "msg" : msg},
+            success: function(response)
+            {
+                 $("#addFeedbacktxt").val("");
+                 viewProfile();
+                 
+            }
+       });
+    
+  
+
+    }
+
    
