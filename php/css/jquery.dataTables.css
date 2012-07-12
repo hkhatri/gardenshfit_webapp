@@ -191,7 +191,7 @@ table.dataTable tr.even td.sorting_3 { background-color: whitesmoke; }
 	background-color: white;
 }
 
-table {
+table.dataTable {
 	font: 80%/1.45em "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	margin: 0;
 	padding: 0;
