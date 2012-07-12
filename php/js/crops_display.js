@@ -16,8 +16,25 @@ $(document).ready(function() {
        
         
         "bInfo": false,
-        "bAutoWidth": true
-       
+        "bAutoWidth": false,
+        "aoColumns" : [
+        {
+            sWidth: '50px'
+        },
+        {
+            sWidth: '50px'
+        },
+        {
+            sWidth: '50px'
+        },
+           
+        {
+            sWidth: '50px'
+        },
+        {
+            sWidth: '50px'
+        }
+        ]     
     });
     var nEditing = null;
     $('#table_id a.edit').live('click', function (e) {
@@ -104,7 +121,7 @@ $(document).ready(function() {
     }
     );
          $( "#goBackButton" ).button().click(function() {
-        window.location='http://localhost/gs/php/index.php/pages/mainPageLoader';
+        window.location='http://test-gardenshift.rhcloud.com/index.php/pages/mainPageLoader';
               
     });
 

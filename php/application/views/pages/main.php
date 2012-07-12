@@ -14,6 +14,8 @@
 <link rel="stylesheet" type="text/css" href="../../css/jquery.validate.css" />
 <link rel="stylesheet" type="text/css" href="../../css/style1.css" />
 <link rel="stylesheet" type="text/css" href="../../css/userpage.css" />
+<link rel="stylesheet" type="text/css" href="../../css/jquery.noty.css" />
+<link rel="stylesheet" type="text/css" href="../../css/noty_theme_default.css" />
 <link href="https://code.google.com/apis/maps/documentation/javascript/examples/standard.css" rel="stylesheet" type="text/css" /> 
 
 <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
@@ -27,6 +29,8 @@
 <script src="../../js/friends.js" type="text/javascript"></script>
 <script src="../../js/googleMaps.js" type="text/javascript"></script>
 <script src="../../js/changePicture.js" type="text/javascript"></script>
+<script src="../../js/jquery.noty.js" type="text/javascript"></script>
+<script src="../../js/promise.js" type="text/javascript"></script>
 
 <style type="text/css">
       html { height: 100% }
@@ -453,7 +457,76 @@
 
     $("#pictureURL").hide();
     
+    
+    var msgcount=<?php echo($msgcount) ?>;
+  
+
+
+    //alert(msgcount);
+    $.noty({
+  layout : 'topRight', // (top, topLeft, topCenter, topRight, bottom, center, bottomLeft, bottomRight)
+    // theme name (accessable with CSS)
+  animateOpen : {height: 'toggle'}, // opening animation
+  animateClose : {height: 'toggle'}, // closing animation
+   // easing
+  text : 'You have '+msgcount + ' unread messages', // notification text
+  type : 'notification', // noty type (alert, success, error)
+  speed : 500, // opening & closing animation speed
+  timeout : 5000, // delay for closing event. Set false for sticky notifications
+  closeButton : true, // enables the close button when set to true
+  closeOnSelfClick : true, // close the noty on self click when set to true
+  closeOnSelfHover : false, // close the noty on self mouseover when set to true
+  force : false, // adds notification to the beginning of queue when set to true
+  onShow : false, // callback for on show
+  onClose : false, // callback for on close
+  buttons : false, // an array of buttons
+  modal : false// adds modal layer when set to true
+
+  
+    
      });
+     
+     $("#notifications").click(function(e) {
+      e.preventDefault(); // if desired...
+      // other methods to call...
+      flag=1;
+      if(flag=1){
+     $("#notifications1").show();
+     $("#subid").hide( 'slow', function() {});
+     $.ajax({
+         url: 'http://localhost/gs/php/index.php/pages/flush_bulletin',
+        dataType: 'text',
+        success: function(data) {}
+     });
+      }
+    });
+
+   $("#morenotifs").click(function(e){ 
+   
+   $("#morenotifsdiv").dialog( {height: 620,
+        width: 420});
+    }); 
+    
+
+   
+    });
+    
+    
+   var statusIntervalId = window.setInterval(update, 30000);
+
+function update() {
+    $.ajax({
+        url: 'http://localhost/gs/php/index.php/pages/get_bulletin_count',
+        dataType: 'text',
+        success: function(data) {
+           if(data!=0){
+           document.getElementById("subid").innerHTML="&nbsp;"+ data +"&nbsp;";
+           $("#subid").show( 'slow', function() { });
+           document.getElementById("notifications1").style.display="none";
+           }
+        }
+    });
+}
                      
     
     // Populate the setings dialog with user data from the database
@@ -584,7 +657,50 @@
             </ul>
         </li>
        
-        <li><a href='#' id="notifications" style="width: 160px">Notifications</a></li>
+       <li><a href='javascript: ' id="notifications" style="width: 160px">Notifications <strong><b id ="subid" style="background:red; text:black; " ><?php if($bulletincount!=0){ echo '&nbsp;'; echo($bulletincount); echo '&nbsp;';}?>  </b></strong></a>
+        <ul id="notifications1" style ="display:none; width: 400px">
+                   
+                       
+                        <?php 
+                        $i=0;
+                            for($i;$i<$bulletincount&&$i<=10;$i++)
+                            {
+                            echo '<li><strong>';
+                       echo '<a href="'; 
+                        if (strpos($notarray[$bulletincount-$i-1],'message') == TRUE) {
+                           
+                         echo 'http://localhost/gs/php/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         }
+                         else echo '#">';
+                       
+                       echo $notarray[$bulletincount-$i-1]; 
+                       echo'</a>';
+                        echo ' </strong></li>';
+                            }
+                            
+                            for($i;$i<count($notarray_read) && $i<=10;$i++)
+                            {
+                            echo '<li>';
+                       echo '<a href="'; 
+                        if (strpos($notarray_read[count($notarray_read)-$i-1],'message') == TRUE) {
+                           
+                         echo 'http://localhost/gs/php/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         }
+                         else echo '#">';
+                       
+                       echo $notarray_read[count($notarray_read)-$i-1]; 
+                       echo'</a>';
+                        echo ' </li>';
+                            }
+                            
+                        
+                        ?>
+                         <li style="background:#0395CC; padding-left:0px; margin:0px 0px; padding: 5px 0px; "><center><strong><a id="morenotifs" style="color:#172322;">View more notifications...</a></strong></center></li>
+                        
+                       
+            </ul>
+        </li> 
+     
         
         <li>  <div>
                 <input type="text" id="searchField" />
@@ -595,7 +711,45 @@
     
 <img style="float:left;" alt="" src="../../images/menu_right.png"/>
 
-</div>  
+</div> 
+
+<div id="morenotifsdiv" style="display:none;">
+        <?php 
+                        $i=0;
+                            for($i;$i<$bulletincount&&$i<=50;$i++)
+                            {
+                            echo '<li><strong>';
+                       echo '<a style="text-decoration:none; a:hover {text-decoration:underline;}" href="'; 
+                        if (strpos($notarray[$bulletincount-$i-1],'message') == TRUE) {
+                           
+                         echo 'http://localhost/gs/php/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         }
+                         else echo '#">';
+                       
+                       echo $notarray[$bulletincount-$i-1]; 
+                       echo'</a>';
+                        echo ' </strong></li>';
+                            }
+                            
+                            for($i;$i<count($notarray_read) && $i<=50;$i++)
+                            {
+                            echo '<li>';
+                       echo '<a style="text-decoration:none; a:hover {text-decoration:underline;}" href="'; 
+                        if (strpos($notarray_read[count($notarray_read)-$i-1],'message') == TRUE) {
+                           
+                         echo 'http://localhost/gs/php/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         }
+                         else echo '#">';
+                       
+                       echo $notarray_read[count($notarray_read)-$i-1]; 
+                       echo'</a>';
+                        echo ' </li>';
+                            }
+                            
+                        
+                        ?>
+ 
+</div>
     
 <div id="userSettingsDialog">
     

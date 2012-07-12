@@ -27,7 +27,7 @@ $(document).ready(function() {
         $("#AddCrop").dialog('open'); 
     });
          $( "#goBackButton" ).button().click(function() {
-        window.location='http://localhost/gs/php/index.php/pages/mainPageLoader';
+        window.location='http://test-gardenshift.rhcloud.com/index.php/pages/mainPageLoader';
               
     });
     $( "#AddCrop" ).dialog({

@@ -35,6 +35,9 @@ img.logo1 { position:absolute; left:25%; top:40%; width: 50%; height:25%;}
 #menu .corner_left { position:absolute; left:0px; top:0px;}
 #menu .corner_right { position:absolute; left:132px; top:0px;}
 #menu .middle { position:absolute; left:18px; height: 20px; width: 115px; top:0px;}
-
+#morenotifsdiv li{ display:block; margin:5px 20px; padding: 5px 0px; border-top: dotted 1px #606060; list-style-type:none; }
+#morenotifsdiv li:first-child { border-top: none; }
+#morenotifsdiv li a { display:block; color:#0395CC; }
+#morenotifsdiv li a:hover { color:#7FCDFE; }
 div.crops { position:absolute; left:25%; top:40%; width: 50%; height:25%;}
     
