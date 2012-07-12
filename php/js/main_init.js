@@ -193,7 +193,7 @@ $( "#showCropsAll" ).dialog({
             resizable: false,
             autoResize: false,
             autoOpen: false, 
-            title: "Settings",
+            title: "All Crops",
             overlay: {backgroundColor: "#0FF", opacity: 0.5},
             height: 'auto',
             width: '1000px',
