@@ -59,7 +59,7 @@ function main_init()
             resizable: true,
             autoResize: true,
             autoOpen: false, 
-            title: "Settings",
+            title: "Search",
             overlay: {backgroundColor: "#0FF", opacity: 0.5},
             height: 'auto',
             width: 'auto',
