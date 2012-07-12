@@ -95,7 +95,7 @@ class Message extends CI_Controller {
             $from = $_POST['from'];
             $text = $_POST['text'];
             $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/send_notification';
-            $url1 = 'http://dev-gardenshift.rhcloud.com/Gardenshift/add_bulletin';
+           
             session_start();
              $this->load->library('session');
            
@@ -108,6 +108,7 @@ class Message extends CI_Controller {
 
             $page = curl_exec ($c);
             curl_close ($c);
+            $url1 = 'http://dev-gardenshift.rhcloud.com/Gardenshift/add_bulletin';
             $body1 = 'username='.$username.'&text= '.$from.' sent you a message';
             $c1 = curl_init ($url1);
             curl_setopt ($c1, CURLOPT_POST, true);

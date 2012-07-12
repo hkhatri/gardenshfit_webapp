@@ -335,6 +335,16 @@ public function add_feedback(){
     // The submitted form data, encoded as query-string-style
     // name-value pairs
 
+    $url1 = 'http://dev-gardenshift.rhcloud.com/Gardenshift/add_bulletin';
+    $body1 = 'username='.$to.'&text= '.$username.' sent you a Feedback';
+    $c1 = curl_init ($url1);
+    curl_setopt ($c1, CURLOPT_POST, true);
+    curl_setopt ($c1, CURLOPT_POSTFIELDS, $body1);
+    curl_setopt ($c1, CURLOPT_RETURNTRANSFER, true);
+
+    $page = curl_exec ($c1);
+    curl_close ($c1);
+            
     $body = 'from='.$username.'&to='.$to.'&status_txt='.$msg;
     
     $c = curl_init ($url);
