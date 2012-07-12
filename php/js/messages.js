@@ -129,7 +129,7 @@ $(document).ready(function() {
             view_unread_row = nTr;
             $.ajax({
             type:"POST",
-            url:"http://localhost/gs/php/index.php/message/updatenotif",
+            url:"http://test-gardenshift.rhcloud.com/index.php/message/updatenotif",
             data:{name:usern, timestamp:aData[6]},
             success: function(response)
             {
@@ -150,7 +150,7 @@ $(document).ready(function() {
       
         $.ajax({
             type:"POST",
-            url:"http://localhost/gs/php/index.php/message/updatenotif",
+            url:"http://test-gardenshift.rhcloud.com/index.php/message/updatenotif",
             data:{name:usern, timestamp:aData[6]},
             success: function(response)
             {
@@ -180,7 +180,7 @@ $(document).ready(function() {
       
         $.ajax({
             type:"POST",
-            url:"http://localhost/gs/php/index.php/message/deletenotif",
+            url:"http://test-gardenshift.rhcloud.com/index.php/message/deletenotif",
             data:{name:usern, timestamp:aData[6]},
             success: function(response)
             {
@@ -255,7 +255,7 @@ $(document).ready(function() {
                     //code to send a reply
                         $.ajax({
                           type:"POST",
-                          url:"http://localhost/gs/php/index.php/message/sendreply",
+                          url:"http://test-gardenshift.rhcloud.com/index.php/message/sendreply",
                            data:{username:from, type:"reply" , from:usern ,text:text},
                            success: function(response)
                            {
@@ -328,7 +328,7 @@ $(document).ready(function() {
       
         $.ajax({
             type:"POST",
-            url:"http://localhost/gs/php/index.php/message/deletenotif_read",
+            url:"http://test-gardenshift.rhcloud.com/index.php/message/deletenotif_read",
             data:{name:usern, timestamp:aData[6]},
             success: function(response)
             {
@@ -346,7 +346,7 @@ $(document).ready(function() {
     });
     
  $( "#goBackButton" ).button().click(function() {
-        window.location='http://localhost/gs/php/index.php/pages/mainPageLoader';
+        window.location='http://test-gardenshift.rhcloud.com/index.php/pages/mainPageLoader';
               
     });
 } );

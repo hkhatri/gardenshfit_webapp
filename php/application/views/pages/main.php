@@ -494,7 +494,7 @@
      $("#notifications1").show();
      $("#subid").hide( 'slow', function() {});
      $.ajax({
-         url: 'http://localhost/gs/php/index.php/pages/flush_bulletin',
+         url: 'http://test-gardenshift.rhcloud.com/index.php/pages/flush_bulletin',
         dataType: 'text',
         success: function(data) {}
      });
@@ -516,7 +516,7 @@
 
 function update() {
     $.ajax({
-        url: 'http://localhost/gs/php/index.php/pages/get_bulletin_count',
+        url: 'http://test-gardenshift.rhcloud.com/index.php/pages/get_bulletin_count',
         dataType: 'text',
         success: function(data) {
            if(data!=0){
@@ -630,9 +630,9 @@ function update() {
     <ul id="menu">
         <li class="logo"><img style="float:left;"  src="../../images/menu_left.png" onclick="reloadHomePage()" /> </li>
         
-        <li><a href='#' id="messages" style="width: 160px">Messages</a></li>
+        <li><a href="http://test-gardenshift.rhcloud.com/index.php/message/mymessages/<?php echo $this->session->userdata('username'); ?>" id="messages" style="width: 160px">Messages (<?php echo($msgcount) ?>)</a></li>
         
-        <li><a href='#' id="username" style="width: 160px">Options</a>
+        <li><a href='#' id="" style="width: 160px">Options</a>
            
              <ul id="username">
                     <li>
@@ -669,7 +669,7 @@ function update() {
                        echo '<a href="'; 
                         if (strpos($notarray[$bulletincount-$i-1],'message') == TRUE) {
                            
-                         echo 'http://localhost/gs/php/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          else echo '#">';
                        
@@ -684,7 +684,7 @@ function update() {
                        echo '<a href="'; 
                         if (strpos($notarray_read[count($notarray_read)-$i-1],'message') == TRUE) {
                            
-                         echo 'http://localhost/gs/php/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          else echo '#">';
                        
@@ -722,7 +722,7 @@ function update() {
                        echo '<a style="text-decoration:none; a:hover {text-decoration:underline;}" href="'; 
                         if (strpos($notarray[$bulletincount-$i-1],'message') == TRUE) {
                            
-                         echo 'http://localhost/gs/php/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          else echo '#">';
                        
@@ -737,7 +737,7 @@ function update() {
                        echo '<a style="text-decoration:none; a:hover {text-decoration:underline;}" href="'; 
                         if (strpos($notarray_read[count($notarray_read)-$i-1],'message') == TRUE) {
                            
-                         echo 'http://localhost/gs/php/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          else echo '#">';
                        
