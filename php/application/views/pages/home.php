@@ -39,6 +39,22 @@
 <script> 
     
 $(document).ready( function() {
+    
+    function submitenter(myfield,e)
+    {
+        var keycode;
+        if (window.event) keycode = window.event.keyCode;
+        else if (e) keycode = e.which;
+        else return true;
+
+        if (keycode == 13)
+        {
+        myfield.form.submit();
+        return false;
+        }
+        else
+        return true;
+    }
          
     init();
     
@@ -125,7 +141,7 @@ function checkUsername(name)
                         
                         <tr>
                             <td><label for="password" align="left">Password:</label></td>
-                            <td><input type="password" name="password" id ="password" placeholder="Enter your password" /></td>
+                            <td><input type="password" name="password" id ="password" placeholder="Enter your password" onKeyPress="return submitenter(this,event)"/></td>
                         </tr>
                         
             </table> 
