@@ -284,7 +284,7 @@
                  
                     
                      if(addfrndbutton)
-                     document.getElementById('userGreetings').innerHTML = name + "'s Profile" + "<button name='addfriends_bt' id='" + name +"' style= 'height: 40px;' onclick=addFriends(this.id); > Add </button>";
+                     document.getElementById('userGreetings').innerHTML = name + "'s Profile" + "<button name='addfriends_bt' id='" + name +"' onclick=addFriends(this.id); > Add </button>";
                     
                      
      
