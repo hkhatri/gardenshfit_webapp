@@ -10,26 +10,28 @@ $(document).ready(function() {
      
     var oTable =  $('#table_id').dataTable({
       
-        "bPaginate": false,
+        
         "bScrollCollapse": true,
         "bJQueryUI": true,
-        "sPaginationType": "full_numbers",
-        "bAutoWidth" : true,
+       
+        
+        "bInfo": false,
+        "bAutoWidth": false,
         "aoColumns" : [
         {
             sWidth: '50px'
         },
-{
+        {
             sWidth: '50px'
         },
-{
+        {
             sWidth: '50px'
         },
            
-{
+        {
             sWidth: '50px'
         },
-{
+        {
             sWidth: '50px'
         }
         ]     
@@ -118,6 +120,10 @@ $(document).ready(function() {
               
     }
     );
+         $( "#goBackButton" ).button().click(function() {
+        window.location='http://localhost/gs/php/index.php/pages/mainPageLoader';
+              
+    });
 
 
 });
@@ -215,23 +221,27 @@ function saveRow ( oTable, nRow )
 }
 function deleteRow (name,oTable,nRow )
 {
-    var r=confirm("Are you sure you want to delete entry for "+name);
-    if (r==true)
-    {
-        oTable.fnDeleteRow( nRow );
-        var xmlHttp = null;
-        var updateQuery = "https://dev-gardenshift.rhcloud.com/Gardenshift/delete_usercrop/"+usern+"/"+name;
+    $( "#dialog-confirm" ).dialog({
+        resizable: false,
+        height:200,
+        modal: true,
+        buttons: {
+            "Delete": function() {
+                oTable.fnDeleteRow( nRow );
+
+                var updateQuery = "https://dev-gardenshift.rhcloud.com/Gardenshift/delete_usercrop/"+usern+"/"+name;
+
+                $.get(updateQuery);
+                $( this ).dialog( "close" );
+        
+            },
+            Cancel: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
     
-        xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", updateQuery, false );
-        xmlHttp.send( null );
-        location.reload(true);
-    }
-    else
-    {
-  
-    } 
-  
+    
    
     
 }

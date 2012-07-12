@@ -33,7 +33,7 @@
         
        
     </head>                                                                 
-    <body onload="onLoadf()">
+   <body onload="onLoadf()">
         <script type="text/javascript">
             window.onload= function(){
                 
@@ -45,14 +45,18 @@
             
             </script>
         <div id="main" >
-           
-            <div id ="addcropbuttondiv"><button type="button" id ="addCropButton" >Add a Crop</button> 
+           <div id="dialog-confirm" title="Delete crop">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you want to delete this entry?</p>
+</div>
+
+
+            <div id ="addcropbuttondiv"><button type="button" id ="addCropButton" >Add a Crop</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;<button type="button" id ="goBackButton" >Go Back</button>
                 <br/>
                 <br/>   
             </div>
             <div id="tablediv">
 
-                <table id="table_id" class="display" style="width: 800px;">
+                <table id="table_id" class="display" style="width: 800px; background-color:grey;">
                     <thead>
                         <tr>
                             <th style="width: 20px; ">Crop name</th>

@@ -7,12 +7,12 @@
 
 $(document).ready(function() {
     var oTable =  $('#table_id').dataTable({
-         "sScrollY": "200px",
-        "bPaginate": false,
-        "bScrollCollapse": true,
+         "bScrollCollapse": true,
         "bJQueryUI": true,
-        "sPaginationType": "full_numbers",
-        "bAutoWidth" : true,
+       
+        
+        "bInfo": false,
+        "bAutoWidth": false,
         "aoColumns" : [
         {
             sWidth: '50px'
@@ -26,6 +26,10 @@ $(document).ready(function() {
     $( "#addnewcrop" ).button().click(function() {
         $("#AddCrop").dialog('open'); 
     });
+         $( "#goBackButton" ).button().click(function() {
+        window.location='http://localhost/gs/php/index.php/pages/mainPageLoader';
+              
+    });
     $( "#AddCrop" ).dialog({
         autoOpen: false,
         height: 520,
@@ -33,7 +37,7 @@ $(document).ready(function() {
         modal: true,
                         
         buttons: {
-            "I am growing it!": function() {
+            "Add this crop": function() {
                 var bValid = true;
            
                                        
@@ -63,7 +67,7 @@ $(document).ready(function() {
                     //alert(1);
                     $.ajax({
                         type:"POST",
-                        url:"https://gs-vmalladi.rhcloud.com/index.php/crop/addnewcrop",
+                        url:"addnewcrop",
                         data:{
                             "name":name,
                             "description":description

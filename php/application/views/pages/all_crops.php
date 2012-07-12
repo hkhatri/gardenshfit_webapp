@@ -34,15 +34,15 @@
         
 
     </head>
-    <body>
+   <body>
         <div id ="main">
       
 
     <div id="tablediv">
-        <button type="button" id ="addnewcrop" >Add a Crop</button> 
+        <button type="button" id ="addnewcrop" >Add a Crop</button>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;<button type="button" id ="goBackButton" >Go Back</button>
         <br/>
         <br/>
-        <table id="table_id" class="display" style="width: 800px;">
+        <table id="table_id" class="display" style="width: 800px; background-color:grey; ">
             <thead>
                 <tr>
                     <th style="width: 20px; ">Crop name</th>
@@ -78,9 +78,9 @@
                 <div class="form_description">
                     <h2>Add a crop</h2>
                     <p>Please fill in the details of a crop and click submit.</p>
-                    <p id="emptycrop" style="display: none" > <font color="red">Please select a Crop.</font></p>
+<!--                    <p id="emptycrop" style="display: none" > <font color="red">Please select a Crop.</font></p>
                     <p id="emptydesc" style="display: none" > <font color="red">Please enter the Description.</font></p>
-                    <p id="existingcrop" style="display: none" > <font color="red">A crop entry already exists with the given name-Sorry.</font></p>
+                    <p id="existingcrop" style="display: none" > <font color="red">A crop entry already exists with the given name-Sorry.</font></p>-->
 
                 </div>
                 <table>

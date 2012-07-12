@@ -416,4 +416,43 @@ public function mainPageLoader(){
     
 }
 
+public function get_bulletin_count(){
+    
+    
+    $this->load->library('session');
+    
+    $username = $this->session->userdata('username');
+            
+            $ch1 = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/get_bulletin/".$username);
+            curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch1, CURLOPT_HEADER, 0);
+            $json_res = curl_exec($ch1);
+            curl_close($ch1);
+           // echo $json_res;
+            $json_array = json_decode($json_res);
+           // print_r($json_array);
+            if(count($json_array) !=0)
+            $bulletin = $json_array->{'bulletin'};
+            echo count($bulletin);
+            return count($bulletin);
+}
+
+public function flush_bulletin(){
+    
+    
+    $this->load->library('session');
+    
+    $username = $this->session->userdata('username');
+            
+            $ch1 = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/flush_bulletin/".$username);
+            curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch1, CURLOPT_HEADER, 0);
+            $json_res = curl_exec($ch1);
+            curl_close($ch1);
+           // echo $json_res;
+            $json_array = json_decode($json_res);
+           
+}
+
+
 }
