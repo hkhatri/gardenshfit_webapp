@@ -199,7 +199,7 @@ hr {
 	border-top: 1px solid #0B0B0B;
 }
 
-#statusDiv ul li.first {
+#statusDiv ul li:first-child  {
 	border: none;
 }
 
