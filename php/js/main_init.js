@@ -32,6 +32,12 @@ function main_init()
     {
         window.location = "http://test-gardenshift.rhcloud.com/index.php/pages/logout";
     }
+    
+      function allcrops_f()
+    {
+        window.location = "http://test-gardenshift.rhcloud.com/index.php/crop/allcrops";
+    }
+    
 
 
    $( "#userSettingsDialog" ).dialog({               
