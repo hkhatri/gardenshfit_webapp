@@ -412,41 +412,42 @@
     
    function reloadHomePage()
    {
-         //   showAvailableCrops();
-      //  showFeedback();
-      showRecentFeedback();
-     // showAllCrops();
-     showRecentCrops();
-     showRecentStatus();
-     setTags();
-     showRecentFriends();
-     showPendingFriends();
-     showProfilePicture();
+         
+    //   showAvailableCrops();
+    //  showFeedback();
+    showRecentFeedback();
+    // showAllCrops();
+    showRecentCrops();
+    showRecentStatus();
+    setTags();
+    showRecentFriends();
+    showPendingFriends();
+    showProfilePicture();
      
-     $("#pictureURL").hide();
+    $("#pictureURL").hide();
      
-         document.getElementById('userGreetings').innerHTML = "Welcome, " + "<?php echo $this->session->userdata('username'); ?>" ;
-         $("#status_txtbox").show();
-         $("#status_bt").show();  
-          $("#changePicture_btn").hide();
+    document.getElementById('userGreetings').innerHTML = "Welcome, " + "<?php echo $this->session->userdata('username'); ?>" ;
+    $("#status_txtbox").show();
+    $("#status_bt").show();  
+    $("#changePicture_btn").hide();
         
    }
    
      $(document).ready( function() {
          
-         
-           showAvailableCrops();
-      //  showFeedback();
-      showRecentFeedback();
-     // showAllCrops();
-     showRecentCrops();
-     showRecentStatus();
-     setTags();
-     showRecentFriends();
-     showPendingFriends();
-     showProfilePicture();
-     
-     $("#pictureURL").hide();
+         main_init();
+    //     showAvailableCrops();
+    //  showFeedback();
+    showRecentFeedback();
+    // showAllCrops();
+    showRecentCrops();
+    showRecentStatus();
+    setTags();
+    showRecentFriends();
+    showPendingFriends();
+    showProfilePicture();
+
+    $("#pictureURL").hide();
     
      });
                      
@@ -515,7 +516,7 @@
 
 </script>
 
-<body onload="main_init()">
+<body>
     
     
     
