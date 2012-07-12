@@ -36,7 +36,13 @@
    
 </head>
 
-<script>    
+<script> 
+    
+$(document).ready( function() {
+         
+    init();
+    
+});
  
 function showLogin() {
 $( "#loginDialog" ).dialog('open');                  
@@ -80,9 +86,12 @@ function checkUsername(name)
 }
 
 
+          
+
+
 </script>
 
-<body onload="init()">
+<body>
       
      
       
