@@ -124,5 +124,42 @@ class Message extends CI_Controller {
             }
             
     }
+    
+    
+    public function send_new_message(){
+            $username = $_POST['username'];
+            $type = $_POST['type'];
+            $from = $_POST['from'];
+            $text = $_POST['text'];
+            $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/send_notification';
+           
+            session_start();
+             $this->load->library('session');
+           
+            if($from==$this->session->userdata('username')){
+            $body = 'username='.$username.'&type='.$type.'&from='.$from.'&text='.$text;
+            $c = curl_init ($url);
+            curl_setopt ($c, CURLOPT_POST, true);
+            curl_setopt ($c, CURLOPT_POSTFIELDS, $body);
+            curl_setopt ($c, CURLOPT_RETURNTRANSFER, true);
+
+            $page = curl_exec ($c);
+            curl_close ($c);
+            $url1 = 'http://dev-gardenshift.rhcloud.com/Gardenshift/add_bulletin';
+            $body1 = 'username='.$username.'&text= '.$from.' sent you a message';
+            $c1 = curl_init ($url1);
+            curl_setopt ($c1, CURLOPT_POST, true);
+            curl_setopt ($c1, CURLOPT_POSTFIELDS, $body1);
+            curl_setopt ($c1, CURLOPT_RETURNTRANSFER, true);
+
+            $page = curl_exec ($c1);
+            curl_close ($c1);
+           
+            }
+            else{
+                header('Location: http://localhost:8888');
+            }
+            
+    }
 }
 ?>

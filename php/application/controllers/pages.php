@@ -27,10 +27,9 @@ public function adduser()
 public function authenticate()
           
 {
-  
-        $this->load->library('session');
         session_start();
-        
+        $this->load->library('session');
+
         $username = $_POST['username'];
         $password = $_POST['password'];
         
@@ -64,7 +63,7 @@ public function authenticate()
            //$_SESSION['username'] = $username;
            
             //$msgcount=count($usermessages);
-           $this->mainPageLoader(); 
+          $this->mainPageLoader(); 
       
           
         }

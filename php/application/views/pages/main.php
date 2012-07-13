@@ -308,10 +308,10 @@
                      
                     var urladdress = obj.picture;
                                     
-                    var msg = "<image src=" + urladdress + " width= 220px; height=150px />";
+                    var msg = "<image src=" + urladdress + " style='width: 100%'  />";
                     
                     if("<?php echo $this->session->userdata('username'); ?>" == name)
-                    msg+= "<button id='changePicture_btn' style='position:absolute; left:160px; top:50px' onclick='showChangeProfileDialog()'> Change </button>";
+                    msg+= "<button id='changePicture_btn'  style='position:absolute; left:1%; top: 5%' onclick='showChangeProfileDialog()'> Change Picture </button>";
                     
                     $("#changePicture_btn").hide();
                   
@@ -362,8 +362,22 @@
                      
  
                     
-                     
-                     
+                 // Send a new message dynamic button
+                 
+                 var urladdress = obj.picture;
+                                    
+                 var msg = "<image src=" + urladdress + " style='width: 100%'  />";
+                 
+                 if("<?php echo $this->session->userdata('username'); ?>" != name)
+                 {
+                    msg+= "<button id='sendMessage_btn'  value = '"+ name + "'style='position:absolute; left:1%; top: 5%' onclick='alert(this.value)'> Send Message </button>";
+                    $("#sendMessage_btn").show();
+                 }
+                 else
+                     $("#sendMessage_btn").hide();
+                  
+                   
+                    document.getElementById('profilePictureDiv').innerHTML = msg;
  
             }
         });
@@ -444,6 +458,16 @@
      $(document).ready( function() {
          
          main_init();
+         
+         $('#searchField').keypress(function(e)
+                {
+                        if (e.keyCode == 13)
+                        {
+                                viewProfile();
+                        }
+                });
+                
+                
     //     showAvailableCrops();
     //  showFeedback();
     showRecentFeedback();
@@ -634,12 +658,27 @@ function update() {
 
     
 <!--    Menu-->
-    <div style="margin-left:35%; position: absolute; top: 0; z-index:1">
+    <div style="left:30%; position: absolute; top: 0; z-index:9999">
     
     <ul id="menu">
         <li class="logo"><img style="float:left;"  src="../../images/menu_left.png" onclick="reloadHomePage()" /> </li>
         
-        <li><a href="http://localhost:8888/index.php/message/mymessages/<?php echo $this->session->userdata('username'); ?>" id="messages_link" style="width: 160px">Messages <b id ="message_subid" style="background:red; text:black; " ><?php if($msgcount!=0){ echo '&nbsp;'; echo($msgcount);  echo '&nbsp;';}?>  </b></a></li>
+        <li><a href="http://localhost:8888/index.php/message/mymessages/<?php echo $this->session->userdata('username'); ?>" id="messages_link" style="width: 160px">Messages <b id ="message_subid" style="background:red; text:black; " ><?php if($msgcount!=0){ echo '&nbsp;'; echo($msgcount);  echo '&nbsp;';}?>  </b></a>
+         <ul id="newmsg">
+                    <li>
+                        <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>
+                        <a href="#">Create Message</a>
+                        <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/>
+                        
+                    </li>
+                    <li class="last">
+                        <img class="corner_left" alt="" src="../../images/corner_left.png"/>
+                        <img class="middle" alt="" src="../../images/dot.gif"/>
+                        <img class="corner_right" alt="" src="../../images/corner_right.png"/>
+                    </li>
+                  
+            </ul>
+        </li>
         
         <li><a href='#' id="" style="width: 160px">Options</a>
            
@@ -845,7 +884,7 @@ function update() {
 		
                 <div id="status_bts">
 		
-                       <input type="text" name="status" id="status_txtbox" style= "width: 550px; height: 40px;" placeholder="What's in your farm?"/> 
+                       <input type="text" name="status" id="status_txtbox" style= "width: 85%; height: 40px;" placeholder="What's in your farm?"/> 
                        <button name="status_bt" id="status_bt" value="POST" style= "height: 40px;" onclick=updateStatus();> Share </button> 
 		</div>
             
@@ -856,7 +895,7 @@ function update() {
 		
 	</div>
     
-	<div id="sidebar" style="position: absolute; top: 9%; left: 25%; width: 300; height: 500px;">
+	<div id="sidebar" style="position: absolute; top: 9%; left: 25%; width: 11.9%; height: 100%;">
             
 		<div id="profilePicture" class="boxed" onmouseover="showChangeButton()" onmouseout=" $('#changePicture_btn').hide();"  >
                     

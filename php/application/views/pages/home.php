@@ -43,6 +43,17 @@ $(document).ready( function() {
          
     init();
     
+   
+$('#password').keypress(function(e)
+{
+        if (e.keyCode == 13)
+        {
+                $('#loginForm').submit();
+        }
+});
+
+
+    
 });
  
 function showLogin() {
@@ -126,7 +137,7 @@ function checkUsername(name)
                         
                         <tr>
                             <td><label for="password" align="left">Password:</label></td>
-                            <td><input type="password" name="password" id ="password" placeholder="Enter your password" onKeyPress="return submitenter(this,event)"/></td>
+                            <td><input type="password" name="password" id ="password" placeholder="Enter your password"/></td>
                         </tr>
                         
             </table> 

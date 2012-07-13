@@ -12,8 +12,8 @@ function showProfilePicture()
                    
                     var urladdress = obj.picture;
                                     
-                    var msg = "<image src=" + urladdress + " width= 220px; height=150px />";
-                    msg+= "<button id='changePicture_btn' style='position:absolute; left:160px; top:50px' onclick='showChangeProfileDialog()'> Change </button>";
+                    var msg = "<image src=" + urladdress + " style='width: 100%' />";
+                    msg+= "<button id='changePicture_btn' style='position:absolute; left:1%; top: 5%' onclick='showChangeProfileDialog()'> Change Picture </button>";
                     
                     document.getElementById('profilePictureDiv').innerHTML = msg;
                     
