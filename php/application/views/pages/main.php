@@ -303,7 +303,7 @@
                      $("#pendingReq").hide();
                      
                     
-                     
+                     alert("asfasfa");
                      // Update profile picture to reflect that of user
                      
                     var urladdress = obj.picture;
