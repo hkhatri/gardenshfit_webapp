@@ -389,6 +389,7 @@ public function mainPageLoader(){
            // print_r($json_array);
             if(count($json_array) !=0)
             $bulletin = $json_array->{'bulletin'};
+            //print_r($bulletin);
             $data['bulletincount'] = count($bulletin);
             //print_r($bulletin);
             global $array1;

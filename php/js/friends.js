@@ -165,7 +165,7 @@ function showRecentFriends()
     
     function showAllfriends_f()
     {
-        // Populate feedback table for all the available feedbacks that a user can trade with
+        // Populate friends table 
         $.ajax({
                 type:"POST",
                 url:"http://localhost:8888/index.php/pages/get_feedback",
@@ -178,7 +178,8 @@ function showRecentFriends()
                    
                     var msg = "<table cellpadding='0' cellspacing='0' border='0' id='friendsTable'>";
                             msg += "<thead><tr>";
-                            msg += "<th>User</th>";                    
+                            msg += "<th>User</th>"; 
+                            msg += "<th>Status</th>"; 
                             msg += "</thead><tbody>";
                             
                             
@@ -189,6 +190,7 @@ function showRecentFriends()
                                 {
                                             msg += "<tr>";
                                             msg += "<td>" + obj.friends[i].friends_username + "</td>";
+                                            msg += "<td>" + obj.friends[i].status + "</td>";
                                             msg += "</tr>";                                                                         
                                 }
                                 
