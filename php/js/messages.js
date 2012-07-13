@@ -4,7 +4,7 @@ function fnFormatDetails ( oTable, nTr )
    
    //alert(array2);
     var aData = oTable.fnGetData( nTr );
-    var sOut = '<table cellspacing="0" border="0" style="padding-left:50px; background:lightgray">';
+    var sOut = '<table cellspacing="0" border="0" style="padding-left:50px; background:CEFECD;">';
     sOut += '<tr><td>From:</td><td>'+aData[1]+'</td></tr>';
     sOut += '<tr><td style= "border-top: 1px solid black; ">Message:</td><td style= "border-top: 1px solid black; "><pre><strong>'+aData[5]+'<strong></pre></td></tr>';
     
