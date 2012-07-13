@@ -44,7 +44,7 @@ class Crop extends CI_Controller {
             $this->load->view('pages/crops_display', $data);
             }
             else {
-            header('Location: http://localhost:8888');
+            header('Location: http://test-gardenshift.rhcloud.com');
 
                 
             }
@@ -80,7 +80,7 @@ class Crop extends CI_Controller {
             $this->load->view('pages/all_crops', $data);
             }
             else{
-                 header('Location: http://localhost:8888');
+                 header('Location: http://test-gardenshift.rhcloud.com');
             }
                 
             
@@ -108,7 +108,7 @@ class Crop extends CI_Controller {
             $this->load->view('pages/all_crops', $result);
             }
              else {
-                 header('Location: http://localhost:8888');
+                 header('Location: http://test-gardenshift.rhcloud.com');
             }
             
         } 

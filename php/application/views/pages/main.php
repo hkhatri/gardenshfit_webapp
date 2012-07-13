@@ -81,7 +81,7 @@
 
     $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/visit_user",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/visit_user",
             data: { "name" : name},
             success: function(response)        
             {
@@ -402,7 +402,7 @@
         
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/get_all_username",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_all_username",
             success: function(response)
             {
                      
@@ -518,7 +518,7 @@
      $("#notifications1").show();
      $("#subid").hide( 'slow', function() {});
      $.ajax({
-         url: 'http://localhost:8888/index.php/pages/flush_bulletin',
+         url: 'http://test-gardenshift.rhcloud.com/index.php/pages/flush_bulletin',
         dataType: 'text',
         success: function(data) {}
      });
@@ -549,7 +549,7 @@
 
 function update() {
     $.ajax({
-        url: 'http://localhost:8888/index.php/pages/get_bulletin_count',
+        url: 'http://test-gardenshift.rhcloud.com/index.php/pages/get_bulletin_count',
         dataType: 'text',
         success: function(data) {
            if(data!=0){
@@ -569,7 +569,7 @@ function update() {
         
         $.ajax({
             type:"POST",
-            url:"http://localhost:8888/index.php/pages/get_userdata",
+            url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_userdata",
             success: function(response)
             {
                      
@@ -598,7 +598,7 @@ function update() {
     
     function myCrops_f()
     {
-        window.location = "http://localhost:8888/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
+        window.location = "http://test-gardenshift.rhcloud.com/index.php/crop/mycrops/"+'<?php echo $this->session->userdata('username'); ?>';
     }
     
    
@@ -663,7 +663,7 @@ function update() {
     <ul id="menu">
         <li class="logo"><img style="float:left;"  src="../../images/menu_left.png" onclick="reloadHomePage()" /> </li>
         
-        <li><a href="http://localhost:8888/index.php/message/mymessages/<?php echo $this->session->userdata('username'); ?>" id="messages_link" style="width: 160px">Messages <b id ="message_subid" style="background:red; text:black; " ><?php if($msgcount!=0){ echo '&nbsp;'; echo($msgcount);  echo '&nbsp;';}?>  </b></a>
+        <li><a href="http://test-gardenshift.rhcloud.com/index.php/message/mymessages/<?php echo $this->session->userdata('username'); ?>" id="messages_link" style="width: 160px">Messages <b id ="message_subid" style="background:red; text:black; " ><?php if($msgcount!=0){ echo '&nbsp;'; echo($msgcount);  echo '&nbsp;';}?>  </b></a>
          <ul id="newmsg">
                     <li>
                         <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>
@@ -718,7 +718,7 @@ function update() {
                        echo '<a href="'; 
                         if (strpos($notarray[$bulletincount-$i-1],'message') == TRUE) {
                            
-                         echo 'http://localhost:8888/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
                              echo '<script type="text/javascript"> showAllFeedback(); <script>'; 
@@ -737,7 +737,7 @@ function update() {
                        echo '<a href="'; 
                         if (strpos($notarray_read[count($notarray_read)-$i-1],'message') == TRUE) {
                            
-                         echo 'http://localhost:8888/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          
                           else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
@@ -781,7 +781,7 @@ function update() {
                        echo '<a style="text-decoration:none; a:hover {text-decoration:underline;}" href="'; 
                         if (strpos($notarray[$bulletincount-$i-1],'message') == TRUE) {
                            
-                         echo 'http://localhost:8888/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          
                           else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
@@ -802,7 +802,7 @@ function update() {
                        echo '<a style="text-decoration:none; a:hover {text-decoration:underline;}" href="'; 
                         if (strpos($notarray_read[count($notarray_read)-$i-1],'message') == TRUE) {
                            
-                         echo 'http://localhost:8888/index.php/message/mymessages/'.$this->session->userdata('username').'">';
+                         echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          
                           else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
@@ -824,7 +824,7 @@ function update() {
     
 <div id="userSettingsDialog">
     
-  <form id="userSettingsForm" action="http://localhost:8888/index.php/pages/post_userdata" method="POST">
+  <form id="userSettingsForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/post_userdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Name</label> </td>                             
@@ -852,7 +852,7 @@ function update() {
     
 <div id="mapData">
     
-  <form id="mapdataForm" action="http://localhost:8888/index.php/pages/get_mapdata" method="POST">
+  <form id="mapdataForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/get_mapdata" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Crop Name</label> </td>                             

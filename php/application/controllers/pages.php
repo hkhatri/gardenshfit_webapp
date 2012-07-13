@@ -422,7 +422,7 @@ public function mainPageLoader(){
             $data['notarray'] = $array1;
            $this->load->view('pages/main.php',$data);  
             }
- else {header('Location: http://localhost:8888/');}
+ else {header('Location: http://test-gardenshift.rhcloud.com/');}
     
 }
 

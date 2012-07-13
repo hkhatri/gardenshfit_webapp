@@ -38,7 +38,7 @@ class Message extends CI_Controller {
              $this->load->view('pages/messages', $data);
             }
             else{
-                header('Location: http://localhost:8888');
+                header('Location: http://test-gardenshift.rhcloud.com');
             }
     }
     public function updatenotif(){
@@ -53,7 +53,7 @@ class Message extends CI_Controller {
             echo $res;
             }
             else{
-                header('Location: http://localhost:8888');
+                header('Location: http://test-gardenshift.rhcloud.com');
             }
             
        
@@ -70,7 +70,7 @@ class Message extends CI_Controller {
             echo $res;
             }
             else{
-                header('Location: http://localhost:8888');
+                header('Location: http://test-gardenshift.rhcloud.com');
             }
     }
        public function deletenotif_read(){
@@ -85,7 +85,7 @@ class Message extends CI_Controller {
             echo $res;
             }
             else{
-                header('Location: http://localhost:8888');
+                header('Location: http://test-gardenshift.rhcloud.com');
             }
        
     }
@@ -120,7 +120,7 @@ class Message extends CI_Controller {
            
             }
             else{
-                header('Location: http://localhost:8888');
+                header('Location: http://test-gardenshift.rhcloud.com');
             }
             
     }
@@ -157,7 +157,7 @@ class Message extends CI_Controller {
            
             }
             else{
-                header('Location: http://localhost:8888');
+                header('Location: http://test-gardenshift.rhcloud.com');
             }
             
     }

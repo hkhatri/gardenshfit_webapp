@@ -30,12 +30,12 @@ function main_init()
 
     function logout_f()
     {
-        window.location = "http://localhost:8888/index.php/pages/logout";
+        window.location = "http://test-gardenshift.rhcloud.com/index.php/pages/logout";
     }
     
       function allcrops_f()
     {
-        window.location = "http://localhost:8888/index.php/crop/allcrops";
+        window.location = "http://test-gardenshift.rhcloud.com/index.php/crop/allcrops";
     }
     
 
