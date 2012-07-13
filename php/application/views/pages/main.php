@@ -287,7 +287,7 @@
                      document.getElementById('friendsText').innerHTML = "Friends <a href='#' id='friendsTxtBtn_guest'>(" + total_friends + ")</a> ";
                  
                     
-                     if(addfrndbutton)
+                    
                      document.getElementById('userGreetings').innerHTML = name + "'s Profile" + "<button name='addfriends_bt' id='" + name +"' onclick=addFriends(this.id); > Add </button>";
                     
                      
