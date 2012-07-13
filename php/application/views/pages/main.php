@@ -500,7 +500,7 @@
      });
       }
     });
-         $("#messages").click(function(e) {
+         $("#messages_link").click(function(e) {
       e.preventDefault(); // if desired...
       // other methods to call...
 
@@ -639,7 +639,7 @@ function update() {
     <ul id="menu">
         <li class="logo"><img style="float:left;"  src="../../images/menu_left.png" onclick="reloadHomePage()" /> </li>
         
-        <li><a href="http://test-gardenshift.rhcloud.com/index.php/message/mymessages/<?php echo $this->session->userdata('username'); ?>" id="messages" style="width: 160px">Messages <b id ="message_subid" style="background:red; text:black; " ><?php if($msgcount!=0){ echo '&nbsp;'; echo($msgcount);  echo '&nbsp;';}?>  </b></a></li>
+        <li><a href="http://test-gardenshift.rhcloud.com/index.php/message/mymessages/<?php echo $this->session->userdata('username'); ?>" id="messages_link" style="width: 160px">Messages <b id ="message_subid" style="background:red; text:black; " ><?php if($msgcount!=0){ echo '&nbsp;'; echo($msgcount);  echo '&nbsp;';}?>  </b></a></li>
         
         <li><a href='#' id="" style="width: 160px">Options</a>
            
