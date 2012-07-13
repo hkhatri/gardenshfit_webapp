@@ -390,6 +390,7 @@ public function mainPageLoader(){
            // print_r($json_array);
             if(count($json_array) !=0)
             $bulletin = $json_array->{'bulletin'};
+            echo $bulletin;
             $data['bulletincount'] = count($bulletin);
             //print_r($bulletin);
             global $array1;
@@ -420,9 +421,9 @@ public function mainPageLoader(){
             }
             $data['notarray_read'] = $array2;
             $data['notarray'] = $array1;
-           $this->load->view('pages/main.php',$data);  
+        //   $this->load->view('pages/main.php',$data);  
             }
- else {header('Location: http://test-gardenshift.rhcloud.com/');}
+ //else {header('Location: http://test-gardenshift.rhcloud.com/');}
     
 }
 
