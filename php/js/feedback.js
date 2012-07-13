@@ -17,7 +17,7 @@ function showAllFeedbacks_f()
         // Populate feedback table for all the available feedbacks that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_feedback",
+                url:"http://localhost:8888/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -77,7 +77,7 @@ function showAllFeedbacks_f()
         // Populate feedback div for all the available crops that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_feedback",
+                url:"http://localhost:8888/index.php/pages/get_feedback",
                 success: function(response)
                 {
                      
@@ -146,7 +146,7 @@ function showAllFeedbacks_f()
         $.ajax({
                 type:"POST",
                 async: false,
-                url:"http://test-gardenshift.rhcloud.com/index.php/pages/visit_user",
+                url:"http://localhost:8888/index.php/pages/visit_user",
                 data: {"name" : key},
                 success: function(response)        
                 {
@@ -166,7 +166,7 @@ function showAllFeedbacks_f()
   
         $.ajax({
             type:"POST",
-            url:"http://test-gardenshift.rhcloud.com/index.php/pages/add_feedback",
+            url:"http://localhost:8888/index.php/pages/add_feedback",
             data:{"to" : to, "msg" : msg},
             success: function(response)
             {

@@ -27,7 +27,7 @@ function update_maps()
 
         $.ajax({
         type:"POST",
-        url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_mapdata",
+        url:"http://localhost:8888/index.php/pages/get_mapdata",
         data: data,
         success: function(response)
             {

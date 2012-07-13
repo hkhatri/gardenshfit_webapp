@@ -102,7 +102,7 @@ $(document).ready(function() {
     }
     );
          $( "#goBackButton" ).button().click(function() {
-        window.location='http://test-gardenshift.rhcloud.com/index.php/pages/mainPageLoader';
+        window.location='http://localhost:8888/index.php/pages/mainPageLoader';
               
     });
 

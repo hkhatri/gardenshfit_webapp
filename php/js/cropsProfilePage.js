@@ -6,7 +6,7 @@ function showAvailableCrops()
            
            $.ajax({
                 type:"POST",
-                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_crops",
+                url:"http://localhost:8888/index.php/pages/get_crops",
                 success: function(response)
                 {
                      
@@ -95,7 +95,7 @@ function showAvailableCrops()
         // Populate feedback table for all the available crops that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_recent_crops",
+                url:"http://localhost:8888/index.php/pages/get_recent_crops",
                 success: function(response)
                 {
                      
@@ -159,7 +159,7 @@ function showAvailableCrops()
         // Populate feedback div for all the available crops that a user can trade with
            $.ajax({
                 type:"POST",
-                url:"http://test-gardenshift.rhcloud.com/index.php/pages/get_recent_crops",
+                url:"http://localhost:8888/index.php/pages/get_recent_crops",
                 success: function(response)
                 {
                      

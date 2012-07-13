@@ -61,7 +61,7 @@ function checkUsername(name)
    
         $.ajax({
             type:"POST",
-            url:"http://test-gardenshift.rhcloud.com/index.php/pages/adduser",
+            url:"http://localhost:8888/index.php/pages/adduser",
             data:{ "username" : name},
             success: function(response)
             {
@@ -116,7 +116,7 @@ function checkUsername(name)
 
 <div id="loginDialog">
 	
-	<form id="loginForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/authenticate" method="POST">
+	<form id="loginForm" action="http://localhost:8888/index.php/pages/authenticate" method="POST">
  	
             <table>
                         <tr>

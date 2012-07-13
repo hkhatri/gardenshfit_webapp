@@ -5,8 +5,8 @@ class Message extends CI_Controller {
     
     public function mymessages($frmusername=''){
         
-            session_start();
-             $this->load->library('session');
+           
+            $this->load->library('session');
            
             if($frmusername==$this->session->userdata('username')){
             $ch = curl_init("https://dev-gardenshift.rhcloud.com/Gardenshift/get_notification_unread/".$frmusername);
@@ -38,7 +38,7 @@ class Message extends CI_Controller {
              $this->load->view('pages/messages', $data);
             }
             else{
-                header('Location: http://test-gardenshift.rhcloud.com');
+                header('Location: http://localhost:8888');
             }
     }
     public function updatenotif(){
@@ -53,7 +53,7 @@ class Message extends CI_Controller {
             echo $res;
             }
             else{
-                header('Location: http://test-gardenshift.rhcloud.com');
+                header('Location: http://localhost:8888');
             }
             
        
@@ -70,7 +70,7 @@ class Message extends CI_Controller {
             echo $res;
             }
             else{
-                header('Location: http://test-gardenshift.rhcloud.com');
+                header('Location: http://localhost:8888');
             }
     }
        public function deletenotif_read(){
@@ -85,7 +85,7 @@ class Message extends CI_Controller {
             echo $res;
             }
             else{
-                header('Location: http://test-gardenshift.rhcloud.com');
+                header('Location: http://localhost:8888');
             }
        
     }
@@ -120,7 +120,7 @@ class Message extends CI_Controller {
            
             }
             else{
-                header('Location: http://test-gardenshift.rhcloud.com');
+                header('Location: http://localhost:8888');
             }
             
     }
