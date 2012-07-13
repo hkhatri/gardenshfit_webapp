@@ -308,7 +308,7 @@
                      
                     var urladdress = obj.picture;
                                     
-                    var msg = "<image src=" + urladdress + " style='width: 100%'  />";
+                    var msg = "<image src='" + urladdress + "' style='width: 100%'  />";
                     
                     if("<?php echo $this->session->userdata('username'); ?>" == name)
                     msg+= "<button id='changePicture_btn'  style='position:absolute; left:1%; top: 5%' onclick='showChangeProfileDialog()'> Change Picture </button>";
