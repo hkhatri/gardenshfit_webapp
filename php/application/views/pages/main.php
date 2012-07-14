@@ -54,7 +54,7 @@
     
  function viewProfile()
     {
-        
+          
       var total_friends = 0;  
     
       var name = $("#searchField").val();
@@ -128,11 +128,11 @@
                      document.getElementById('CropsDiv').innerHTML = msg;
                      
                      
-                     // Update Recent Status
+                     // Updatef Recent Status
                      
                      var msg = "<ul>";
                     
-                   
+                    
  
                             
                     for(i= obj.status.length -1 ; i>=0 ; i--)
@@ -158,6 +158,7 @@
                      document.getElementById('statusDiv').innerHTML = msg;
                      
                      
+                     
                      // Update Recent feedback
                      
                      var msg = "<ul>";
@@ -165,6 +166,7 @@
                             
                     for(i=obj.feedback.length -1; i>=0; i--)
                         {
+                        
                             
                             if(!isNaN(obj.feedback.length))
                                 {
@@ -181,6 +183,8 @@
                                 
                                 
                         }
+                        
+                        
                         
                         
                      msg += "</ul>";
@@ -287,7 +291,7 @@
                      document.getElementById('friendsText').innerHTML = "Friends <a href='#' id='friendsTxtBtn_guest'>(" + total_friends + ")</a> ";
                  
                     
-                    
+                     if(addfrndbutton)
                      document.getElementById('userGreetings').innerHTML = name + "'s Profile" + "<button name='addfriends_bt' id='" + name +"' onclick=addFriends(this.id); > Add </button>";
                     
                      
@@ -303,7 +307,7 @@
                      $("#pendingReq").hide();
                      
                     
-                     alert("asfasfa");
+                  
                      // Update profile picture to reflect that of user
                      
                     var urladdress = obj.picture;
@@ -489,7 +493,7 @@
     //alert(msgcount);
     $.noty({
   layout : 'topRight', // (top, topLeft, topCenter, topRight, bottom, center, bottomLeft, bottomRight)
-    // theme name (accessable with CSS)
+    // theme name (accessable with CSS)s
   animateOpen : {height: 'toggle'}, // opening animation
   animateClose : {height: 'toggle'}, // closing animation
    // easing
