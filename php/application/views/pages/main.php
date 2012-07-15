@@ -132,7 +132,7 @@
                      
                      var msg = "<ul>";
                     
-                    
+                      alert(obj.friends);
  
                             
                     for(i= obj.status.length -1 ; i>=0 ; i--)
@@ -240,14 +240,16 @@
                                     "sPaginationType": "full_numbers",
                                     "bAutoWidth" : true
                             });
+                            
+                           
                      
                   
                    // Update friend list
                    
                     var msg = "<ul>";
                   
-                   
- 
+                  
+                 
                             
                     for(i= obj.friends.length -1 ; i>=0 ; i--)
                         {
@@ -285,7 +287,7 @@
                           
                         }
                         
-                    
+                      
                      msg += "</ul>";
                      
                      document.getElementById('friendsText').innerHTML = "Friends <a href='#' id='friendsTxtBtn_guest'>(" + total_friends + ")</a> ";
@@ -322,7 +324,7 @@
                    
                     document.getElementById('profilePictureDiv').innerHTML = msg;
                     
-                    
+                 
                     
                        
                    // Create a dataTable of all the friends
@@ -349,6 +351,7 @@
                                 
                         }
                         
+                         
                         
                      msg += "</tbody></table>";
                    
@@ -382,6 +385,8 @@
                   
                    
                     document.getElementById('profilePictureDiv').innerHTML = msg;
+                    
+                     
  
             }
         });
