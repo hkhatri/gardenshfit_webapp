@@ -491,7 +491,38 @@ public function auto_login_onsignup()
         curl_close ($c);
         
         
-       authenticate();
+        // Calls in Web service to check whether the provided credentials exist or not
+        
+        $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/authenticate';
+        // The submitted form data, encoded as query-string-style
+        // name-value pairs
+        
+        $body = 'username='.$username.'&password='.$password;
+        $c = curl_init ($url);
+        curl_setopt ($c, CURLOPT_POST, true);
+        curl_setopt ($c, CURLOPT_POSTFIELDS, $body);
+        curl_setopt ($c, CURLOPT_RETURNTRANSFER, true);
+        
+        $page = curl_exec ($c);
+        curl_close ($c);
+        
+        
+        // Calls in web service to display all the information of all the users in order to see which all crops are being grown
+        
+        
+        
+         if($page == "true")
+        {
+           
+           $this->session->set_userdata('username', $username);
+           //$_SESSION['username'] = $username;
+           
+            //$msgcount=count($usermessages);
+          $this->mainPageLoader(); 
+      
+          
+        }
+        else echo 'Invalid username or password';
             
   	
 }
