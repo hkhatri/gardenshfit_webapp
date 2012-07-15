@@ -108,8 +108,14 @@ function showAllFeedbacks_f()
                         
                         
                      msg += "</ul>";
+                     
+                     if(obj.feedback.length > 0)
+                         document.getElementById('feedbackDiv').innerHTML = msg;
+                     else
+                         document.getElementById('feedbackDiv').innerHTML = "No Feedbacks Received";
+                     
                    
-                     document.getElementById('feedbackDiv').innerHTML = msg;
+                    
                      
                      document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn'>(" + obj.feedback.length +")</a> " ;
                      

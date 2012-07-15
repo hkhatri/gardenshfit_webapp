@@ -172,7 +172,7 @@ function showAvailableCrops()
                     for(i= obj.user_crops.length - 1; i>=0 ; i--)
                         {
                             
-                            if(!isNaN(obj.feedback.length))
+                            if(!isNaN(obj.user_crops.length))
                                 {
                                             msg += "<li>";
                                             msg += "<h3>" + obj.user_crops[i].crop_name + "</h3>";
@@ -191,7 +191,10 @@ function showAvailableCrops()
                         
                      msg += "</ul>";
                    
-                     document.getElementById('CropsDiv').innerHTML = msg;
+                     if(obj.user_crops.length > 0)
+                        document.getElementById('CropsDiv').innerHTML = msg;
+                     else
+                         document.getElementById('CropsDiv').innerHTML = "No Recent Crops";
                      
                     
                      

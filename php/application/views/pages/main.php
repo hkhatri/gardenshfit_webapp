@@ -96,12 +96,13 @@
                     // Update Recent Crops
                     
                     var msg = "<ul>";
- 
+                    
+                 
                             
                     for(i= obj.user_crops.length - 1; i>=0 ; i--)
                         {
                             
-                            if(!isNaN(obj.feedback.length))
+                            if(!isNaN(obj.user_crops.length))
                                 {
                                             msg += "<li>";
                                             msg += "<h3>" + obj.user_crops[i].crop_name + "</h3>";
@@ -119,6 +120,8 @@
                         
                         
                      msg += "</ul>";
+                     
+                      
                    
                      document.getElementById('CropsDiv').innerHTML = msg;
                      
@@ -167,7 +170,7 @@
                                 {
                                             msg += "<li>";
                                             msg += "<h3>" + obj.feedback[i].from + "</h3>";
-                                            msg += "<p><a href='#' id='logout'>" + obj.feedback[i].text + "</a></p>";
+                                            msg += "<p><a href='#'>" + obj.feedback[i].text + "</a></p>";
                                             msg += "</li>";                                          
                                                 
                                 }
@@ -183,7 +186,12 @@
                         
                         
                      msg += "</ul>";
-                   
+                     
+                     alert(msg);
+                     
+                   if(msg == "<ul></ul>")
+                     document.getElementById('feedbackDiv').innerHTML = "No feedbacks received";
+                   else
                      document.getElementById('feedbackDiv').innerHTML = msg;
                      
                      if("<?php echo $this->session->userdata('username'); ?>" != name)
@@ -387,20 +395,10 @@
                     document.getElementById('statusDiv').innerHTML = "No Updates";
                 
                 if(obj.user_crops.length == 0) 
-                document.getElementById('CropsDiv').innerHTML = "No Recent Crops";
+                    document.getElementById('CropsDiv').innerHTML = "No Recent Crops";
             
-                if(obj.feedback.length == 0) 
-                    {
-                    document.getElementById('feedbackDiv').innerHTML = "No Feedback Received";
-                    document.getElementById('feedbackText').innerHTML = "Feedbacks (0)";
-                    }
-            
-                 if(obj.friends.length == 0) 
-                     {
-                     document.getElementById('friendsDiv').innerHTML = "No friends yet";    
-                     document.getElementById('friendsText').innerHTML = "Friends (0)";
-                     }
-                   
+               if(total_friends == 0)
+                    document.getElementById('friendsDiv').innerHTML = "No Friends yet";
                      
  
             }

@@ -3,9 +3,6 @@ function showRecentFriends()
         // Populate friends div for all accepted friends
         
         var total_friends = 0;
-        
-        document.getElementById('friendsText').innerHTML = "Friends (0)";
-               
            
            $.ajax({
                 type:"POST",
@@ -44,7 +41,10 @@ function showRecentFriends()
                      msg += "</ul>";
                     
                    
-                     document.getElementById('friendsDiv').innerHTML = msg;
+                     if(total_friends > 0)
+                        document.getElementById('friendsDiv').innerHTML = msg;
+                    else
+                        document.getElementById('friendsDiv').innerHTML = "No friends yet";
                      
                      document.getElementById('friendsText').innerHTML = "Friends <a href='#' id='friendsTxtBtn'>(" + total_friends + ")</a> ";
                      
