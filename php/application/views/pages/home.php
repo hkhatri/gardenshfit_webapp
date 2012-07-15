@@ -149,7 +149,7 @@ function checkUsername(name)
 
 <div id="newUserDialog">
     
-  <form id="addUserForm" action="https://dev-gardenshift.rhcloud.com/Gardenshift/adduser/" method="POST">
+  <form id="addUserForm" action="http://test-gardenshift.rhcloud.com/index.php/pages/auto_login_onsignup" method="POST">
       <table>
                 <tr>
                     <td><label for="name" align="left">Username:</label> </td>                             
