@@ -85,12 +85,7 @@
             data: { "name" : name},
             success: function(response)        
             {
-                document.getElementById('statusDiv').innerHTML = "No Updates";
-                document.getElementById('CropsDiv').innerHTML = "No Recent Crops";
-                document.getElementById('feedbackDiv').innerHTML = "No Feedback Received";
-                document.getElementById('friendsDiv').innerHTML = "No friends yet";
-                document.getElementById('friendsText').innerHTML = "Friends (0)";
-                document.getElementById('feedbackText').innerHTML = "Feedbacks (0)";
+             
                   
                    
                 
@@ -132,7 +127,7 @@
                      
                      var msg = "<ul>";
                     
-                      alert(obj.friends);
+                     
  
                             
                     for(i= obj.status.length -1 ; i>=0 ; i--)
@@ -386,6 +381,26 @@
                    
                     document.getElementById('profilePictureDiv').innerHTML = msg;
                     
+                    
+                    
+                if(obj.status.length == 0) 
+                    document.getElementById('statusDiv').innerHTML = "No Updates";
+                
+                if(obj.user_crops.length == 0) 
+                document.getElementById('CropsDiv').innerHTML = "No Recent Crops";
+            
+                if(obj.feedback.length == 0) 
+                    {
+                    document.getElementById('feedbackDiv').innerHTML = "No Feedback Received";
+                    document.getElementById('feedbackText').innerHTML = "Feedbacks (0)";
+                    }
+            
+                 if(obj.friends.length == 0) 
+                     {
+                     document.getElementById('friendsDiv').innerHTML = "No friends yet";    
+                     document.getElementById('friendsText').innerHTML = "Friends (0)";
+                     }
+                   
                      
  
             }
