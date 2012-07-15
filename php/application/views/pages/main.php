@@ -194,15 +194,12 @@
                    else
                      document.getElementById('feedbackDiv').innerHTML = msg;
                      
-                //     if("<?php echo $this->session->userdata('username'); ?>" != name)
+                     if("<?php echo $this->session->userdata('username'); ?>" != name)
                      document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a> <button id='addFeedback_btn' value='" + obj.username + "' onclick='showFeedbackDialog()' > Add </button> ";
-                //     else
-                //     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a>";
+                     else
+                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a>";
                          
-               if(isNaN(obj.feedback.length) )
-                                {
-                                   document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(0)</a>";
-                                }
+              
                       
                       // Create a dataTable of all the feedbacks
                       
