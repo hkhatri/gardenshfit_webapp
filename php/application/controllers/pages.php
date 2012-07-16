@@ -490,11 +490,6 @@ public function auto_login_onsignup()
         $page1 = curl_exec ($c1);
         curl_close ($c1);
         
-        echo $username;
-        
-        
-        
-        
         // Calls in Web service to check whether the provided credentials exist or not
         
         $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/authenticate';
