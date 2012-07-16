@@ -45,7 +45,7 @@
             
             </script>
         <div id="main" >
-           <div id="dialog-confirm" title="Delete crop">
+           <div id="dialog-confirm" title="Delete crop" style="display:none;">
 	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you want to delete this entry?</p>
 </div>
 
@@ -56,12 +56,12 @@
             </div>
             <div id="tablediv">
 
-                <table id="table_id" class="display" style="width: 800px; background-color:grey;">
+                <table id="table_id" style="background-color:grey;">
                     <thead>
                         <tr>
-                            <th style="width: 20px; ">Crop name</th>
-                            <th style="width: 20px; ">Quantity</th>
-                            <th style="width: 20px; ">Harvest Date</th>
+                            <th>Crop name</th>
+                            <th>Quantity</th>
+                            <th>Harvest Date</th>
 
                             <th>Edit</th>
                             <th>Delete</th>

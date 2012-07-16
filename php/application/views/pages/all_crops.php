@@ -42,11 +42,11 @@
         <button type="button" id ="addnewcrop" >Add a Crop</button>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;<button type="button" id ="goBackButton" >Go Back</button>
         <br/>
         <br/>
-        <table id="table_id" class="display" style="width: 800px; background-color:grey; ">
+        <table id="table_id" class="display" style="background-color:grey; ">
             <thead>
                 <tr>
-                    <th style="width: 20px; ">Crop name</th>
-                    <th style="width: 20px; ">Description</th>
+                    <th>Crop name</th>
+                    <th>Description</th>
 
                 </tr>
             </thead>

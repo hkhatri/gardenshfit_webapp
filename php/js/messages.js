@@ -4,7 +4,7 @@ function fnFormatDetails ( oTable, nTr )
    
    //alert(array2);
     var aData = oTable.fnGetData( nTr );
-    var sOut = '<table cellspacing="0" border="0" style="padding-left:50px; background:CEFECD;">';
+    var sOut = '<table cellspacing="0" border="0" style="padding-left:50px; background: #BCEE68; width:100%;">';
     sOut += '<tr><td>From:</td><td>'+aData[1]+'</td></tr>';
     sOut += '<tr><td style= "border-top: 1px solid black; ">Message:</td><td style= "border-top: 1px solid black; "><pre><strong>'+aData[5]+'<strong></pre></td></tr>';
     
@@ -44,21 +44,27 @@ $(document).ready(function() {
     var oTable = $('#unreadmsgs_table').dataTable( {
        
         "aoColumnDefs": [
-            { "bSortable": false, "aTargets": [ 0 ] },{ "bSortable": false, "aTargets": [ 4 ] },{ "bSortable": false, "aTargets": [ 7 ] },{ "bVisible": false, "aTargets": [5] },{ "bVisible": false, "aTargets": [6] }
+            { "bSortable": false, "aTargets": [ 0 ] },{ "bSortable": false, "aTargets": [ 4 ] },{ "bSortable": false, "aTargets": [ 7 ] }
         ],
         "aaSorting": [[6, 'desc']],
-         "bScrollCollapse": true,
-        "bJQueryUI": true
           
+        "bPaginate": true,
+          "bScrollCollapse": true,
+         "bJQueryUI": true,
+         "sPaginationType": "full_numbers",
+           "bAutoWidth" : true
     });
-    
+  
     var oTable1 = $('#readmsgs_table').dataTable( {
         "aoColumnDefs": [
-             { "bSortable": false, "aTargets": [ 0 ] },{ "bSortable": false, "aTargets": [ 4 ] },{ "bSortable": false, "aTargets": [ 7 ] },{ "bVisible": false, "aTargets": [5] },{ "bVisible": false, "aTargets": [6] }
+             { "bSortable": false, "aTargets": [ 0 ] },{ "bSortable": false, "aTargets": [ 4 ] },{ "bSortable": false, "aTargets": [ 7 ] }
         ],
         "aaSorting": [[6, 'desc']],
-         "bScrollCollapse": true,
-        "bJQueryUI": true
+              "bPaginate": true,
+            "bScrollCollapse": true,
+              "bJQueryUI": true,
+             "sPaginationType": "full_numbers",
+             "bAutoWidth" : true 
     });
      
     /* Add event listener for opening and closing details

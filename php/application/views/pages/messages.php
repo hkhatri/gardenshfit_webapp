@@ -44,16 +44,16 @@
      <div id="unreadmsgs">
             <button type="button" id ="goBackButton" style ="align:right;" >Go Back</button> <br/><br/>
                 <div id ="urm"><strong>Unread Messages</strong></div>
-                <table id="unreadmsgs_table" class="display" style="width: 1200px; background-color:lightgray;">
+                <table id="unreadmsgs_table" style="background-color:#BCEE68;">
                     <thead>
-                        <tr><th view</th>
-                            <th >From</th>
-                            <th >Message</th>
-                            <th >Date</th>
+                        <tr><th>view</th>
+                            <th>From</th>
+                            <th>Message</th>
+                            <th>Date</th>
                             
                             <th>Delete</th>
-                            <th style="visibility:hidden">data</th>
-                            <th style="visibility:hidden">data1</th>
+                            <th style="display:none;">data</th>
+                            <th style="display:none;">data1</th>
                             <th>Reply</th>
                         </tr>
                     </thead>
@@ -75,8 +75,8 @@
                             $time = date("H:i:s", $unreadmsgs[$c]->{'timestamp'}/1000 );
                             echo '<td align ="center">' . $date .' at '.$time . '</td>';
                            echo '<td align ="center" ><a class="delete" href="">Delete</a></td>';
-                           echo '<td align ="center">' . $unreadmsgs[$c]->{'text'}.'</td>';
-                           echo '<td align ="center">' . $unreadmsgs[$c]->{'timestamp'}.'</td>';
+                           echo '<td align ="center" style="display:none;">' . $unreadmsgs[$c]->{'text'}.'</td>';
+                           echo '<td align ="center" style="display:none;">' . $unreadmsgs[$c]->{'timestamp'}.'</td>';
                         echo '<td align ="center" ><a class="reply" href="">Reply</a></td>';
                            
 
@@ -91,7 +91,7 @@
     
          <div id="readmsgs">
                 <div id ="rm"><strong>Read Messages</strong></div>
-                <table id="readmsgs_table" class="display" style="width: 1200px; background-color:lightgray;">
+                <table id="readmsgs_table" style="background-color:#BCEE68;" >
                     <thead>
                         <tr>
                             <th >view</th>
@@ -100,8 +100,8 @@
                             <th >Date</th>
 
                             <th>Delete</th>
-                            <th style="visibility:hidden">data</th>
-                            <th style="visibility:hidden">data1</th>
+                            <th style="display:none;">data</th>
+                            <th style="display:none;">data1</th>
                             <th>Reply</th>
                         </tr>
                     </thead>
@@ -124,8 +124,8 @@
                             echo '<td align ="center">' . $date .' at '.$time . '</td>';
 
                             echo '<td align ="center"><a class="delete" href="">Delete</a></td>';
-                             echo '<td align ="center">' . $readmsgs[$c]->{'text'}.'</td>';
-                           echo '<td align ="center">' . $readmsgs[$c]->{'timestamp'}.'</td>';
+                             echo '<td align ="center" style="display:none;">' . $readmsgs[$c]->{'text'}.'</td>';
+                           echo '<td align ="center" style="display:none;">' . $readmsgs[$c]->{'timestamp'}.'</td>';
                            echo '<td align ="center"><a class="reply" href="">Reply</a></td>';
                            
 
