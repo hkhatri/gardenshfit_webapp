@@ -46,14 +46,14 @@
                 <div id ="urm"><strong>Unread Messages</strong></div>
                 <table id="unreadmsgs_table" class="display" style="width: 1200px; background-color:lightgray;">
                     <thead>
-                        <tr><th style="width: 20px; ">view</th>
-                            <th style="width: 20px; ">From</th>
-                            <th style="width: 20px; ">Message</th>
+                        <tr><th view</th>
+                            <th >From</th>
+                            <th >Message</th>
                             <th >Date</th>
                             
                             <th>Delete</th>
-                            <th style="width: 20px; visibility:hidden">data</th>
-                            <th style="width: 20px; visibility:hidden">data1</th>
+                            <th style="visibility:hidden">data</th>
+                            <th style="visibility:hidden">data1</th>
                             <th>Reply</th>
                         </tr>
                     </thead>
@@ -94,14 +94,14 @@
                 <table id="readmsgs_table" class="display" style="width: 1200px; background-color:lightgray;">
                     <thead>
                         <tr>
-                            <th style="width: 20px; ">view</th>
-                            <th style="width: 20px; ">From</th>
-                            <th style="width: 20px; ">Message</th>
-                            <th style="width: 20px; ">Date</th>
+                            <th >view</th>
+                            <th>From</th>
+                            <th >Message</th>
+                            <th >Date</th>
 
                             <th>Delete</th>
-                            <th style="width: 20px; visibility:hidden">data</th>
-                            <th style="width: 20px; visibility:hidden">data1</th>
+                            <th style="visibility:hidden">data</th>
+                            <th style="visibility:hidden">data1</th>
                             <th>Reply</th>
                         </tr>
                     </thead>

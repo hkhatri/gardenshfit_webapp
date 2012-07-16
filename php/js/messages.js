@@ -49,33 +49,7 @@ $(document).ready(function() {
         "aaSorting": [[6, 'desc']],
          "bScrollCollapse": true,
         "bJQueryUI": true,
-        "tableTitle":'Unread Messages',
-
-        "bAutoWidth": false, "aoColumns" : [
-        {
-            sWidth: '30px'
-        },
-        {
-            sWidth: '30px'
-        },
-        {
-            sWidth: '70px'
-        },
-           
-        {
-            sWidth: '100px'
-        },
-        {
-            sWidth: '30px'
-        },
-        {
-            sWidth: '30px'
-        },{
-            sWidth: '30px'
-        },{
-            sWidth: '30px'
-        }
-        ]     
+        "tableTitle":'Unread Messages'   
     });
     
     var oTable1 = $('#readmsgs_table').dataTable( {
@@ -84,33 +58,7 @@ $(document).ready(function() {
         ],
         "aaSorting": [[6, 'desc']],
          "bScrollCollapse": true,
-        "bJQueryUI": true,
-       
-       "bAutoWidth": false, "aoColumns" : [
-     {
-            sWidth: '30px'
-        },
-        {
-            sWidth: '30px'
-        },
-        {
-            sWidth: '70px'
-        },
-           
-        {
-            sWidth: '100px'
-        },
-        {
-            sWidth: '30px'
-        },
-        {
-            sWidth: '30px'
-        },{
-            sWidth: '30px'
-        },{
-            sWidth: '30px'
-        }
-        ]    
+        "bJQueryUI": true
     });
      
     /* Add event listener for opening and closing details
