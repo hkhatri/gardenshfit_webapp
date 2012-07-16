@@ -625,7 +625,13 @@
    $("#morenotifs").click(function(e){ 
    
    $("#morenotifsdiv").dialog( {height: 620,
-        width: 420});
+        width: 420,
+     buttons: {
+ 
+            Ok: function() {
+                $( this ).dialog( "close" );
+                                        
+            }}
     }); 
     
 
@@ -873,7 +879,7 @@ function updateNotifications() {
 
 </div> 
 
-<div id="morenotifsdiv" style="display:none;">
+<div id="morenotifsdiv" style="display:none;" title ="All Notifications" >
         <?php 
                         $i=0;
                             for($i;$i<$bulletincount&&$i<=50;$i++)
