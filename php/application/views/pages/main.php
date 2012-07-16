@@ -603,6 +603,61 @@
             $( this ).dialog( "close" );
         }
     }); 
+    
+    $( "#sendMessageDivMainPage" ).dialog({
+        
+        open: function(event, ui) { $('#element_3').focus();},
+
+        autoOpen: false,
+        height: 620,
+        width: 620,
+        modal: true,
+                        
+        buttons: {
+            "Send": function() {
+                var bValid = true;
+                 
+                 var text = document.getElementById("element_3").value;
+                 var to = document.getElementById("searchField1").value;
+                //write validations
+                                         
+                                                                                 
+                if ( bValid ) {
+                    //code to send a reply
+                         var from =  '<?php echo $this->session->userdata('username'); ?>';
+                        
+                        
+                         $.ajax({
+                          type:"POST",
+                          url:"http://test-gardenshift.rhcloud.com/index.php/message/send_new_message",
+                           data:{username:to, type:"message" , from:from ,text:text},
+                           success: function(response)
+                           {
+                            location.reload(true);
+    
+                             }
+                        });
+                                             
+                                         
+                }
+                                     
+                                         
+                                         
+            },
+            Cancel: function() {
+                
+                 $('#element_3').val("");
+                  $('#element_1').val("");
+                $( this ).dialog( "close" );
+                                        
+            }
+        },
+        close: function() {
+            $('#element_3').val("");
+                  $('#element_1').val("");
+            $( this ).dialog( "close" );
+        }
+    }); 
      
     
      $("#notifications").click(function(e) {
@@ -988,7 +1043,7 @@ function updateNotifications() {
     <div id="sendMessageDiv" style="display:none;" title="Send a Message">
                     <form id="sendMessageForm" class="appnitro"  method="post" action="">
                 <div class="form_description">
-                    <h2>Message</h2>
+                    
                     <p>Please type in your message and click send.</p>
                 </div>
                 <table>
@@ -1011,7 +1066,7 @@ function updateNotifications() {
  <div id="sendMessageDivMainPage" style="display:none;" title="Send A Message">
                     <form id="sendMessageForm" class="appnitro"  method="post" action="">
                 <div class="form_description">
-                    <h2>Message</h2>
+                   
                     <p>Please type in your message and click send.</p>
                 </div>
                 <table>
