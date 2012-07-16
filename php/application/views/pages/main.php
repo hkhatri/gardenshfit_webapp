@@ -52,8 +52,8 @@
 
 <script>  
     
- function sendAMessage(){
-     alert(this.value);
+ function sendAMessage( to){
+     alert(to);
  }   
  function viewProfile()
     {
@@ -380,7 +380,7 @@
                  
                  if("<?php echo $this->session->userdata('username'); ?>" != name)
                  {
-                    msg+= "<button id='sendMessage_btn'  value = '"+ name + "'style='position:absolute; left:1%; top: 5%' onclick='sendAMessage()'> Send Message </button>";
+                    msg+= "<button id='sendMessage_btn'  value = '"+ name + "'style='position:absolute; left:1%; top: 5%' onclick='sendAMessage(this.value)'> Send Message </button>";
                     $("#sendMessage_btn").show();
                  }
                  else
