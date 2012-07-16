@@ -60,7 +60,7 @@
   
  }
  function sendAMessageLink(){
-     alert(1);
+    
      $("#sendMessageDivMainPage").dialog('open');
  }
  
@@ -618,7 +618,7 @@
                 var bValid = true;
                  
                  var text = document.getElementById("element_3_msg").value;
-                 alert(text);
+                 
                  var to = document.getElementById("searchField1").value;
                 //write validations
                                          
