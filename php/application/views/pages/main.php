@@ -625,13 +625,8 @@
    $("#morenotifs").click(function(e){ 
    
    $("#morenotifsdiv").dialog( {height: 620,
-        width: 420,
-     buttons: {
- 
-            Ok: function() {
-                $( this ).dialog( "close" );
-                                        
-            }}
+        width: 420});
+    
     }); 
     
 
