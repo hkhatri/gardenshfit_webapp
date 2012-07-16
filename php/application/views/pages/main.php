@@ -803,6 +803,9 @@ function updateNotifications() {
                             for($i;$i<$bulletincount&&$i<=10;$i++)
                             {
                             echo '<li><strong>';
+                            if($i==0){
+                                echo '<img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>';
+                            }
                        echo '<a href="'; 
                         if (strpos($notarray[$bulletincount-$i-1],'message') == TRUE) {
                            
@@ -816,12 +819,18 @@ function updateNotifications() {
                        
                        echo $notarray[$bulletincount-$i-1]; 
                        echo'</a>';
+                       if($i==0){
+                                echo '<img class="corner_right" alt="" src="../../images/corner_right.png"/>';
+                            }
                         echo ' </strong></li>';
                             }
                             
                             for($i;$i<count($notarray_read) && $i<=10;$i++)
                             {
                             echo '<li>';
+                            if($i==0){
+                                echo '<img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>';
+                            }
                        echo '<a href="'; 
                         if (strpos($notarray_read[count($notarray_read)-$i-1],'message') == TRUE) {
                            
@@ -838,6 +847,9 @@ function updateNotifications() {
                        
                        echo $notarray_read[count($notarray_read)-$i-1]; 
                        echo'</a>';
+                        if($i==0){
+                                echo '<img class="corner_right" alt="" src="../../images/corner_right.png"/>';
+                            }
                         echo ' </li>';
                             }
                             
