@@ -559,7 +559,9 @@
                                                                                  
                 if ( bValid ) {
                     //code to send a reply
-                         var from =  '<?php $this->session->userdata('username'); ?>';
+                         var from =  '<?php echo $this->session->userdata('username'); ?>';
+                        
+                        
                          $.ajax({
                           type:"POST",
                           url:"http://test-gardenshift.rhcloud.com/index.php/message/send_new_message",
