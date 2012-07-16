@@ -647,15 +647,15 @@
             },
             Cancel: function() {
                 
-                 $('#element_3').val("");
-                  $('#element_1').val("");
+                 $('#searchField1').val("");
+                  $('#element_3_msg').val("");
                 $( this ).dialog( "close" );
                                         
             }
         },
         close: function() {
-            $('#element_3').val("");
-                  $('#element_1').val("");
+            $('#searchField1').val("");
+                  $('#element_3_msg').val("");
             $( this ).dialog( "close" );
         }
     }); 
