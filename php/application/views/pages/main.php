@@ -617,7 +617,7 @@
             "Send": function() {
                 var bValid = true;
                  
-                 var text = document.getElementById("element_3").value;
+                 var text = document.getElementById("element_3_msg").value;
                  alert(text);
                  var to = document.getElementById("searchField1").value;
                 //write validations
@@ -1082,7 +1082,7 @@ function updateNotifications() {
                             <label class="description" for="element_3" value="">Message: </label>
                         </td><td>
 
-                            <TEXTAREA NAME="comments" COLS=50 ROWS=12 id="element_3" name="element_3" class="element text medium" value=""></TEXTAREA> 
+                            <TEXTAREA NAME="comments" COLS=50 ROWS=12 id="element_3_msg" name="element_3" class="element text medium" value=""></TEXTAREA> 
                         </td></tr></table>
             </form>
     </div>
