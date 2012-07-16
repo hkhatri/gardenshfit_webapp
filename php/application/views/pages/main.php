@@ -618,6 +618,7 @@
                 var bValid = true;
                  
                  var text = document.getElementById("element_3").value;
+                 alert(text);
                  var to = document.getElementById("searchField1").value;
                 //write validations
                                          
