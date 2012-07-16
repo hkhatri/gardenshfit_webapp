@@ -204,7 +204,7 @@
                      document.getElementById('feedbackDiv').innerHTML = msg;
                      
                      if("<?php echo $this->session->userdata('username'); ?>" != name)
-                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a> <button id='addFeedback_btn' value='" + obj.username + "' onclick='showFeedbackDialog()' > Add </button> ";
+                     document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a> <input type='image' src='../../images/feedback.png' id='addFeedback_btn' value='" + obj.username + "' onclick='showFeedbackDialog()' style='width: 15px; height:15px;' align ='right' />";
                      else
                      document.getElementById('feedbackText').innerHTML = "Feedbacks <a href='#' id='feedbackTxtBtn_guest'>(" + obj.feedback.length +")</a>";
                          
@@ -303,7 +303,11 @@
                  
                     
                      if(addfrndbutton)
-                     document.getElementById('userGreetings').innerHTML = name + "'s Profile" + "<button name='addfriends_bt' id='" + name +"' onclick=addFriends(this.id); > Add </button>";
+                     {
+                     document.getElementById('userGreetings').innerHTML = name + "'s Profile";
+                     document.getElementById('userGreetings').innerHTML += "<img src='../../images/addfriend.png' name='addfriends_bt' id='" + name +"' onclick=addFriends(this.id); style='width: 25px; height:25px; ' align='right' /> ";
+                    }
+                     
                     
                      
      
@@ -386,7 +390,7 @@
                  
                  if("<?php echo $this->session->userdata('username'); ?>" != name)
                  {
-                    msg+= "<button id='sendMessage_btn'  value = '"+ name + "'style='position:absolute; left:1%; top: 5%' onclick='sendAMessage(this.value)'> Send Message </button>";
+                    msg+= "<img src='../../images/message.png' id='sendMessage_btn'  name = '"+ name + "'style='position:absolute; left:1%; top: 5%; width: 32px; height:32px;' onclick='sendAMessage(this.name)'/>";
                     $("#sendMessage_btn").show();
                  }
                  else
