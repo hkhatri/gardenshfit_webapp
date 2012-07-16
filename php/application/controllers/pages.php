@@ -490,7 +490,7 @@ public function auto_login_onsignup()
         $page1 = curl_exec ($c1);
         curl_close ($c1);
         
-        echo $usrname;
+        echo $username;
         
         
 //        
