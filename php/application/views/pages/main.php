@@ -553,6 +553,7 @@
                 var bValid = true;
                  
                  var text = document.getElementById("element_3").value;
+                 var to = document.getElementById("element_1").value;
                 //write validations
                                          
                                                                                  
