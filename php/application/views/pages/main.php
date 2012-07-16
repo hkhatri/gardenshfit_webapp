@@ -765,7 +765,7 @@ function updateNotifications() {
          <ul id="newmsg">
                     <li>
                         <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>
-                        <a href="javascript:void(0);" onclick="SendAMessagelink()">Create Message</a>
+                        <a href="javascript:void(0);" onclick="sendAMessageLink()">Create Message</a>
                         <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/>
                         
                     </li>
