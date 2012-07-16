@@ -629,9 +629,9 @@
     });
     
     
-   var statusIntervalId = window.setInterval(update, 30000);
+   var statusIntervalId = window.setInterval(updateNotifications, 30000);
 
-function update() {
+function updateNotifications() {
     $.ajax({
         url: 'http://test-gardenshift.rhcloud.com/index.php/pages/get_bulletin_count',
         dataType: 'text',
@@ -805,7 +805,7 @@ function update() {
                          echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
-                             echo '<script type="text/javascript"> showAllFeedback(); <script>'; 
+                             echo 'javascript:void(0);" onclick="showAllFeedback()" >'; 
                          }
                          
                          else echo '#">';
@@ -824,8 +824,9 @@ function update() {
                          echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          
-                          else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
-                             echo '<script type="text/javascript"> showAllFeedback(); <script>'; 
+                          else if(strpos($notarray_read[count($notarray_read)-$i-1],'Feedback') == TRUE){
+                              
+                             echo 'javascript:void(0);" onclick="showAllFeedback()" >'; 
                          }
                          
                          else echo '#">';
@@ -869,7 +870,7 @@ function update() {
                          }
                          
                           else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
-                             echo '<script type="text/javascript"> showAllFeedback(); <script>'; 
+                             echo 'javascript:void(0);" onclick="showAllFeedback()" >';
                          }
                          
                          else echo '#">';
@@ -889,8 +890,8 @@ function update() {
                          echo 'http://test-gardenshift.rhcloud.com/index.php/message/mymessages/'.$this->session->userdata('username').'">';
                          }
                          
-                          else if(strpos($notarray[$bulletincount-$i-1],'Feedback') == TRUE){
-                             echo '<script type="text/javascript"> showAllFeedback(); <script>'; 
+                          else if(strpos($notarray_read[count($notarray_read)-$i-1],'Feedback') == TRUE){
+                             echo 'javascript:void(0);" onclick="showAllFeedback()" >'; 
                          }
                          
                          else echo '#">';
