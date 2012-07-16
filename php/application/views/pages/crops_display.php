@@ -94,15 +94,13 @@
 
             </div>
 
-            <div id ="AddCropDiv">
+            <div id ="AddCropDiv" title ="Add a crop">
 
                 <form id="addform" class="appnitro"  method="post" action="">
                     <div class="form_description">
-                        <h2>Add a crop</h2>
+                    
                         <p>Please fill in the details of your crop and click submit.</p>
-                        <p id="emptycrop" style="display: none" > <font color="red">Please select a Crop.</font></p>
-                        <p id="emptyquan" style="display: none" > <font color="red">Please enter the Quantity.</font></p>
-                        <p id="emptydate" style="display: none" > <font color="red">Please select a Date.</font></p>
+                    
                     </div>						
 
                     <table>	<tr>
