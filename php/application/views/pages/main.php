@@ -955,7 +955,7 @@ function update() {
   </form>
 </div>
 
-    <div id="sendMessageDiv">
+    <div id="sendMessageDiv" style="display:none;">
                     <form id="sendMessageForm" class="appnitro"  method="post" action="">
                 <div class="form_description">
                     <h2>Message</h2>
@@ -964,7 +964,7 @@ function update() {
                 <table>
 
                     <tr><td>
-                            <label class="description" for="element_1">send_new_message:</label>
+                            <label class="description" for="element_1">To:</label>
                         </td><td>
                             <input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value="" readonly="readonly"/> 
 
