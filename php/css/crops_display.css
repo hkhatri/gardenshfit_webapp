@@ -10,11 +10,7 @@ root {
     display: block;
 }
 
-#AddCropDiv{
-    background-color: #eeeeff;
-    border-color: 2c4001;
 
-}
 li {
     list-style-type:none;
 }
