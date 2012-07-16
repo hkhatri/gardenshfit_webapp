@@ -795,7 +795,7 @@ function updateNotifications() {
         </li>
        
        <li><a href='javascript: ' id="notifications" style="width: 160px">Notifications <strong><b id ="subid" style="background:red; text:black; " ><?php if($bulletincount!=0){ echo '&nbsp;'; echo($bulletincount); echo '&nbsp;';}?>  </b></strong></a>
-        <ul id="notifications1" style ="display:none; width: 400px">
+        <ul id="notifications1" style ="display:none; width: 250px">
                    
                        
                         <?php 
