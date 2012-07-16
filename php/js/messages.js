@@ -48,8 +48,8 @@ $(document).ready(function() {
         ],
         "aaSorting": [[6, 'desc']],
          "bScrollCollapse": true,
-        "bJQueryUI": true,
-        "tableTitle":'Unread Messages'   
+        "bJQueryUI": true
+          
     });
     
     var oTable1 = $('#readmsgs_table').dataTable( {
