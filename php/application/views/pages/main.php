@@ -53,8 +53,14 @@
 <script>  
     
  function sendAMessage( to){
-     alert(to);
- }   
+     
+        $('#element_1').val(to);
+        $("#sendMessageDiv").dialog('open');
+ 
+  
+ }
+ 
+ 
  function viewProfile()
     {
           
@@ -504,6 +510,7 @@
     $("#pictureURL").hide();
     
     
+    
     var msgcount=<?php echo($msgcount) ?>;
   
 
@@ -531,6 +538,58 @@
   
     
      });
+     
+      $( "#sendMessageDiv" ).dialog({
+        
+        open: function(event, ui) { $('#element_3').focus();},
+
+        autoOpen: false,
+        height: 620,
+        width: 620,
+        modal: true,
+                        
+        buttons: {
+            "Send": function() {
+                var bValid = true;
+                 
+                 var text = document.getElementById("element_3").value;
+                //write validations
+                                         
+                                                                                 
+                if ( bValid ) {
+                    //code to send a reply
+                         var from =  '<?php $this->session->userdata('username'); ?>';
+                         $.ajax({
+                          type:"POST",
+                          url:"http://test-gardenshift.rhcloud.com/index.php/message/send_new_message",
+                           data:{username:to, type:"message" , from:from ,text:text},
+                           success: function(response)
+                           {
+                            location.reload(true);
+    
+                             }
+                        });
+                                             
+                                         
+                }
+                                     
+                                         
+                                         
+            },
+            Cancel: function() {
+                
+                 $('#element_3').val("");
+                  $('#element_1').val("");
+                $( this ).dialog( "close" );
+                                        
+            }
+        },
+        close: function() {
+            $('#element_3').val("");
+                  $('#element_1').val("");
+            $( this ).dialog( "close" );
+        }
+    }); 
      
      $("#notifications").click(function(e) {
       e.preventDefault(); // if desired...
@@ -895,7 +954,28 @@ function update() {
   </form>
 </div>
 
+    <div id="sendMessageDiv">
+                    <form id="sendMessageForm" class="appnitro"  method="post" action="">
+                <div class="form_description">
+                    <h2>Message</h2>
+                    <p>Please type in your message and click send.</p>
+                </div>
+                <table>
 
+                    <tr><td>
+                            <label class="description" for="element_1">send_new_message:</label>
+                        </td><td>
+                            <input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value="" readonly="readonly"/> 
+
+                        </td></tr>		
+                    <tr><td>
+                            <label class="description" for="element_3" value="">Message: </label>
+                        </td><td>
+
+                            <TEXTAREA NAME="comments" COLS=50 ROWS=12 id="element_3" name="element_3" class="element text medium" value=""></TEXTAREA> 
+                        </td></tr></table>
+            </form>
+    </div>
 
 
 <!--Start of user multi column home page-->

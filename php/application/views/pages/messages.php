@@ -146,7 +146,7 @@
                 <table>
 
                     <tr><td>
-                            <label class="description" for="element_1">To:</label>
+                            <label class="description" for="element_1">Tosend_new_message:</label>
                         </td><td>
                             <input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value="" readonly="readonly"/> 
 
