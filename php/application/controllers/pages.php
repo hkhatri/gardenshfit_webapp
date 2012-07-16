@@ -477,20 +477,20 @@ public function auto_login_onsignup()
         
         
         
-//        $url = 'http://dev-gardenshift.rhcloud.com/Gardenshift/adduser/';
-//        // The submitted form data, encoded as query-string-style
-//        // name-value pairs
-//        
-//        $body = 'username='.$username.'&password='.$password.'&email='.$email;
-//        $c = curl_init ($url);
-//        curl_setopt ($c, CURLOPT_POST, true);
-//        curl_setopt ($c, CURLOPT_POSTFIELDS, $body);
-//        curl_setopt ($c, CURLOPT_RETURNTRANSFER, true);
-//        
-//        $page = curl_exec ($c);
-//        curl_close ($c);
+        $url1 = 'http://dev-gardenshift.rhcloud.com/Gardenshift/adduser/';
+        // The submitted form data, encoded as query-string-style
+        // name-value pairs
         
-        echo $username;
+        $body1 = 'username='.$username.'&password='.$password.'&email='.$email;
+        $c1 = curl_init ($url1);
+        curl_setopt ($c1, CURLOPT_POST, true);
+        curl_setopt ($c1, CURLOPT_POSTFIELDS, $body1);
+        curl_setopt ($c1, CURLOPT_RETURNTRANSFER, true);
+        
+        $page1 = curl_exec ($c1);
+        curl_close ($c1);
+        
+        echo $page1;
         
         
 //        
