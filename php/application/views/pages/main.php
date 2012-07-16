@@ -59,7 +59,9 @@
  
   
  }
- 
+ function sendAMessageLink(){
+     $("#sendMessageDivMainPage").dialog('open');
+ }
  
  function viewProfile()
     {
@@ -450,6 +452,9 @@
                        $( "#searchField" ).autocomplete({
 			source: availableTags
 		});
+                $( "#searchField1" ).autocomplete({
+			source: availableTags
+		});
               
 
             }
@@ -598,6 +603,7 @@
         }
     }); 
      
+    
      $("#notifications").click(function(e) {
       e.preventDefault(); // if desired...
       // other methods to call...
@@ -759,7 +765,7 @@ function updateNotifications() {
          <ul id="newmsg">
                     <li>
                         <img class="corner_inset_left" alt="" src="../../images/corner_inset_left.png"/>
-                        <a href="#">Create Message</a>
+                        <a href="javascript:void(0);" onclick="SendAMessagelink()">Create Message</a>
                         <img class="corner_inset_right" alt="" src="../../images/corner_inset_right.png"/>
                         
                     </li>
@@ -978,7 +984,7 @@ function updateNotifications() {
   </form>
 </div>
 
-    <div id="sendMessageDiv" style="display:none;">
+    <div id="sendMessageDiv" style="display:none;" title="Send a Message">
                     <form id="sendMessageForm" class="appnitro"  method="post" action="">
                 <div class="form_description">
                     <h2>Message</h2>
@@ -1001,6 +1007,28 @@ function updateNotifications() {
             </form>
     </div>
 
+ <div id="sendMessageDivMainPage" style="display:none;" title="Send A Message">
+                    <form id="sendMessageForm" class="appnitro"  method="post" action="">
+                <div class="form_description">
+                    <h2>Message</h2>
+                    <p>Please type in your message and click send.</p>
+                </div>
+                <table>
+
+                    <tr><td>
+                            <label class="description" for="element_1">To:</label>
+                        </td><td>
+                            <input id="searchField1" name="searchField1" class="element text medium" type="text" maxlength="255" value=""/> 
+
+                        </td></tr>		
+                    <tr><td>
+                            <label class="description" for="element_3" value="">Message: </label>
+                        </td><td>
+
+                            <TEXTAREA NAME="comments" COLS=50 ROWS=12 id="element_3" name="element_3" class="element text medium" value=""></TEXTAREA> 
+                        </td></tr></table>
+            </form>
+    </div>
 
 <!--Start of user multi column home page-->
 
