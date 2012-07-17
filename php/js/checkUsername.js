@@ -4,7 +4,7 @@ function checkUsername(name)
         $.ajax({
             type:"POST",
             url:"http://test-gardenshift.rhcloud.com/index.php/pages/adduser",
-            data:{ "username" : name},
+            data:{"username" : name},
             success: function(response)
             {
                 if(name.length > 5)
@@ -34,15 +34,17 @@ function userExists(name)
         $.ajax({
                 type:"POST",
                 url:"http://test-gardenshift.rhcloud.com/index.php/pages/adduser",
-                data:{ "username" : name},
+                data:{"username" : name},
                 success: function(response)
                 {
                             if(response == 0)
                                 {     
                                         viewProfile();
                                 }
-                                else $("#errorUsername").dialog('open');
-                    
+                                else {
+                                    document.getElementById('errorUsername').innerHTML = "Username does not Exists";
+                                    $("#errorUsername").dialog('open');
+                                     }
                 }
             });
     

@@ -789,7 +789,7 @@ function updateNotifications() {
 <body>
     
     
-    <div id="errorUsername"> Username does not Exists</div>
+    <div id="errorUsername"></div>
     
     <div id="map_canvas" width="100%"></div>
      
