@@ -1,7 +1,11 @@
 function main_init()
 {
     
-    
+         $('#searchField1').keypress(function(event) {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+    }
+    });
     $.ajaxSetup ({  
         cache : false,
         async:false
