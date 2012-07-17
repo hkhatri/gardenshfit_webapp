@@ -217,6 +217,26 @@ $( "#showCropsAll" ).dialog({
             }
 );  
     
+$( "#errorUsername" ).dialog({               
+         
+         
+           
+            resizable: false,
+            autoResize: true,
+            autoOpen: false, 
+            title: "Message",
+            overlay: {backgroundColor: "#0FF", opacity: 0.5},
+            height: 'auto',
+            width: 'auto',
+            buttons: {
+                    'Close': function() {
+                        $(this).dialog('close');   
+                    }
+                               
+                  }
+            }
+);  
+    
     
     $( "#userSettingsDialog" ).dialog('close');
     $( "#mapData" ).dialog('close');

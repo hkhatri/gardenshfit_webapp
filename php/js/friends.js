@@ -26,10 +26,14 @@ function showRecentFriends()
                                 {
                                             if(obj.friends[i].status == "accepted")
                                                 {
-                                                        msg += "<li>";
-                                                        msg += "<h3>" + obj.friends[i].friends_username + "</h3>";
-                                                        msg += "</li>";
-                                                        total_friends++;
+                                                    total_friends++;
+                                                        
+                                                        if(total_friends < 4)
+                                                            {
+                                                                msg += "<li>";
+                                                                msg += "<h3>" + obj.friends[i].friends_username + "</h3>";
+                                                                msg += "</li>";
+                                                            }
                                                 }
                                             
                                                 

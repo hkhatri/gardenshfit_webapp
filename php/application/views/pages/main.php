@@ -31,6 +31,7 @@
 <script src="../../js/changePicture.js" type="text/javascript"></script>
 <script src="../../js/jquery.noty.js" type="text/javascript"></script>
 <script src="../../js/promise.js" type="text/javascript"></script>
+<script src="../../js/checkUsername.js" type="text/javascript"></script>
 
 <style type="text/css">
       html { height: 100% }
@@ -499,9 +500,11 @@
          
          $('#searchField').keypress(function(e)
                 {
+                        var name = $("#searchField").val();
                         if (e.keyCode == 13)
                         {
-                                viewProfile();
+                               userExists(name);
+                               
                         }
                 });
                 
@@ -784,7 +787,7 @@ function updateNotifications() {
 <body>
     
     
-    
+    <div id="errorUsername"> Username does not Exists</div>
     
     <div id="map_canvas" width="100%"></div>
      

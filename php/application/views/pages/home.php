@@ -31,6 +31,7 @@
 <script src="../../js/jquery.validate.js" type="text/javascript"></script>
 <script src="../../js/formValidation.js" type="text/javascript"></script>
 <script src="../../js/initialization.js" type="text/javascript"></script>
+<script src="../../js/checkUsername.js" type="text/javascript"></script>
     
     
    
@@ -67,35 +68,6 @@ $( "#newUserDialog" ).dialog('open');
 
 
 
-function checkUsername(name)
-{
-   
-        $.ajax({
-            type:"POST",
-            url:"http://test-gardenshift.rhcloud.com/index.php/pages/adduser",
-            data:{ "username" : name},
-            success: function(response)
-            {
-                if(name.length > 5)
-                  {
-                        if(response == 0)
-                            {                              
-                            $("#errormsg").css("color","red");
-                            $("#errormsg").html("Username already taken");                                                    
-                            }
-                        else
-                            {
-                            $("#errormsg").html("Username available");
-                            $("#errormsg").css("color","green");
-                            }
-                  
-                  }
-                  else $("#errormsg").html("");
-            }
-        });
-    
-  
-}
 
 
           
