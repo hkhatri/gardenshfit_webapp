@@ -226,9 +226,9 @@ $( "#errorUsername" ).dialog({
          
            
             resizable: false,
-            autoResize: true,
+            autoResize: false,
             autoOpen: false, 
-            title: "Message",
+            title: "All Crops",
             overlay: {backgroundColor: "#0FF", opacity: 0.5},
             height: 'auto',
             width: 'auto',
@@ -242,6 +242,7 @@ $( "#errorUsername" ).dialog({
 );  
     
     
+    $( "#errorUsername" ).dialog('close');
     $( "#userSettingsDialog" ).dialog('close');
     $( "#mapData" ).dialog('close');
     $( "#feedbackPopUp" ).dialog('close');
