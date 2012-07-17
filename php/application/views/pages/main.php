@@ -33,6 +33,8 @@
 <script src="../../js/promise.js" type="text/javascript"></script>
 <script src="../../js/checkUsername.js" type="text/javascript"></script>
 
+
+
 <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0; background-image: url("../../images/plain.png"); background-size: 100% 100%; background-repeat: repeat; }
