@@ -37,14 +37,12 @@ function userExists(name)
                 data:{ "username" : name},
                 success: function(response)
                 {
-                    if(name.length > 5)
-                    {
                             if(response == 0)
                                 {     
                                         viewProfile();
                                 }
                                 else $("#errorUsername").dialog('open');
-                    }
+                    
                 }
             });
     
